@@ -49,10 +49,10 @@ body {
 .app {
     background:url(../img/logo_ditek.png) no-repeat center top; /* 170px x 200px */
     position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
+    left:48%;
+    top:35%;
     height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
+    width:250px;                   /* text area width */
     text-align:center;
     padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
     margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
@@ -110,27 +110,20 @@ h1 {
 }
  
 .blink {
-    animation:fade 3000ms infinite;
-    -webkit-animation:fade 3000ms infinite;
-}
-
-
-
-input  {
-    margin-top: 2%;
-    border-radius: 10px;
-    width: 100%;
-    height: 40%;
-    text-align: center;
-    font-size: 18px;
+    animation:fade 5000ms infinite;
+    -webkit-animation:fade 5000ms infinite;
 }
 
 input[type="submit"] {
     text-align: center;
-    width: 45%;
-    height: 50%;
-    background-color:  #696969;
-    color: white;
-    border-radius: 20px;
+    width: 90%;
+    height: 40px;
+    background-color: none;
+    color: #696969;
+    border-radius: 4px;
+    font-size: 20px;
+    font-family: Arial;
+    font-weight: normal;
+    margin-top: 2%;
 }
 
