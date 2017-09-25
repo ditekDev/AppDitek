@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-      
-        <meta name="viewport" content="width=device-width, initial-escale=1.0">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Inicio Sesión</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Di Tek</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="js/login.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
     <body>
-        <form id="form_login">
-        <div class="app">
+   
+            <form id="form_login">
+             <div class="app">
             <h1 class="blink">Bienvenido</h1>
             <div id="deviceready" >
-                <input type="text" name="user" placeholder="Usuario" id="txtuser" required>
-                <input type="password" name="pass" placeholder="Contraseña" id="txtpassword" required>
-                <input class="bntIngresar" type="submit" name="btnIngresar" id="btnLogin" value="Ingresar">
+                <input type="text" name="txtuser" id="txtuser" value="" placeholder="Usuario" required>
+                <input type="password" name="txtpassword" id="txtpassword" value="" placeholder="Contraseña" required>
+                <input class="bntIngresar" type="button" value="Ingresar" id="btnLogin">
             </div>
-        </div>
-        </form>
+           </div>
+               
+            </form>
+
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
