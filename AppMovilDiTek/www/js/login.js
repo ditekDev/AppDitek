@@ -7,7 +7,7 @@ $(document).ready(function(){
                 window.location.href = "menu.html";
             }
             else{
-                window.location.href = "menu.html";
+                alert("Usuario o contraseña incorrecta");
             }
         });
     });
