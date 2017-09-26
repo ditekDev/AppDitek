@@ -6,7 +6,9 @@ $(document).ready(function(){
             if (respuesta == true) {
                 window.location.href = "menu.html";
             }
-            
+            else{
+                alert("Usuario o contraseña incorrecta");
+            }
         });
     });
 });
