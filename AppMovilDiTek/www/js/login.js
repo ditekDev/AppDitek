@@ -1,8 +1,9 @@
-$(document).ready(function(){
+function valida(){
+	$(document).ready(function(){
     $("#btnLogin").click(function(){
         var usu = $("#txtuser").val();
         var pass = $("#txtpassword").val();
-        if(usu===""||pass===""){
+        if(!usu===""||pass===""){
         	//validaciones
 
         }else{
@@ -11,7 +12,7 @@ $(document).ready(function(){
             if (respuesta == true) {
                 window.location.href = "menu.html";
             }
-            if(respuesta==false){
+            else{
                alert("El usuario y la contraseña no coinciden");
             }
             });
@@ -19,6 +20,6 @@ $(document).ready(function(){
         
     });
 });
-
+}
 
 
