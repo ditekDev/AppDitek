@@ -1,4 +1,4 @@
-#Wed Sep 27 13:03:39 CST 2017
+#Thu Sep 28 12:28:26 CST 2017
 base.0=C\:\\Users\\ADRIA\\Documents\\GitHub\\AppDitek\\AppMovilDiTek\\platforms\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
 file.0=C\:\\Users\\ADRIA\\Documents\\GitHub\\AppDitek\\AppMovilDiTek\\platforms\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
