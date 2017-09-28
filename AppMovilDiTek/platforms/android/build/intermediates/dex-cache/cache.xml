@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\ADRIA\Documents\GitHub\AppDitek\AppMovilDiTek\platforms\android\build\intermediates\exploded-aar\org.apache.cordova\CordovaLib\6.2.3\debug\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7a1530ac850543228ac856fe951d258efe29f918">
+        <dex dex="C:\Users\ADRIA\Documents\GitHub\AppDitek\AppMovilDiTek\platforms\android\build\intermediates\pre-dexed\debug\CordovaLib-6.2.3-debug_07e45475efa7733cca44c777e5f0ecadb5ba7dd2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ADRIA\Documents\GitHub\AppDitek\AppMovilDiTek\platforms\android\build\intermediates\exploded-aar\org.apache.cordova\CordovaLib\6.2.3\debug\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="7a1530ac850543228ac856fe951d258efe29f918">
+        <dex dex="C:\Users\ADRIA\Documents\GitHub\AppDitek\AppMovilDiTek\platforms\android\build\intermediates\pre-dexed\debug\CordovaLib-6.2.3-debug_07e45475efa7733cca44c777e5f0ecadb5ba7dd2.jar" />
+    </item>
+
+</items>
