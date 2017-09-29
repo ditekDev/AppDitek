@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Sep 28 12:28:27 CST 2017
+#Thu Sep 28 12:49:26 CST 2017
 25.file=C\:\\Users\\ADRIA\\Documents\\GitHub\\AppDitek\\AppMovilDiTek\\platforms\\android\\build\\intermediates\\assets\\debug\\www\\plugins\\cordova-plugin-dialogs\\www\\notification.js
 25.base=C\:\\Users\\ADRIA\\Documents\\GitHub\\AppDitek\\AppMovilDiTek\\platforms\\android\\build\\intermediates\\assets\\debug
 22.set=ANDROID_RESOURCE

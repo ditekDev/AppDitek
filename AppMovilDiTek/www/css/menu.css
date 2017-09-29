@@ -48,7 +48,7 @@ body {
 /* Portrait layout (default) */
 .app {
     background:url(../img/logo_ditek.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
+    position: absolute;             /* position in the center of the screen */
     left:48%;
     top:35%;
     height:50px;                   /* text area height */
@@ -88,14 +88,14 @@ h1 {
 }
 
 .event.listening {
-    background-color:#333333;
+    color:#333333;
     display:block;
+    font-size: 25px;
+    text-align: center;
+    
 }
 
-.event.received {
-    background-color:#4B946A;
-    display:none;
-}
+
 
 @keyframes fade {
     from { opacity: 1.0; }

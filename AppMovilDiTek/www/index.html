@@ -12,19 +12,23 @@
 
 </head>
     <body>
-   
-            <form id="formulario">
-             <div class="app">
-            <h1 class="blink">Bienvenido</h1>
-            <div id="deviceready" >
-                <input type="text" name="txtuser" id="txtuser" value="" placeholder="Usuario" required>
-                <input type="password" name="txtpassword" id="txtpassword" value="" placeholder="Contraseña" required>
-                
-            </div>
-            <input class="bntIngresar" type="submit" value="Ingresar" id="botonLogin">
+        
+        <form id="formulario">
+            <div class="app">
+                <div class="logo"></div>
+                <div id="deviceready" >
+                    <div class="container">
+                        <h1>Usuario</h1>
+                       <input type="text" name="txtuser" id="txtuser" value="" placeholder="Usuario Asignado" required>
+                       <h1>Contraseña</h1>
+                       <input type="password" name="txtpassword" id="txtpassword" value="" placeholder="******" required>
+                       
+                   </div>
+                   <input class="bntIngresar" type="submit" value="Ingresar" id="botonLogin">
+               </div>
            </div>
-               
-            </form>
+        </form>
+        
         <script type="text/javascript" src="js/login.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="cordova.js"></script>

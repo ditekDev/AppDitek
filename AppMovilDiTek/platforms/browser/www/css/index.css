@@ -41,30 +41,36 @@ body {
     height:100%;
     margin:0px;
     padding:0px;
-    text-transform:uppercase;
+    
     width:100%;
 }
-
+.logo{
+    background:url(../img/logo_ditek.png) no-repeat center top; 
+    
+}
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo_ditek.png) no-repeat center top; /* 170px x 200px */
+    background:url(../img/logo_ditek.png) no-repeat center top; 
+    
     position:absolute;             /* position in the center of the screen */
     left:50%;
     top:50%;
     height:50px;                   /* text area height */
     width:225px;                   /* text area width */
     text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+    padding:140px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-139px 0px 0px -139px;  /* offset vertical: half of image height and text area height */
                                    /* offset horizontal: half of text area width */
 }
+
+
 
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .app {
         background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+        padding:70px 0px 75px 70px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -90px;  /* offset vertical: half of image height */
                                       /* offset horizontal: half of image width and text area width */
     }
 }
@@ -73,9 +79,17 @@ h1 {
     font-size:20px;
     font-weight:normal;
     margin:0px;
-    overflow:visible;
     padding:0px;
-    text-align:center;
+    text-transform: none;
+    text-align: left;
+    
+}
+
+.container{
+    width: 250px;
+    padding: 15px;
+    border: 3px solid black;
+    
 }
 
 .event {
@@ -119,18 +133,21 @@ h1 {
 input  {
     margin-top: 2%;
     border-radius: 10px;
-    width: 100%;
-    height: 40%;
+    width: 199px;
+    height: 33px;
     text-align: center;
-    font-size: 18px;
+    font-size: 17px;
+    margin-bottom: 5%;
+    margin: 13px;
 }
 
 input[type="submit"] {
-    text-align: center;
-    width: 45%;
-    height: 50%;
+    margin-left: 70%;
+    width: 120px;
+    height: 35px;
     background-color:  #696969;
     color: white;
-    border-radius: 20px;
+    border-radius: 8px;
+   
 }
 

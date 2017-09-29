@@ -34,7 +34,7 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
-        console.log(navigator.notification);
+       
     },
 
     // Update DOM on a Received Event
