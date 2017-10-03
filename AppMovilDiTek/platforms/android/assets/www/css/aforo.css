@@ -1,0 +1,106 @@
+body{
+    background-color:white;
+    /*background-image:linear-gradient(top, #008080 0%, #008080 51%);
+    background-image:-webkit-linear-gradient(top, #008080 0%, #008080 51%);
+    background-image:-ms-linear-gradient(top, #008080 0%, #008080 51%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #008080),
+        color-stop(0.51, #CCE6E6)
+    );*/
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+
+.container{
+    width: 100%;
+}
+
+.encabezado{
+    width: 100%;
+    height:65%;
+    background-color: black;
+    color:white;
+
+}
+.encabezado2{
+    width: 100%;
+    height: 130px;
+    background-color: black;
+    color:red;
+
+
+}
+
+
+.logo{
+    background:url(../ditek/img/logo.png) no-repeat center top;
+    background-size: 100%; /* 170px x 200px */           /* position in the center of the screen */
+    height:40px;                   /* text area height */
+    width:225px;                   /* text area width */
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    background-color: none;
+ 
+}
+
+.menua{
+    height:220px;  
+    width:225px;                 /* text area height */                   /* text area width */
+    background-color: none;
+ 
+}
+
+.subencabezado {
+    width: 100%;
+    height: 90px;
+    background-color: gray;
+    margin-top: 0%;
+    border: none;
+    text-align: center;
+    font-size: 60px;
+
+}
+
+.container {
+    text-align-last: center;
+    font-size: 80px;
+    margin-top: 30%;
+}
+
+input {
+    width: 50%;
+    height: 70px;
+    font-size: 60px;
+    margin-bottom: 10%;
+}
+select {
+    width: 50%;
+    height: 70px;
+    font-size: 60px;
+    margin-bottom: 10%;
+}
+
+option {
+    font-size: 14px;
+}
+
+.btn-Eliminar {
+    border-radius: 20px;
+    width: 30%;
+    height: 90px;
+    background-color: gray;
+    color: white;
+    font-family: Arial;
+    font-size: 40px;
+}
+
+span {
+    font-size: 50px;
+}

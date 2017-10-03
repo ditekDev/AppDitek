@@ -9,16 +9,17 @@ $('#formulario').submit(function() {
 	$.getJSON( archivoValidacion, { usuario:datosUsuario ,password:datosPassword})
 	.done(function(respuestaServer) {
 		
-		alert(respuestaServer.mensaje)
+		
 		
 		if(respuestaServer.validacion == "ok"){
 		  
-		 	/// si la validacion es correcta, muestra la pantalla "home"
+		 	/// si la validacion es correcta, muestra la pantalla "menu"
             window.location.href = "menu.html";
 		  
 		}else{
 		  
-		  /// ejecutar una conducta cuando la validacion falla
+		  /// ejecutar cuando la validacion falla
+		  alert(respuestaServer.mensaje)
 		}
   
 	})
