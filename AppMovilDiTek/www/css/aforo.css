@@ -41,7 +41,7 @@ body{
 
 
 .logo{
-    background:url(../ditek/img/logo.png) no-repeat center top;
+    background:url(../img/logo_ditek.png) no-repeat center top;
     background-size: 100%; /* 170px x 200px */           /* position in the center of the screen */
     height:40px;                   /* text area height */
     width:225px;                   /* text area width */
