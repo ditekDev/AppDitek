@@ -58,7 +58,7 @@ window.dao =  {
                 this.txErrorHandler,
                 function() {
                   
-                    callback();
+                   
                 }
             );
         },
@@ -71,7 +71,7 @@ window.dao =  {
                 this.txErrorHandler,
                 function() {
           
-                    callback();
+                 
                 }
             );
         },
@@ -189,10 +189,9 @@ window.dao =  {
     });
     
     function sincronizar() {
-        dao.dropTable(function() {
-            dao.createTable();
-            dao.sync(renderList);
-        });
+        dao.dropTable();
+        dao.createTable();
+        dao.sync(renderList);
     }
     
   
