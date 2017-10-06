@@ -1,29 +1,24 @@
-$('#formulario').submit(function() { 
-	
+function inicio(){
+    var db = openDatabase("diteklocal", "1.0", "Sync DB", 200000);
+    var msg;
+    var usu=document.getElementsByName("txtuser")[0].value;	
+    var pass=document.getElementsByName("txtpassword")[0].value;	
 
-	// recolecta los valores que inserto el usuario
-	var datosUsuario = $("#txtuser").val()
-	var datosPassword = $("#txtpassword").val()
-	
-  	archivoValidacion = "http://grupoditek.com/php/inicio_sesion.php?jsoncallback=?"
-	$.getJSON( archivoValidacion, { usuario:datosUsuario ,password:datosPassword})
-	.done(function(respuestaServer) {
-		
-		
-		
-		if(respuestaServer.validacion == "ok"){
-		  
-		 	/// si la validacion es correcta, muestra la pantalla "menu"
-            window.location.href = "menu.html";
-		  
-		}else{
-		  
-		  /// ejecutar cuando la validacion falla
-		  alert(respuestaServer.mensaje)
-		}
-  
-	})
-	return false;
-})
+	if (usu==""||pass=="") {
+    
+	}else{
+    	db.transaction(function (tx) {
+        	tx.executeSql('SELECT * FROM employee WHERE usuario="'+usu+'" AND contrasena="'+pass+'"', [], function (tx, results) {
+       		var len = results.rows.length, i;
+           
+       		if (len===1) {
+                  window.location.href = "menu.html";
+        	}else{
+                 alert("Incorrecto");
+        	}  
+        }, null);
+        });
+    }
 
-
+ 
+}
