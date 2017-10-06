@@ -187,12 +187,7 @@ window.dao =  {
         dao.ini();
         
     });
-    
-    function sincronizar() {
-        dao.dropTable();
-        dao.createTable();
-        dao.sync(renderList);
-    }
+
     
   
 
@@ -214,5 +209,31 @@ window.dao =  {
     function log(msg) {
         $('#log').val($('#log').val() + msg + '\n');
     }
+
+        
+    function sincronizar() {
+        dao.dropTable();
+        dao.createTable();
+        dao.sync(renderList);
+    }
+
+    var online;
+    function checkConnection() {
+        var networkState = navigator.connection.type;
+        var states = {};
+        states[Connection.UNKNOWN]  = '1';  //Conexi�n desconocida;
+        states[Connection.ETHERNET] = '1';  //Conexi�n ethernet;
+        states[Connection.WIFI]     = '1';  //Conexi�n WiFi';
+        states[Connection.CELL_2G]  = '1';  //Conexi�n movil 2G';
+        states[Connection.CELL_3G]  = '1';  //Conexi�n movil 3G';
+        states[Connection.CELL_4G]  = '1';  //Conexi�n movil 4G';
+        states[Connection.NONE]     = '0';  //Sin conexi�n';
+        online=states[networkState];
+        if (online=='1'){
+            sincronizar();
+        }
+    }
+
+   
     
     
