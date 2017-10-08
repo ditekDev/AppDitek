@@ -13,7 +13,16 @@ function parar () {
 	clearInterval(control);
 	document.getElementById("parar").disabled = true;
 	document.getElementById("continuar").disabled = false;
+	var mi=document.getElementById("Minutos").innerHTML;
+	var se=document.getElementById("Segundos").innerHTML;
+	var ce=document.getElementById("Centesimas").innerHTML;
+	location.href="guardarTiempo.html?var1="+mi+"&var2="+se+"&var3="+ce;
+	
+
 }
+
+
+
 function reinicio () {
 	clearInterval(control);
 	centesimas = 0;
@@ -22,8 +31,7 @@ function reinicio () {
 	horas = 0;
 	Centesimas.innerHTML = ":00";
 	Segundos.innerHTML = ":00";
-	Minutos.innerHTML = ":00";
-	Horas.innerHTML = "00";
+	Minutos.innerHTML = "00";
 	document.getElementById("inicio").disabled = false;
 	document.getElementById("parar").disabled = true;
 	document.getElementById("continuar").disabled = true;

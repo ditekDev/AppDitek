@@ -73,22 +73,25 @@
      <div class="subencabezado">
        <label>AFORO</label>
      </div>
-   
-     <div id="contenedor">
-      <div id="tiempo">
-      <div class="reloj" id="Horas">00</div>
-      <div class="reloj" id="Minutos">:00</div>
-      <div class="reloj" id="Segundos">:00</div>
-      <div class="reloj" id="Centesimas">:00</div>
-    </div>
-    </div>
+   <form id=form1 method=post name=form1>
+      <div id="contenedor">
+          <div id="tiempo">
+          
+          <div class="reloj" id="Minutos">00</div>
+          <div class="reloj" id="Segundos">:00</div>
+          <div class="reloj" id="Centesimas">:00</div>
+        </div>
+        </div>
+   </form>
+
     <div	id="botones">
         <input type="button" class="boton" id="inicio" value="&#9658;" onclick="inicio();" style="margin-left:2%">
         <input type="button" class="boton" id="parar" value="&#8718;" onclick="parar();" disabled>
         <input type="button" class="boton" id="continuar" value="&#8634;" onclick="inicio();" disabled>
         <input type="button" class="boton" id="reinicio" value=" &#8635;" onclick="reinicio();" disabled>
+        <input type="button" name="dd" id="dd" value="dd" onclick="parar();" disabled>
     </div>
-   
+  
 
      </div>
         
@@ -96,7 +99,7 @@
    </div>
    
  </div>
- <script type="text/javascript" src="js/indexc.js"></script>
+ <script type="text/javascript" src="js/cronometro.js"></script>
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
        
