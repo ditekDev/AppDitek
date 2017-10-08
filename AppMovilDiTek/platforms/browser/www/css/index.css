@@ -21,20 +21,7 @@
 }
 
 body {
-    /*-webkit-touch-callout: none;                
-    -webkit-text-size-adjust: none;             
-    -webkit-user-select: none;                  
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #008080 0%, #008080 51%);
-    background-image:-webkit-linear-gradient(top, #008080 0%, #008080 51%);
-    background-image:-ms-linear-gradient(top, #008080 0%, #008080 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #008080),
-        color-stop(0.51, #CCE6E6) 
-    );*/
+
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
@@ -47,6 +34,18 @@ body {
 .logo{
     background:url(../img/logo_ditek.png) no-repeat center top; 
     margin-left: 50%;
+    
+}
+
+.error{
+    margin: 0 auto;
+    width: 80%;
+    height: 55px;
+    border-color: yellow;
+    z-index: 1000;
+    background-color: #918D8D;    
+    color: white;
+    margin:0% 7% ;
     
 }
 /* Portrait layout (default) */

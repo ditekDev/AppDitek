@@ -23,62 +23,17 @@ body{
     width: 100%;
 }
 
-.encabezado{
-    width: 100%;
-    height:65%;
-    background-color: black;
-    color:white;
-
-}
-.encabezado2{
-    width: 100%;
-    height: 130px;
-    background-color: black;
-    color:red;
 
 
-}
-
-
-.logo{
-    background:url(../img/logo_ditek.png) no-repeat center top;
-    background-size: 90%; /* 170px x 200px */           /* position in the center of the screen */
-    height:40px;                   /* text area height */
-    width:100px;                   /* text area width */
-    padding:100px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    background-color: none;
- 
-}
-
-
-
-.subencabezado {
-    margin-top: 100px;
-    width: 100%;
-    height: 60px;
-    background-color: gray;
-    border: none;
-    text-align: center;
-    font-size: 45px;
-
-}
 
 .cuerpo {
-    margin-top: 10%;
+    
     text-align: center;
-}
-
-input {
-    width: 50%;
-    height: 70px;
-    font-size: 60px;
-    margin-bottom: 10%;
+    margin-top: 10%;
 }
 
 
-span {
-    font-size: 50px;
-}
+
 
 .event.listening {
     color:#333333;
@@ -110,12 +65,14 @@ span {
 input[type="submit"] {
     text-align: center;
     width: 70%;
-    height: 50px;
+    height: 70px;
     background-color: none;
     color: Black;
     border-radius: 10px;
     font-size: 20px;
     font-family: Arial;
     font-weight: normal;
-    margin-top: 1%;
+    margin: 7%;
+
+
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Di Tek</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+   
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+     
+
+</head>
+    <body onload="checkConnection();">
+       
+        </div>
+        <div><p style="color:orangered;    
+            margin-left:7%;margin-top: 25px ;">ERROR</p></div>
+        <div class="error"><p style="padding:2%;">No hay concidencia en los datos de <span style="color: orangered">usuario</span> y <span style="color: orangered">contraseña</span> ingresados.<br/>Verifique y vuelva a intentar. </p></div>
+        <form>
+            <div class="app">
+                <div class="logo"></div>
+                <div id="deviceready" >
+                    <div class="container">
+                        <h1>Usuario</h1>
+                       <input type="text" name="txtuser" value="" placeholder="Usuario Asignado" required>
+                       <h1>Contraseña</h1>
+                       <input type="password" name="txtpassword" value="" placeholder="******" required>
+                       
+                   </div>
+                   <input class="bntIngresar" type="submit" value="Ingresar" onclick="inicio()">
+               </div>
+           </div>
+        </form>
+        
+        
+        <script type="text/javascript" src="js/sincronizar.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        
+
+    </body>
+</html>

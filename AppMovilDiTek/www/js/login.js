@@ -14,7 +14,7 @@ function inicio(){
        		if (len===1) {
                   window.location.href = "menu.html";
         	}else{
-                 alert("Incorrecto");
+                window.location.href = "errorinicio.html";
         	}  
         }, null);
         });
