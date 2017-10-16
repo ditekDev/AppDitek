@@ -12,7 +12,19 @@
         <link rel="stylesheet" type="text/css" href="css/aforo.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <title>Cronometro</title>
-    
+    <script>
+      function decimales(dig){
+      temp=dig.value.split(",");
+      valor=temp.join("");
+      cuantos=valor.length;
+      if (cuantos>1){
+      dig.value=valor.slice(0,3)+","+valor.slice(3);
+      }else{
+      dig.value=valor.slice(0,cuantos);
+      }
+      }
+      </script>
+   
   
 </head>
 
@@ -88,7 +100,7 @@
 				</div>
 				<label>Volumen</label>
 					<div class="form-input">
-					<input type="number" name="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000,0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L">
+					<input type="text" name="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000,0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5">
 				</div>
 				
 				<input type="submit" class="btn"  value="Listo">
@@ -104,8 +116,10 @@
    
  </div>
 
+
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
+ 
        
 </body>
 </html>
