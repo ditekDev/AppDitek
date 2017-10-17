@@ -15,7 +15,7 @@
   
 </head>
 
-<body onload="variable();">
+<body>
     
  <!-- Status bar overlay for full screen mode (PhoneGap) -->
  <div class="statusbar-overlay"></div>
@@ -106,20 +106,6 @@
  <script type="text/javascript" src="js/cronometro.js"></script>
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
- <script type="text/javascript">
-         function variable(){
-          cadVariables = location.search.substring(1,location.search.length);
-          arrVariables = cadVariables.split("&");
-          var tiempo="";
-          for (i=0; i<arrVariables.length; i++) {
-              arrVariableActual = arrVariables[i].split("=");
-              tiempo+=arrVariableActual[1];
-          }
-    
-          document.getElementById("tiempo1").textContent=tiempo;
-        }
- 
- </script>
        
 </body>
 </html>

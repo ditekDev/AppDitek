@@ -104,7 +104,7 @@ $.ajax({
         
         );
     },
-    
+    error: function() { alert("Error leyendo fichero jsonP"); }
 });     
 }   
 
@@ -128,7 +128,7 @@ function checkConnection(){
     states[Connection.CELL_4G]  = "1";
     states[Connection.CELL]     = "1";
     states[Connection.NONE]     = "0";
-
+    alert("Connection type: " + states[networkState]);
     var online=states[networkState];
     if (online=="1") {
         sincronizar();

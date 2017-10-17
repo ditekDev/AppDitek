@@ -104,7 +104,7 @@ $.ajax({
         
         );
     },
-    
+    error: function() { alert("Error leyendo fichero jsonP"); }
 });     
 }   
 

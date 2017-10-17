@@ -1,97 +1,239 @@
-var self = this;
-var db;
-this.db= openDatabase('diteklocal', '1.0', 'Test DB', 2 * 1024 * 1024);
-
-function inicio(){
+window.dao =  {
     
-    db.transaction(function (tx) {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS usuarios (id unique, usuario,contrasena)');
-        tx.executeSql('INSERT INTO usuarios (id, usuario, contrasena) VALUES (1, "foobar","123")');
-        tx.executeSql('INSERT INTO usuarios (id, usuario, contrasena) VALUES (2, "logmsg","123")');
- 
-    });
-}
-
-
-function crearTabla() {
-this.db.transaction(
-    function(tx) {
-        var sql ='CREATE TABLE IF NOT EXISTS usuarios (id unique, usuario,contrasena)';
-        tx.executeSql(sql);
-    },
-    this.txErrorHandler,
-      
-);
-};
-
-
-function borrarTabla(){
-this.db.transaction(
-    function(tx) {
-        tx.executeSql('DROP TABLE IF EXISTS usuarios');
-    },
-    this.txErrorHandler,
-);
-};
-
-
-
-function lee_json() {
-
-$.ajax({
-    dataType: 'json',
-    url: 'http://grupoditek.com/php/jsonUsuarios.php',
-    success: function(datos) {
-        var db = openDatabase('diteklocal', '1.0', 'Test DB', 2 * 1024 * 1024);
-        db.transaction(
-            function(tx) {
-                var l = datos.length;
-                var sql =
-                    "INSERT OR REPLACE INTO usuarios (id,usuario,contrasena) VALUES (?, ?, ?)";
+        syncURL: "http://grupoditek.com/php/jsonUsuarios.php",
     
-                var e;
-                for (var i = 0; i < l; i++) {
-                    e = datos[i];
-                   
-                    var params = [e.id, e.usuario, e.contrasena];
-                    tx.executeSql(sql, params);
+        initialize: function(callback) {
+            var self = this;
+            this.db = window.openDatabase("diteklocal", "1.0", "Sync DB", 200000);
+  
+            this.db.transaction(
+                function(tx) {
+                    tx.executeSql("SELECT name FROM sqlite_master WHERE type='table' AND name='employee'", this.txErrorHandler,
+                        function(tx, results) {
+                            if (results.rows.length == 1) {
+                                //existe base local
+                            }
+                            else
+                            {
+                              
+                                self.createTable(callback);
+                            }
+                        });
                 }
-             
-            },
-            this.txErrorHandler,
+            )
+    
+        },
+     
+      
+        ini: function(callback) {
+            this.db.transaction(
+                function(tx) {
+                    var sql = "SELECT * FROM employee WHERE usuario="+$("#txtuser").val()+" AND contrasena="+$("#txtpassword").val()+"";
+                    tx.executeSql(sql, this.txErrorHandler,
+                        function(tx, results) {
+                            var usu = results.rows.length;
+                            console.log("filas: "+usu+"");
+                            alert("filas: "+usu+"");
+                            callback(usu);
+                        }
+                    );
+                }
+            );
+        },
+            
+        createTable: function(callback) {
+            this.db.transaction(
+                function(tx) {
+                    var sql =
+                        "CREATE TABLE IF NOT EXISTS employee ( " +
+                        "id INTEGER PRIMARY KEY , " +
+                        "usuario VARCHAR(50), " +
+                        "contrasena VARCHAR(50), " +
+                        "nombre VARCHAR(50), " +
+                        "officePhone VARCHAR(50), " +
+                        "id_acueducto INTEGER, " +
+                        "lastModified VARCHAR(50))";
+                    tx.executeSql(sql);
+                },
+                this.txErrorHandler,
+                function() {
+                  
+                   
+                }
+            );
+        },
+    
+        dropTable: function(callback) {
+            this.db.transaction(
+                function(tx) {
+                    tx.executeSql('DROP TABLE IF EXISTS employee');
+                },
+                this.txErrorHandler,
+                function() {
+          
+                 
+                }
+            );
+        },
+    
+        findAll: function(callback) {
+            this.db.transaction(
+                function(tx) {
+                    var sql = "SELECT * FROM EMPLOYEE";
+           
+                    tx.executeSql(sql, this.txErrorHandler,
+                        function(tx, results) {
+                            var len = results.rows.length,
+                                employees = [],
+                                i = 0;
+                            for (; i < len; i = i + 1) {
+                                employees[i] = results.rows.item(i);
+                            }
+          
+                            callback(employees);
+                        }
+                    );
+                }
+            );
+        },
+    
+        getLastSync: function(callback) {
+            this.db.transaction(
+                function(tx) {
+                    var sql = "SELECT MAX(lastModified) as lastSync FROM employee";
+                    tx.executeSql(sql, this.txErrorHandler,
+                        function(tx, results) {
+                            var lastSync = results.rows.item(0).lastSync;
+         
+                            callback(lastSync);
+                        }
+                    );
+                }
+            );
+        },
+    
+        sync: function(callback) {
+    
+            var self = this;
+
+            this.getLastSync(function(lastSync){
+                self.getChanges(self.syncURL, lastSync,
+                    function (changes) {
+                        if (changes.length > 0) {
+                            self.applyChanges(changes, callback);
+                        } else {
+                            log('Nothing to synchronize');
+                            callback();
+                        }
+                    }
+                );
+            });
+    
+        },
+    
+        getChanges: function(syncURL, modifiedSince, callback) {
+    
+            $.ajax({
+                url: syncURL,
+                data: {modifiedSince: modifiedSince},
+                dataType:"json",
+                success:function (data) {
+           
+                    callback(data);
+                },
+                error: function(model, response) {
+                    alert(response.responseText);
+                }
+            });
+    
+        },
+    
+        applyChanges: function(employees, callback) {
+            this.db.transaction(
+                function(tx) {
+                    var l = employees.length;
+                    var sql =
+                        "INSERT OR REPLACE INTO employee (id, usuario, contrasena, nombre, officePhone, id_acueducto, lastModified) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?)";
         
-        );
-    },
-    error: function() { alert("Error leyendo fichero jsonP"); }
-});     
-}   
+                    var e;
+                    for (var i = 0; i < l; i++) {
+                        e = employees[i];
+                       
+                        var params = [e.id, e.usuario, e.contrasena, e.nombre, e.officePhone, e.id_acueducto, e.lastModified];
+                        tx.executeSql(sql, params);
+                    }
+                 
+                },
+                this.txErrorHandler,
+                function(tx) {
+                    callback();
+                }
+            );
+        },
+    
+        txErrorHandler: function(tx) {
+            alert(tx.message);
+        }
+    };
+    
+    dao.initialize(function() {
+        console.log('database initialized');
+    });
+ 
+    
+    
+    $('#inic').on('click', function() {
+        dao.ini();
+        
+    });
 
-
-function sincronizar() {
-    borrarTabla();
-    crearTabla();
-    lee_json();
-}
-
+    
   
 
-function checkConnection(){
-    var networkState = navigator.connection.type;
-    var states = {};
-    states[Connection.UNKNOWN]  = "1";
-    states[Connection.ETHERNET] = "1";
-    states[Connection.WIFI]     = "1";
-    states[Connection.CELL_2G]  = "1";
-    states[Connection.CELL_3G]  = "1";
-    states[Connection.CELL_4G]  = "1";
-    states[Connection.CELL]     = "1";
-    states[Connection.NONE]     = "0";
-    alert("Connection type: " + states[networkState]);
-    var online=states[networkState];
-    if (online=="1") {
-        sincronizar();
+    function renderList(employees) {
+      
+        dao.findAll(function(employees) {
+            $('#list').empty();
+            var l = employees.length;
+            for (var i = 0; i < l; i++) {
+                var employee = employees[i];
+                $('#list').append('<tr>' +
+                    '<td>' + employee.id + '</td>' +
+                    '<td>' +employee.usuario + '</td>' +
+                    '<td>' + employee.contrasena + '</td></tr>');
+            }
+        });
     }
-}
+    
+    function log(msg) {
+        $('#log').val($('#log').val() + msg + '\n');
+    }
+
+        
+    function sincronizar() {
+        dao.dropTable();
+        dao.createTable();
+        dao.sync(renderList);
+    }
+
+    var online;
+    function comprobarconexion() {
+            var networkState = navigator.network.connection.type;
+            var states = {};
+        states[Connection.UNKNOWN]  = '1';  //Conexi�n desconocida;
+        states[Connection.ETHERNET] = '1';  //Conexi�n ethernet;
+        states[Connection.WIFI]     = '1';  //Conexi�n WiFi';
+        states[Connection.CELL_2G]  = '1';  //Conexi�n movil 2G';
+        states[Connection.CELL_3G]  = '1';  //Conexi�n movil 3G';
+        states[Connection.CELL_4G]  = '1';  //Conexi�n movil 4G';
+        states[Connection.NONE]     = '0';  //Sin conexi�n';
+        online=states[networkState];
+        if (online=='1'){
+            sincronizar();
+        }
+    }
+
    
     
     
