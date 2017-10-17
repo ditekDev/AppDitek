@@ -50,6 +50,12 @@ $.ajax({
       }
       </script>
    
+   <script language="javascript" type="text/javascript">
+    function enviar(pagina){
+    document.aforoform.action = pagina;
+    document.aforoform.submit();
+    }
+  </script>
   
 </head>
 
@@ -114,7 +120,7 @@ $.ajax({
    
      <div class="container">
 			
-			<form method="POST">
+			<form name="aforoform">
 				<label>Fuente</label>
 				<div class="selector-fuente" style="text-align: center;">
           Elija un fuente	<select id="people"></select>
@@ -124,7 +130,7 @@ $.ajax({
 					<input type="text" name="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000,0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5">
 				</div>
 				
-				<input type="submit" class="btn"  value="Listo">
+				<input type="submit" class="btn"  value="Listo" onClick="enviar('../cronometro.html')">
 			</form>
 		</div>
 
