@@ -11,7 +11,32 @@
    
         <link rel="stylesheet" type="text/css" href="css/aforo.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-    <title>Cronometro</title>
+    <title>Aforos</title>
+    <!-- Función para llenar el select desde la base de datos -->
+    <script type="text/JavaScript">
+function llenarFuentes() {
+    $select = $('#people');
+$.ajax({
+    dataType: 'json',
+    url: 'http://grupoditek.com/php/getFuentes.php',
+    success: function(datos) {
+
+        var l = datos.length;
+            
+        var e;
+            for (var i = 0; i < l; i++) {
+                    e = datos[i];
+                    $select.append('<option id="' +datos[i].id.value+ '">' +datos[i].nombre + '</option>');
+                    
+           }
+        
+    },
+    error: function() { alert("Error leyendo fichero jsonP"); }
+});     
+}   
+</script>
+
+   <!-- Función para darle formato con 3 enteros y 1 decimal al input del volumen -->
     <script>
       function decimales(dig){
       temp=dig.value.split(",");
@@ -28,7 +53,7 @@
   
 </head>
 
-<body>
+<body onload="llenarFuentes();">
     
  <!-- Status bar overlay for full screen mode (PhoneGap) -->
  <div class="statusbar-overlay"></div>
@@ -89,14 +114,10 @@
    
      <div class="container">
 			
-			<form>
+			<form method="POST">
 				<label>Fuente</label>
-				<div class="form-input">
-					<select>Elija un fuente
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-					</select>
+				<div class="selector-fuente" style="text-align: center;">
+          Elija un fuente	<select id="people"></select>
 				</div>
 				<label>Volumen</label>
 					<div class="form-input">
