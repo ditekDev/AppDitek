@@ -26,7 +26,7 @@
  
             <!-- Scrollable page content -->
             <div class="page-content"  style="background-color: gray;">
-               <p style="color:white; font-size: 20px; text-align: center;">Fuente seleccionada</p>
+               <p id="fuente" style="color:white; font-size: 20px; text-align: center;">Fuente seleccionada</p>
                <p style="color:white; font-size: 20px; text-align: center;margin-top:50px;">Tiempo 1</p>
                <form action="">
                   <div style="color:white; font-size: 40px; text-align: center;margin-top:1px;">
@@ -55,13 +55,20 @@
           }
     
           document.getElementById("tiempo").textContent=tiempo;
+
+          var fu = localStorage.getItem("fuente");
+
+          document.getElementById("fuente").textContent=fu;
         }
       
         function registros(){
           var mi=document.getElementById("tiempo").innerHTML;
 	        location.href="registrosAforo.html?var1="+mi+"";
         }
-      </script>
+
+
+
+</script> 
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <!-- Path to your app js-->

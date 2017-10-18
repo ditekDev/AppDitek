@@ -91,7 +91,7 @@
         <input type="button" class="boton" id="inicio" value="&#9658;" onclick="inicio();" style="margin-left:2%">
         <input type="button" class="boton" id="parar" value="&#8718;" onclick="parar();" disabled>
         <input type="button" class="boton" id="continuar" value="&#8634;" onclick="inicio();" disabled>
-        <input type="button" class="boton" id="reinicio" value=" &#8635;" onclick="reinicio();" disabled>
+        <input type="button" class="boton" id="reinicio" value=" &#8635;" onclick="obtFuente();" >
         
     </div>
   
@@ -107,17 +107,12 @@
  <script type="text/javascript" src="js/my-app.js"></script>
  <script type="text/javascript">
   function fuente(){
-   cadVariables = location.search.substring(1,location.search.length);
-   arrVariables = cadVariables.split("&");
-   var fuentes="";
-   for (i=0; i<arrVariables.length; i++) {
-       arrVariableActual = arrVariables[i].split("=");
-       fuentes+=arrVariableActual[1];
-   }
+    var fu = localStorage.getItem("fuente");
 
-   document.getElementById("fuente").textContent=fuentes;
+   document.getElementById("fuente").textContent=fu;
  }
 
 </script> 
+
 </body>
 </html>
