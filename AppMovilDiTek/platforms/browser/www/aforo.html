@@ -13,30 +13,6 @@
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <title>Aforos</title>
     <!-- Función para llenar el select desde la base de datos -->
-    <script type="text/JavaScript">
-function llenarFuentes() {
-    $select = $('#people');
-$.ajax({
-    dataType: 'json',
-    url: 'http://grupoditek.com/php/getFuentes.php',
-    success: function(datos) {
-
-        var l = datos.length;
-            
-        var e;
-            for (var i = 0; i < l; i++) {
-                    e = datos[i];
-                    $select.append('<option id="' +datos[i].id.value+ '">' +datos[i].nombre + '</option>');
-                    
-           }
-        
-    },
-    error: function() { alert("Error leyendo fichero jsonP"); }
-});     
-}   
-</script>
-
-   <!-- Función para darle formato con 3 enteros y 1 decimal al input del volumen -->
     <script>
       function decimales(dig){
       temp=dig.value.split(",");
@@ -56,10 +32,31 @@ $.ajax({
     document.aforoform.submit();
     }
   </script>
+  <script>
+    function llenarlista() {
+      $select = $('#people');
+      var db = openDatabase('diteklocal', '1.0', 'Test DB', 2 * 1024 * 1024);
+    db.transaction(function (tx) {
+      
+      tx.executeSql('SELECT * FROM fuentes', [], function (tx, results) {
+           
+            var len = results.rows.length, i;
+            
+          for (var i = 0; i < len; i++) {
+           
+             $select.append('<option id="' +results.rows.item(i).id+ '">' +results.rows.item(i).nombre + '</option>');
+            
+          }
+       
+    }, null);
+    });
+    }
+      
+  </script>
   
 </head>
 
-<body onload="llenarFuentes();">
+<body onload="llenarlista();">
     
  <!-- Status bar overlay for full screen mode (PhoneGap) -->
  <div class="statusbar-overlay"></div>
