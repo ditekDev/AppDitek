@@ -127,7 +127,7 @@
 					<input type="text" name="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000,0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5">
 				</div>
 				
-				<input type="submit" class="btn"  value="Listo" onClick="enviar('../cronometro.html')">
+        <p><a onclick="registros();" class="button button-fill color-gray" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
 			</form>
 		</div>
 
@@ -143,7 +143,24 @@
 
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
- 
+ <script>
+    function variables(){
+      cadVariables = location.search.substring(1,location.search.length);
+      arrVariables = cadVariables.split("&");
+      var fuente="";
+      for (i=0; i<arrVariables.length; i++) {
+          arrVariableActual = arrVariables[i].split("=");
+          fuente+=arrVariableActual[1];
+      }
+
+      document.getElementById("people").textContent=fuente;
+    }
+  
+    function registros(){
+          var mi=document.getElementById("people").innerHTML;
+	        location.href="cronometro.html?var1="+mi+"";
+        }
+      </script>
        
 </body>
 </html>

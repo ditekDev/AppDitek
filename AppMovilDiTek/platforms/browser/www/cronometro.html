@@ -15,7 +15,7 @@
   
 </head>
 
-<body>
+<body onload="fuente();">
     
  <!-- Status bar overlay for full screen mode (PhoneGap) -->
  <div class="statusbar-overlay"></div>
@@ -74,6 +74,9 @@
        <label>AFORO</label>
      </div>
    <form id=form1 method=post name=form1>
+      <div style="color:black; font-size:18px; text-align: center;margin-top:1%; font-style: italic;">
+          <p  name="fuente" id="fuente" style="display: inline-block;">Fuente Seleccionada</p>
+        </div>
       <div id="contenedor">
           <div id="tiempo">
           
@@ -102,6 +105,19 @@
  <script type="text/javascript" src="js/cronometro.js"></script>
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
-       
+ <script type="text/javascript">
+  function fuente(){
+   cadVariables = location.search.substring(1,location.search.length);
+   arrVariables = cadVariables.split("&");
+   var fuentes="";
+   for (i=0; i<arrVariables.length; i++) {
+       arrVariableActual = arrVariables[i].split("=");
+       fuentes+=arrVariableActual[1];
+   }
+
+   document.getElementById("fuente").textContent=fuentes;
+ }
+
+</script> 
 </body>
 </html>
