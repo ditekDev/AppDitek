@@ -133,6 +133,8 @@ function checkConnection(){
     if (online=="1") {
         sincronizar();
     }
+
+    localStorage.setItem("conexion", online);
 }
    
     

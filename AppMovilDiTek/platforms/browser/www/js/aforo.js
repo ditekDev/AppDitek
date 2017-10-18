@@ -88,15 +88,7 @@ function sincro(){
         lee_json();
     }
 
-
 };
 
-
-$( document ).ready(function() {
-   
-    sincro();
-    
-          
-});
 
 
