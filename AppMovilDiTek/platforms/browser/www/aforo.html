@@ -25,6 +25,18 @@
       }
       }
       </script>
+
+<script>
+  function bloquearLetras(e)
+  {
+  var keynum = window.event ? window.event.keyCode : e.which;
+  if ((keynum == 8) || (keynum == 46))
+  return true;
+   
+  return /\d/.test(String.fromCharCode(keynum));
+  }
+  </script>
+
    
    <script language="javascript" type="text/javascript">
     function enviar(pagina){
@@ -58,11 +70,10 @@
 
 <body onload="llenarlista();">
     
- <!-- Status bar overlay for full screen mode (PhoneGap) -->
+ 
  <div class="statusbar-overlay"></div>
- <!-- Panels overlay-->
+
  <div class="panel-overlay "></div>
- <!-- Left panel with reveal effect-->
  <div class="panel panel-right panel-reveal" style="background: rgba(0,0,0,0.8);">
    <div class="content-block ">
          <div class="list-block">
@@ -124,7 +135,7 @@
 				</div>
 				<label>Volumen</label>
 					<div class="form-input">
-					<input type="text" name="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000,0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5">
+					<input type="text" onkeypress="return bloquearLetras(event);" name="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000,0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5">
 				</div>
 				
         <p><a onclick=" obtFuente();" class="button button-fill color-gray" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
@@ -147,8 +158,16 @@
     function obtFuente(){
              var select = $("#people option:selected").text();
              localStorage.setItem("fuente", select);
-             location.href="cronometro.html";
+             
+             if(document.aforoform.volumen.value == "") {
+alert("Por favor inserte un volumen");
+document.aforoform.volumen.focus();
+return 0;
+}
+location.href="cronometro.html";
         }
+
+        
       </script>
        
 </body>

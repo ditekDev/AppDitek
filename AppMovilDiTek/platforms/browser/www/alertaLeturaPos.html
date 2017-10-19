@@ -10,33 +10,11 @@
         <link rel="stylesheet" href="css/framework7.material.colors.min.css">    
    
         <link rel="stylesheet" type="text/css" href="css/aforo.css">
+        <link rel="stylesheet" type="text/css" href="css/alertas.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-    <title>Aforos</title>
+    <title>Alerta</title>
     <!-- Función para llenar el select desde la base de datos -->
-    <script>
-      function decimales(dig){
-      temp=dig.value.split(",");
-      valor=temp.join("");
-      cuantos=valor.length;
-      if (cuantos>1){
-      dig.value=valor.slice(0,3)+","+valor.slice(3);
-      }else{
-      dig.value=valor.slice(0,cuantos);
-      }
-      }
-      </script>
-
-<script>
-  function bloquearLetras(e)
-  {
-  var keynum = window.event ? window.event.keyCode : e.which;
-  if ((keynum == 8) || (keynum == 46))
-  return true;
    
-  return /\d/.test(String.fromCharCode(keynum));
-  }
-  </script>
-
    
    <script language="javascript" type="text/javascript">
     function enviar(pagina){
@@ -44,36 +22,16 @@
     document.aforoform.submit();
     }
   </script>
-  <script>
-    function llenarlista() {
-      $select = $('#people');
-      var db = openDatabase('diteklocal', '1.0', 'Test DB', 2 * 1024 * 1024);
-    db.transaction(function (tx) {
-      
-      tx.executeSql('SELECT * FROM fuentes', [], function (tx, results) {
-           
-            var len = results.rows.length, i;
-            
-          for (var i = 0; i < len; i++) {
-           
-             $select.append('<option id="' +results.rows.item(i).id+ '">' +results.rows.item(i).nombre + '</option>');
-            
-          }
-       
-    }, null);
-    });
-    }
-      
-  </script>
   
 </head>
 
-<body onload="llenarlista();">
+<body >
     
- 
+ <!-- Status bar overlay for full screen mode (PhoneGap) -->
  <div class="statusbar-overlay"></div>
-
+ <!-- Panels overlay-->
  <div class="panel-overlay "></div>
+ <!-- Left panel with reveal effect-->
  <div class="panel panel-right panel-reveal" style="background: rgba(0,0,0,0.8);">
    <div class="content-block ">
          <div class="list-block">
@@ -123,24 +81,26 @@
        </div>
      </div>
      <div class="subencabezado">
-       <label>AFORO</label>
+       <label style="font-size: 30px;">LECTURAS</label>
      </div>
-   
-     <div class="container">
-			
-			<form name="aforoform">
-				<label>Fuente</label>
-				<div class="selector-fuente" style="text-align: center;">
-          Elija un fuente	<select id="people"></select>
-				</div>
-				<label>Volumen</label>
-					<div class="form-input">
-					<input type="text" onkeypress="return bloquearLetras(event);" name="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000,0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5">
-				</div>
-				
-        <p><a onclick=" obtFuente();" class="button button-fill color-gray" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
-			</form>
-		</div>
+     <div class="medicion">
+        <label>La lectura registrada es de: </label>
+            <div style="color:gray; font-size: 40px; text-align: center;margin-top:1px; text-align: right;">
+                <input type="text" id="lectura" placeholder="0000 m³" style="text-align: right; background-color: trasnparent; width: 60%; border: none;">
+            </div> 
+    </div>
+     <div class="containerpos">
+            <div class="checkpos"></div>
+		        	<div style="text-align: center;">
+                <label style="color:white; font-weight: normal; font-size: 24px;">¡DENTRO DEL PROMEDIO!</label>
+              </div>
+    </div>
+    
+    <div class="botonespos" >
+            <a onclick="" class="button button-fill color-gray" style="width: 110px;height: 30px;margin:0 auto;border-radius: 10px;font-size: 16px; float: left;">Eliminar</a>
+            <a onclick="" class="button button-fill color-gray" style="width: 110px;height: 30px;margin:0 auto;border-radius: 10px;font-size: 16px; margin-top: 8%;">Guardar</a>
+            
+    </div>
 
    
 
@@ -154,21 +114,7 @@
 
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
- <script>
-    function obtFuente(){
-             var select = $("#people option:selected").text();
-             localStorage.setItem("fuente", select);
-             
-             if(document.aforoform.volumen.value == "") {
-alert("Por favor inserte un volumen");
-document.aforoform.volumen.focus();
-return 0;
-}
-location.href="cronometro.html";
-        }
-
-        
-      </script>
+ 
        
 </body>
 </html>
