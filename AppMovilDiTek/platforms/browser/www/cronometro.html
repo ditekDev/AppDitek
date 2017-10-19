@@ -86,12 +86,15 @@
         </div>
         </div>
    </form>
-
-    <div	id="botones">
-        <input type="button" class="boton" id="inicio" value="&#9658;" onclick="inicio();" style="margin-left:2%">
-        <input type="button" class="boton" id="parar" value="&#8718;" onclick="parar();" disabled>
-        <input type="button" class="boton" id="continuar" value="&#8634;" onclick="inicio();" disabled>
-        <input type="button" class="boton" id="reinicio" value=" &#8635;" onclick="obtFuente();" >
+        
+    <div	id="botones" class="botones">
+       
+        
+       
+        <input type="button" class="play" id="inicio" onclick="inicio();" >
+        <input type="button" class="stop" id="parar"  onclick="parar();"  disabled>
+        <input type="button" class="list" id="list"  onclick="regis();">
+        
         
     </div>
   
@@ -111,6 +114,10 @@
 
    document.getElementById("fuente").textContent=fu;
  }
+
+  function regis() {
+     location.href="registrosAforo.html";
+  }
 
 </script> 
 

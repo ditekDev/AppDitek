@@ -8,14 +8,12 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" href="css/framework7.material.min.css">
         <link rel="stylesheet" href="css/framework7.material.colors.min.css">    
-        <link rel="stylesheet" href="css/style.css">
+   
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-    <title>Cronometro</title>
-    
-  
+    <title>Registros</title>
 </head>
 
-<body onload="variable();">
+<body onload="function1();">
     
  <!-- Status bar overlay for full screen mode (PhoneGap) -->
  <div class="statusbar-overlay"></div>
@@ -25,34 +23,34 @@
  <div class="panel panel-right panel-reveal" style="background: rgba(0,0,0,0.8);">
    <div class="content-block ">
          <div class="list-block">
-				<ul>
-						<li class="item-content">
-							<div class="item-inner">
-							  <div class="item-title"><a href="">Aforos</a></div>
-							</div>
-						</li>
-						<li class="item-content">
-							<div class="item-inner">
-							  <div class="item-title"><a href="">Lectura de medidores</a></div>
-							</div>
-					   </li>
-					   <li class="item-content">
-						  <div class="item-inner">
-							<div class="item-title"><a href="">Calidad del agua</a></div>
-						  </div>
-					  </li>
-					   <li class="item-content">
-						 <div class="item-inner">
-						   <div class="item-title"><a href="">Cerrar Sesión</a></div>
-						 </div>
-					   </li>
-					   <li class="item-content">
-						 <div class="item-inner">
-						   <div class="item-title"><a href="#" class="close-panel">Cerrar Menú</a></div>
-						 </div>
-					   </li>
-					 </ul>
-               </div>
+          <ul>
+            <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title"><a href="">Aforos</a></div>
+                </div>
+            </li>
+            <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title"><a href="">Lectura de medidores</a></div>
+                </div>
+           </li>
+           <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title"><a href="">Calidad del agua</a></div>
+              </div>
+          </li>
+           <li class="item-content">
+             <div class="item-inner">
+               <div class="item-title"><a href="">Cerrar Sesión</a></div>
+             </div>
+           </li>
+           <li class="item-content">
+             <div class="item-inner">
+               <div class="item-title"><a href="#" class="close-panel">Cerrar Menú</a></div>
+             </div>
+           </li>
+         </ul>
+      </div>
      
      
    </div>
@@ -71,55 +69,58 @@
        </div>
      </div>
      <div class="subencabezado">
-       <label style="font-size:25px;">REGISTROS</label>
+       <label>REGISTROS</label>
      </div>
-     <form action="">
-        <div style="color:black; font-size:15px; text-align: center;margin-top:1%;">
-            <p  name="tiempo1" id="tiempo1" style="display: inline-block;">HOLA</p>
-            <br/>
-            <p  name="tiempo2" id="tiempo2" style="display: inline-block;">HOLA2</p>
-            <br/>
-            <p  name="tiempo3" id="tiempo3" style="display: inline-block;">HOLA3</p>
-            <br/>
-            <p  name="tiempo4" id="tiempo4" style="display: inline-block;">HOLA4</p>
-            <br/>
-            <p  name="tiempo5" id="tiempo5" style="display: inline-block;">HOLA5</p>
-            <br/>
-            <p  name="tiempo6" id="tiempo6" style="display: inline-block;">HOLA6</p>
-            <br/>
-            <p  name="tiempo6" id="tiempo7" style="display: inline-block;">HOLA7</p>
-            <br/>
-            <p  name="tiempo6" id="tiempo8" style="display: inline-block;">HOLA8</p>
-            <br/>
-            <p  name="tiempo6" id="tiempo9" style="display: inline-block;">HOLA9</p>
-        </div>
-        
-     </form>
+   
+     <div style="margin-top: -20px; ">
+        <div class="list-block ">
+            <ul id="list">
+            
+            </ul>
+          </div>  
+ 
+          <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px; float: left; margin-left: 14%;">Guardar</a>
+          <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px;">Eliminar</a>
+          
+		</div>
+
+   
 
      </div>
-     <p><a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px; float: left; margin-left: 14%;">Guardar</a></p>
-     <p><a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px;">Eliminar</a></p>
-     
+        
+  
    </div>
    
  </div>
- <script type="text/javascript" src="js/cronometro.js"></script>
+
+
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
  <script type="text/javascript">
-         function variable(){
-          cadVariables = location.search.substring(1,location.search.length);
-          arrVariables = cadVariables.split("&");
-          var tiempo="";
-          for (i=0; i<arrVariables.length; i++) {
-              arrVariableActual = arrVariables[i].split("=");
-              tiempo+=arrVariableActual[1];
-          }
-    
-          document.getElementById("tiempo1").textContent=tiempo;
-        }
- 
- </script>
+  function variable(){
+   cadVariables = location.search.substring(1,location.search.length);
+   arrVariables = cadVariables.split("&");
+   var tiempo="";
+   for (i=0; i<arrVariables.length; i++) {
+       arrVariableActual = arrVariables[i].split("=");
+       tiempo+=arrVariableActual[1];
+   }
+
+   document.getElementById("tiempo1").textContent=tiempo;
+ }
+
+ function function1() {
+  var ul = document.getElementById("list");
+  var li = document.createElement("li");
+  var ti = localStorage.getItem("tiempo1");
+  li.appendChild(document.createTextNode(ti));
+  li.setAttribute("id", "3"); // added line
+  //ul.appendChild(li);
+  alert(li.id);
+}
+
+</script>
+
        
 </body>
 </html>

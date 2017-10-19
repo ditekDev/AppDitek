@@ -63,7 +63,24 @@
       
         function registros(){
           var mi=document.getElementById("tiempo").innerHTML;
-	        location.href="registrosAforo.html?var1="+mi+"";
+          switch (1) {
+            case 1:
+                 localStorage.setItem("tiempo1", mi);
+	               location.href="cronometro.html";
+              break;
+            
+            case 2:
+                 localStorage.setItem("tiempo2", mi);
+	               location.href="cronometro.html";
+              
+              break; 
+            case 3:
+                 localStorage.setItem("tiempo3", mi);
+	               location.href="cronometro.html";
+              break; 
+          
+          }
+
         }
 
 

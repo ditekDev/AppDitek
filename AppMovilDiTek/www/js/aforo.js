@@ -8,26 +8,6 @@ this.db= openDatabase('diteklocal', '1.0', 'Test DB', 2 * 1024 * 1024);
 
 
 
-function llenarFuentes() {
-    $select = $('#people');
-$.ajax({
-    dataType: 'json',
-    url: 'http://grupoditek.com/php/getFuentes.php',
-    success: function(datos) {
-
-        var l = datos.length;
-            
-        var e;
-            for (var i = 0; i < l; i++) {
-                    e = datos[i];
-                    $select.append('<option id="' +datos[i].id.value+ '">' +datos[i].nombre + '</option>');
-                    
-           }
-        
-    },
-    error: function() { alert("Error leyendo fichero jsonP"); }
-});     
-};
 
 function crearTabla() {
 this.db.transaction(

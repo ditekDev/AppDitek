@@ -6,13 +6,10 @@ function inicio () {
 	control = setInterval(cronometro,10);
 	document.getElementById("inicio").disabled = true;
 	document.getElementById("parar").disabled = false;
-	document.getElementById("continuar").disabled = true;
-	document.getElementById("reinicio").disabled = false;
 }
 function parar () {
 	clearInterval(control);
 	document.getElementById("parar").disabled = true;
-	document.getElementById("continuar").disabled = false;
 	var mi=document.getElementById("Minutos").innerHTML;
 	var se=document.getElementById("Segundos").innerHTML;
 	var ce=document.getElementById("Centesimas").innerHTML;
