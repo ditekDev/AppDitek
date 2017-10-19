@@ -1,0 +1,30 @@
+.caja{
+    margin: 0 auto;
+    width: 80%;
+    padding: 15px;
+    box-shadow: 8px 8px 10px gray;
+    margin-top: 10%;  
+}
+
+.datos{
+    font-size: 15px;
+    color:black;
+    text-align: left;
+    font-style: italic;
+}
+
+.datos2{
+    font-size: 20px;
+    color:black;
+    text-align: center;
+    font-style: normal;
+}
+
+input{
+    border-radius: 20px;
+    width: 80%;
+    font-size: 20px;
+    text-align: right;
+    font-style: italic;
+    margin-top: 4%;
+}

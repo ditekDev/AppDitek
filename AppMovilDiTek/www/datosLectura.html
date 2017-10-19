@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="css/framework7.material.colors.min.css">    
    
         <link rel="stylesheet" type="text/css" href="css/aforo.css">
-        <link rel="stylesheet" type="text/css" href="css/lectura.css">
+        <link rel="stylesheet" type="text/css" href="css/datosLectura.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <title>Lectura Medidor</title>
     <!-- Función para llenar el select desde la base de datos -->
@@ -84,12 +84,24 @@
        <label style="font-size: 30px;">LECTURAS</label>
      </div>
    
-     <div class="container">
+     <div class="caja">
 			
-			<form name="lecturaform">
-                <p>Número de medidor del abonado</p>
-                <input type="text" id="identificacion" placeholder=" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''Número de medidor'' ">
-                <p><a onclick="" class="button button-fill color-gray" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
+			<form name="datoslecturaform">
+                <div class="datos">
+                    <p  name="nombre" id="nombre" style="display: inline-block;">"Nombre"</p>
+                    <br/>
+                    <p  name="direccion" id="direccion" style="display: inline-block;">"Dirección"</p>
+                    <br/>
+                    <p  name="numAbonado" id="numAbonado" style="display: inline-block;">"Número Abonado"</p>
+                    <br/>
+                    <hr style="width:70%;">
+                </div>
+
+                <div class="datos2">
+                  <label>Lectura</label>
+                  <input type="text" placeholder=" ''0000.0000'' m³ ">
+                  <p><a onclick="" class="button button-fill color-gray" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
+                </div>
                 
 			</form>
 		</div>
