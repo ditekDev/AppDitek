@@ -112,7 +112,14 @@
   function fuente(){
     var fu = localStorage.getItem("fuente");
 
-   document.getElementById("fuente").textContent=fu;
+    document.getElementById("fuente").textContent=fu;
+    var m =  parseInt(localStorage.getItem('mediciones'));
+    if (m==0) {
+      alert("Se realizaron las 3 mediciones correctamente");
+      document.getElementById("inicio").disabled = true;
+       
+    }
+   
  }
 
   function regis() {

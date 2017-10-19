@@ -14,7 +14,6 @@ function parar () {
 	var se=document.getElementById("Segundos").innerHTML;
 	var ce=document.getElementById("Centesimas").innerHTML;
 	location.href="guardarTiempo.html?var1="+mi+"&var2="+se+"&var3="+ce;
-	
 
 }
 

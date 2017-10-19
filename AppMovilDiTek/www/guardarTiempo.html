@@ -35,8 +35,10 @@
                </form>
               
                <p><a onclick="registros();" class="button button-fill color-green" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Guardar</a></p>
-              <div style="text-decoration: underline;margin-top: 150px;margin-left: 260px;">
-                <a href="cronometro.html" style="color:white">Descartar</a>
+              <div style="margin-top: 150px;margin-left: 260px;">
+                
+                <input type="submit" name="descartar" value="Descartar" onclick="des();" style="font-size: 17px; text-decoration: underline;color:white;background-color: transparent;border: 0">
+                
               </div>
               
             </div>
@@ -61,12 +63,22 @@
           document.getElementById("fuente").textContent=fu;
         }
       
+        function des() {
+          var m =  parseInt(localStorage.getItem('mediciones'));
+            	m=m+1;
+            	localStorage.setItem("mediciones", m);
+           location.href="cronometro.html";
+
+         }
+
         function registros(){
+          var m =  parseInt(localStorage.getItem('mediciones'));
           var mi=document.getElementById("tiempo").innerHTML;
-          switch (1) {
+          switch (m) {
             case 1:
-                 localStorage.setItem("tiempo1", mi);
-	               location.href="cronometro.html";
+                 localStorage.setItem("tiempo3", mi);
+                 location.href="cronometro.html";
+                 
               break;
             
             case 2:
@@ -75,11 +87,16 @@
               
               break; 
             case 3:
-                 localStorage.setItem("tiempo3", mi);
+                 localStorage.setItem("tiempo1", mi);
 	               location.href="cronometro.html";
               break; 
           
           }
+
+          
+	          var m =  parseInt(localStorage.getItem('mediciones'));
+          	m=m-1;
+	          localStorage.setItem("mediciones", m);
 
         }
 

@@ -9,11 +9,23 @@
         <link rel="stylesheet" href="css/framework7.material.min.css">
         <link rel="stylesheet" href="css/framework7.material.colors.min.css">    
    
+        <link rel="stylesheet" type="text/css" href="css/aforo.css">
+        <link rel="stylesheet" type="text/css" href="css/datosLectura.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-    <title>Registros</title>
+    <title>Lectura Medidor</title>
+    <!-- Función para llenar el select desde la base de datos -->
+   
+   
+   <script language="javascript" type="text/javascript">
+    function enviar(pagina){
+    document.aforoform.action = pagina;
+    document.aforoform.submit();
+    }
+  </script>
+  
 </head>
 
-<body onload="fun();">
+<body >
     
  <!-- Status bar overlay for full screen mode (PhoneGap) -->
  <div class="statusbar-overlay"></div>
@@ -69,19 +81,30 @@
        </div>
      </div>
      <div class="subencabezado">
-       <label>REGISTROS</label>
+       <label style="font-size: 30px;">LECTURAS</label>
      </div>
    
-    <div style="margin-top: -20px; margin:0 auto;">
-        <div class="list-block " >
-            <ul id="list">
-            
-            </ul>
-          </div>  
- 
-          <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px; float: left; margin-left: 14%;">Guardar</a>
-          <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px;">Eliminar</a>
-    </div>
+     <div class="caja">
+			
+			<form name="datoslecturaform">
+                <div class="datos">
+                    <p  name="nombre" id="nombre" style="display: inline-block;">"Nombre"</p>
+                    <br/>
+                    <p  name="direccion" id="direccion" style="display: inline-block;">"Dirección"</p>
+                    <br/>
+                    <p  name="numAbonado" id="numAbonado" style="display: inline-block;">"Número Abonado"</p>
+                    <br/>
+                    <hr style="width:70%;">
+                </div>
+
+                <div class="datos2">
+                  <label>Lectura</label>
+                  <input type="text" placeholder=" ''0000.0000'' m³ ">
+                  <p><a onclick="" class="button button-fill color-gray" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
+                </div>
+                
+			</form>
+		</div>
 
    
 
@@ -95,33 +118,7 @@
 
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
- <script type="text/javascript">
-
- function fun() {
-  var ul = document.getElementById("list");
-  var li = document.createElement("li");
-  var li2 = document.createElement("li");
-  var li3 = document.createElement("li");
-  var t1 = localStorage.getItem("tiempo1");
-  var t2 = localStorage.getItem("tiempo2");
-  var t3 = localStorage.getItem("tiempo3");
-  //tiempo1
-  li.appendChild(document.createTextNode(t1));
-  li.setAttribute("id", "1"); // added line
-  ul.appendChild(li);
-  //tiempo2
-  li2.appendChild(document.createTextNode(t2));
-  li2.setAttribute("id", "2"); // added line
-  ul.appendChild(li2);
-  //tiempo3
-  li3.appendChild(document.createTextNode(t3));
-  li3.setAttribute("id", "3"); // added line
-  ul.appendChild(li3);
-  
-}
-
-</script>
-
+ 
        
 </body>
 </html>

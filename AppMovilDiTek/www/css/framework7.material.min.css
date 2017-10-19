@@ -53,3 +53,10 @@
     margin: 0 auto;
     margin-top: 50px;
 }
+
+li{
+    display: block;
+    font-size: 25px;
+    text-align: center;
+    margin:10%;
+}

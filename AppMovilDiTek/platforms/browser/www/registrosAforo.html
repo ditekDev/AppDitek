@@ -13,7 +13,7 @@
     <title>Registros</title>
 </head>
 
-<body onload="function1();">
+<body onload="fun();">
     
  <!-- Status bar overlay for full screen mode (PhoneGap) -->
  <div class="statusbar-overlay"></div>
@@ -72,8 +72,8 @@
        <label>REGISTROS</label>
      </div>
    
-     <div style="margin-top: -20px; ">
-        <div class="list-block ">
+    <div style="margin-top: -20px; margin:0 auto;">
+        <div class="list-block " >
             <ul id="list">
             
             </ul>
@@ -81,8 +81,7 @@
  
           <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px; float: left; margin-left: 14%;">Guardar</a>
           <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px;">Eliminar</a>
-          
-		</div>
+    </div>
 
    
 
@@ -97,26 +96,28 @@
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
  <script type="text/javascript">
-  function variable(){
-   cadVariables = location.search.substring(1,location.search.length);
-   arrVariables = cadVariables.split("&");
-   var tiempo="";
-   for (i=0; i<arrVariables.length; i++) {
-       arrVariableActual = arrVariables[i].split("=");
-       tiempo+=arrVariableActual[1];
-   }
 
-   document.getElementById("tiempo1").textContent=tiempo;
- }
-
- function function1() {
+ function fun() {
   var ul = document.getElementById("list");
   var li = document.createElement("li");
-  var ti = localStorage.getItem("tiempo1");
-  li.appendChild(document.createTextNode(ti));
-  li.setAttribute("id", "3"); // added line
+  var li2 = document.createElement("li");
+  var li3 = document.createElement("li");
+  var t1 = localStorage.getItem("tiempo1");
+  var t2 = localStorage.getItem("tiempo2");
+  var t3 = localStorage.getItem("tiempo3");
+  //tiempo1
+  li.appendChild(document.createTextNode(t1));
+  li.setAttribute("id", "1"); // added line
   ul.appendChild(li);
-  alert(li.id);
+  //tiempo2
+  li2.appendChild(document.createTextNode(t2));
+  li2.setAttribute("id", "2"); // added line
+  ul.appendChild(li2);
+  //tiempo3
+  li3.appendChild(document.createTextNode(t3));
+  li3.setAttribute("id", "3"); // added line
+  ul.appendChild(li3);
+  
 }
 
 </script>

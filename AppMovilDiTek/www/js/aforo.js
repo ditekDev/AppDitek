@@ -67,7 +67,8 @@ function sincro(){
         crearTabla();
         lee_json();
     }
-
+    //NUMERO DE VECES DE MEDICIONES
+    localStorage.setItem("mediciones", 3);
 };
 
 
