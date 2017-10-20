@@ -56,7 +56,7 @@ $.ajax({
         
         );
     },
-    error: function() { alert("Error leyendo fichero jsonP"); }
+    error: function() { myapp.alert("No se conecto al servidor. Intente de nuevo","ERROR!!!"); }
 });     
 } ;
 
