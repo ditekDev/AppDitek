@@ -71,19 +71,67 @@
      <div class="subencabezado">
        <label>REGISTROS</label>
      </div>
-   
-    <div style="margin-top: -20px; margin:0 auto;">
-        <div class="list-block " >
-            <ul id="list">
-            
-            </ul>
-          </div>  
- 
-          <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px; float: left; margin-left: 14%;">Guardar</a>
-          <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px;">Eliminar</a>
-    </div>
+     <div class="page-content">
+        <div class="row">
+            <div class="col-50" style="margin-top: -20px;display:inline-block;">
+                <div class="list-block">
+                    <ul>
+                      <!-- Single chekbox item -->
+                      <li>
+                        <label class="label-checkbox item-content">
+                          <!-- Checked by default -->
+                          <input type="checkbox" name="my-checkbox" value="Books" checked="checked">
+                          <div class="item-media">
+                            <i class="icon icon-form-checkbox"></i>
+                          </div>
+                          <div class="item-inner">
+                            <div  style="font-size:15px;">Tiempo1</div>
+                          </div>
+                        </label>
+                      </li>
+                      <!-- otro item -->
+                      <li>
+                        <label class="label-checkbox item-content">
+                          <input type="checkbox" name="my-checkbox" value="Movies">
+                          <div class="item-media">
+                            <i class="icon icon-form-checkbox"></i>
+                          </div>
+                          <div class="item-inner">
+                            <div  style="font-size:15px;">Tiempo2</div>
+                          </div>
+                        </label>
+                      </li>
+                   <!-- otro item -->
+                   <li>
+                      <label class="label-checkbox item-content">
+                        <input type="checkbox" name="my-checkbox" value="Movies">
+                        <div class="item-media">
+                          <i class="icon icon-form-checkbox"></i>
+                        </div>
+                        <div class="item-inner">
+                          <div style="font-size:15px;">Tiempo3</div>
+                        </div>
+                      </label>
+                    </li>
+                    </ul>
+                  </div>
+            </div>
+            <div class="col-50" style="margin-top: -20px;display:inline-block">        
+              <div class="list-block " >
+                <ul id="list">
+                   
+                
+                </ul>
+              </div> </div>
 
-   
+          </div>
+
+
+    <div>
+      <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px; float: left; margin-left: 14%;">Guardar</a>
+      <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px;">Eliminar</a>
+    </div>
+    
 
      </div>
         
@@ -99,9 +147,9 @@
 
  function fun() {
   var ul = document.getElementById("list");
-  var li = document.createElement("li");
-  var li2 = document.createElement("li");
-  var li3 = document.createElement("li");
+  var li = document.createElement("l");
+  var li2 = document.createElement("l");
+  var li3 = document.createElement("l");
   var t1 = localStorage.getItem("tiempo1");
   var t2 = localStorage.getItem("tiempo2");
   var t3 = localStorage.getItem("tiempo3");
