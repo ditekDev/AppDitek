@@ -65,27 +65,6 @@
     }
       
   </script>
-
-<script type="text/javascript">
-  function validar(e) {
-      
-      tecla = (document.all) ? e.keyCode : e.which;
-      if (tecla==8) return true; //Tecla de retroceso (para poder borrar)
-      if (tecla==44) return true; //Coma ( En este caso para diferenciar los decimales )
-      if (tecla==48) return true;
-      if (tecla==49) return true;
-      if (tecla==50) return true;
-      if (tecla==51) return true;
-      if (tecla==52) return true;
-      if (tecla==53) return true;
-      if (tecla==54) return true;
-      if (tecla==55) return true;
-      if (tecla==56) return true;
-      patron = /1/; //ver nota
-      te = String.fromCharCode(tecla);
-      return patron.test(te); 
-  } 
-  </script>
   
 </head>
 
@@ -101,7 +80,7 @@
           <ul>
             <li class="item-content">
                 <div class="item-inner">
-                  <div class="item-title"><a href="">Aforos</a></div>
+                  <div class="item-title"><a href="./aforo.html">Aforos</a></div>
                 </div>
             </li>
             <li class="item-content">
@@ -156,7 +135,7 @@
 				</div>
 				<label>Volumen</label>
 					<div class="form-input">
-					<input type="text" onKeyPress="return validar(event)" name="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000,0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5">
+					<input type="tel" onkeypress="return bloquearLetras(event);" name="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000,0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5">
 				</div>
 				
         <p><a onclick=" obtFuente();" class="button button-fill color-gray" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
