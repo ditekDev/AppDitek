@@ -104,7 +104,7 @@ $.ajax({
         
         );
     },
-    error: function() { alert("Error en conexión al servidor"); }
+    error: function() { myapp.alert("No se obtuvo conexión con el servidor", "ERROR!!!"); }
 });     
 }   
 
