@@ -80,7 +80,7 @@
                       <li>
                         <label class="label-checkbox item-content">
                           <!-- Checked by default -->
-                          <input type="checkbox" name="my-checkbox" value="Books" checked="checked">
+                          <input type="checkbox" name="my-checkbox" id="tiempo1">
                           <div class="item-media">
                             <i class="icon icon-form-checkbox"></i>
                           </div>
@@ -92,7 +92,7 @@
                       <!-- otro item -->
                       <li>
                         <label class="label-checkbox item-content">
-                          <input type="checkbox" name="my-checkbox" value="Movies">
+                          <input type="checkbox" name="my-checkbox" id="tiempo2">
                           <div class="item-media">
                             <i class="icon icon-form-checkbox"></i>
                           </div>
@@ -104,7 +104,7 @@
                    <!-- otro item -->
                    <li>
                       <label class="label-checkbox item-content">
-                        <input type="checkbox" name="my-checkbox" value="Movies">
+                        <input type="checkbox" name="my-checkbox" id="tiempo3">
                         <div class="item-media">
                           <i class="icon icon-form-checkbox"></i>
                         </div>
@@ -129,7 +129,7 @@
 
     <div>
       <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px; float: left; margin-left: 14%;">Guardar</a>
-      <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px;">Eliminar</a>
+      <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px;" onclick="eliminar();">Eliminar</a>
     </div>
     
 
@@ -168,6 +168,24 @@
   
 }
 
+function eliminar() {
+  var m =  parseInt(localStorage.getItem('mediciones'));
+  if (document.getElementById("tiempo1").checked ==true) {
+      	m=m+1;
+        localStorage.setItem("mediciones", m);
+        localStorage.setItem("tiempo1", "");
+  }
+  if (document.getElementById("tiempo2").checked == true) {
+      	m=m+1;
+        localStorage.setItem("mediciones", m);
+        localStorage.setItem("tiempo2", "");
+  }
+  if (document.getElementById("tiempo3").checked == true) {
+      	m=m+1;
+        localStorage.setItem("mediciones", m);
+        localStorage.setItem("tiempo3", "");
+  }
+}
 </script>
 
        
