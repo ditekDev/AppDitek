@@ -62,7 +62,7 @@ $.ajax({
         
         );
     },
-    error: function() { myapp.alert('No se conecto al servidor. Intente de nuevo','ERROR!!!'); }
+    error: function() { myApp.alert('No se conecto al servidor. Intente de nuevo','ERROR!!!'); }
 });     
 }   
 

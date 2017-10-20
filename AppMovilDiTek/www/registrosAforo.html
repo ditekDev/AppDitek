@@ -11,6 +11,13 @@
    
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <title>Registros</title>
+
+    <script language="javascript" type="text/javascript">
+      function enviar(){
+          window.location.href = "guardarMediciones.html";
+      }
+    </script>
+
 </head>
 
 <body onload="fun();">
@@ -128,7 +135,7 @@
 
 
     <div>
-      <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px; float: left; margin-left: 14%;">Guardar</a>
+      <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px; float: left; margin-left: 14%;" onclick="enviar();">Guardar</a>
       <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px;" onclick="eliminar();">Eliminar</a>
     </div>
     
