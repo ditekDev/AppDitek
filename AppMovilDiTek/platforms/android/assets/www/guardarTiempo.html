@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+
+    <title>Guardar Tiempo</title>
+    <!-- Path to Framework7 Library CSS, Material Theme -->
+    <link rel="stylesheet" href="css/framework7.material.min.css">
+    <!-- Path to Framework7 color related styles, Material Theme -->
+    <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+
+
+  </head>
+  <body onload="variables();">
+
+    <!-- Views -->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main" >
+        <!-- Pages container, because we use fixed navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-fixed toolbar-fixed">
+          <!-- Page, "data-page" contains page name -->
+          <div data-page="index" class="page">
+ 
+            <!-- Scrollable page content -->
+            <div class="page-content"  style="background-color: gray;">
+               <p id="fuente" style="color:white; font-size: 20px; text-align: center;">Fuente seleccionada</p>
+               <p style="color:white; font-size: 20px; text-align: center;margin-top:50px;">Tiempo 1</p>
+               <form action="">
+                  <div style="color:white; font-size: 40px; text-align: center;margin-top:1px;">
+                      <p  name="tiempo" id="tiempo" style="display: inline-block;"></p>
+                  </div>    
+               </form>
+              
+               <p><a onclick="registros();" class="button button-fill color-green" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Guardar</a></p>
+              <div style="margin-top: 150px;margin-left: 260px;">
+                
+                <input type="submit" name="descartar" value="Descartar" onclick="des();" style="font-size: 17px; text-decoration: underline;color:white;background-color: transparent;border: 0">
+                
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+        function variables(){
+          cadVariables = location.search.substring(1,location.search.length);
+          arrVariables = cadVariables.split("&");
+          var tiempo="";
+          for (i=0; i<arrVariables.length; i++) {
+              arrVariableActual = arrVariables[i].split("=");
+              tiempo+=arrVariableActual[1];
+          }
+    
+          document.getElementById("tiempo").textContent=tiempo;
+
+          var fu = localStorage.getItem("fuente");
+
+          document.getElementById("fuente").textContent=fu;
+        }
+      
+        function des() {
+          var m =  parseInt(localStorage.getItem('mediciones'));
+            	m=m+1;
+            	localStorage.setItem("mediciones", m);
+           location.href="cronometro.html";
+
+         }
+
+        function registros(){
+          var m =  parseInt(localStorage.getItem('mediciones'));
+          var mi=document.getElementById("tiempo").innerHTML;
+          switch (m) {
+            case 1:
+                 localStorage.setItem("tiempo3", mi);
+                 location.href="cronometro.html";
+                 
+              break;
+            
+            case 2:
+                 localStorage.setItem("tiempo2", mi);
+	               location.href="cronometro.html";
+              
+              break; 
+            case 3:
+                 localStorage.setItem("tiempo1", mi);
+	               location.href="cronometro.html";
+              break; 
+          
+          }
+
+          
+	          var m =  parseInt(localStorage.getItem('mediciones'));
+          	m=m-1;
+	          localStorage.setItem("mediciones", m);
+
+        }
+
+
+
+</script> 
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+  
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta name="viewport" content="width=device-width, initial-escale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+       <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" href="css/framework7.material.min.css">
+        <link rel="stylesheet" href="css/framework7.material.colors.min.css">    
+   
+        <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <title>Registros</title>
+</head>
+
+<body onload="fun();">
+    
+ <!-- Status bar overlay for full screen mode (PhoneGap) -->
+ <div class="statusbar-overlay"></div>
+ <!-- Panels overlay-->
+ <div class="panel-overlay "></div>
+ <!-- Left panel with reveal effect-->
+ <div class="panel panel-right panel-reveal" style="background: rgba(0,0,0,0.8);">
+   <div class="content-block ">
+         <div class="list-block">
+          <ul>
+            <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title"><a href="">Aforos</a></div>
+                </div>
+            </li>
+            <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title"><a href="">Lectura de medidores</a></div>
+                </div>
+           </li>
+           <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title"><a href="">Calidad del agua</a></div>
+              </div>
+          </li>
+           <li class="item-content">
+             <div class="item-inner">
+               <div class="item-title"><a href="">Cerrar Sesión</a></div>
+             </div>
+           </li>
+           <li class="item-content">
+             <div class="item-inner">
+               <div class="item-title"><a href="#" class="close-panel">Cerrar Menú</a></div>
+             </div>
+           </li>
+         </ul>
+      </div>
+     
+     
+   </div>
+ </div>
+ <!-- Views -->
+ <div class="views">
+   <!-- Your main view, should have "view-main" class -->
+   <div class="view view-main">
+     <!-- Top Navbar-->
+     <div class="navbar" style="width: 100%; height: 100px; background-color: black;">
+       <div class="navbar-inner">
+         <div class="logo"></div>
+         <div class="right">
+           <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
+         </div>
+       </div>
+     </div>
+     <div class="subencabezado">
+       <label>REGISTROS</label>
+     </div>
+   
+    <div style="margin-top: -20px; margin:0 auto;">
+        <div class="list-block " >
+            <ul id="list">
+            
+            </ul>
+          </div>  
+ 
+          <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px; float: left; margin-left: 14%;">Guardar</a>
+          <a href="#" style="width: 50%;height: 40px;border-radius: 10px;font-size: 20px;">Eliminar</a>
+    </div>
+
+   
+
+     </div>
+        
+  
+   </div>
+   
+ </div>
+
+
+ <script type="text/javascript" src="js/framework7.min.js"></script>
+ <script type="text/javascript" src="js/my-app.js"></script>
+ <script type="text/javascript">
+
+ function fun() {
+  var ul = document.getElementById("list");
+  var li = document.createElement("li");
+  var li2 = document.createElement("li");
+  var li3 = document.createElement("li");
+  var t1 = localStorage.getItem("tiempo1");
+  var t2 = localStorage.getItem("tiempo2");
+  var t3 = localStorage.getItem("tiempo3");
+  //tiempo1
+  li.appendChild(document.createTextNode(t1));
+  li.setAttribute("id", "1"); // added line
+  ul.appendChild(li);
+  //tiempo2
+  li2.appendChild(document.createTextNode(t2));
+  li2.setAttribute("id", "2"); // added line
+  ul.appendChild(li2);
+  //tiempo3
+  li3.appendChild(document.createTextNode(t3));
+  li3.setAttribute("id", "3"); // added line
+  ul.appendChild(li3);
+  
+}
+
+</script>
+
+       
+</body>
+</html>

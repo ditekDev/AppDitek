@@ -26,6 +26,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+        
     },
 
     // deviceready Event Handler
@@ -43,11 +44,100 @@ var app = {
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
         console.log('Received Event: ' + id);
+        checkConnection();
     }
 };
+
+
+var self = this;
+var db;
+this.db= openDatabase('diteklocal', '1.0', 'Test DB', 2 * 1024 * 1024);
+
+
+function crearTabla() {
+this.db.transaction(
+    function(tx) {
+        var sql ='CREATE TABLE IF NOT EXISTS usuarios (id unique, usuario,contrasena)';
+        tx.executeSql(sql);
+    },
+    this.txErrorHandler,
+      
+);
+};
+
+
+function borrarTabla(){
+this.db.transaction(
+    function(tx) {
+        tx.executeSql('DROP TABLE IF EXISTS usuarios');
+    },
+    this.txErrorHandler,
+);
+};
+
+
+
+function lee_json() {
+
+$.ajax({
+    dataType: 'json',
+    url: 'http://grupoditek.com/php/jsonUsuarios.php',
+    success: function(datos) {
+        var db = openDatabase('diteklocal', '1.0', 'Test DB', 2 * 1024 * 1024);
+        db.transaction(
+            function(tx) {
+                var l = datos.length;
+                var sql =
+                    "INSERT OR REPLACE INTO usuarios (id,usuario,contrasena) VALUES (?, ?, ?)";
+    
+                var e;
+                for (var i = 0; i < l; i++) {
+                    e = datos[i];
+                   
+                    var params = [e.id, e.usuario, e.contrasena];
+                    tx.executeSql(sql, params);
+                }
+             
+            },
+            this.txErrorHandler,
+        
+        );
+    },
+    error: function() { alert("Error en conexión al servidor"); }
+});     
+}   
+
+
+function sincronizar() {
+    borrarTabla();
+    crearTabla();
+    lee_json();
+}
+
+  
+
+function checkConnection(){
+    var networkState = navigator.connection.type;
+    var states = {};
+    states[Connection.UNKNOWN]  = "1";
+    states[Connection.ETHERNET] = "1";
+    states[Connection.WIFI]     = "1";
+    states[Connection.CELL_2G]  = "1";
+    states[Connection.CELL_3G]  = "1";
+    states[Connection.CELL_4G]  = "1";
+    states[Connection.CELL]     = "1";
+    states[Connection.NONE]     = "0";
+
+    var online=states[networkState];
+    if (online=="1") {
+        sincronizar();
+    }
+
+    localStorage.setItem("conexion", online);
+}
+   
+    
+    
 
 app.initialize();

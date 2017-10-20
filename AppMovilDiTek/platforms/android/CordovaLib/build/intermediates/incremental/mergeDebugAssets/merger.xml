@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="C:\Users\Yendry\Documents\GitHub\AppDitek\AppMovilDiTek\platforms\android\CordovaLib\assets"/><source path="C:\Users\Yendry\Documents\GitHub\AppDitek\AppMovilDiTek\platforms\android\CordovaLib\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\Users\Yendry\Documents\GitHub\AppDitek\AppMovilDiTek\platforms\android\CordovaLib\src\debug\assets"/></dataSet></merger>

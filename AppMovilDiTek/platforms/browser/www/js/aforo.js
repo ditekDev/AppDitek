@@ -69,6 +69,10 @@ function sincro(){
     }
     //NUMERO DE VECES DE MEDICIONES
     localStorage.setItem("mediciones", 3);
+    function aforo()
+    {
+       window.location = "aforo.html";
+    }
 };
 
 
