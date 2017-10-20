@@ -26,24 +26,15 @@
       }
       </script>
 
-<script>
-  function bloquearLetras(e)
-  {
-  var keynum = window.event ? window.event.keyCode : e.which;
-  if ((keynum == 8) || (keynum == 46))
-  return true;
-   
-  return /\d/.test(String.fromCharCode(keynum));
-  }
-  </script>
-
-   
+   <!-- Función para pasar las páginas -->
    <script language="javascript" type="text/javascript">
     function enviar(pagina){
     document.aforoform.action = pagina;
     document.aforoform.submit();
     }
   </script>
+
+<!-- Función para llenar el select con las fuentes que se encuentran en la base de datos -->
   <script>
     function llenarlista() {
       $select = $('#people');
@@ -68,7 +59,7 @@
   
 </head>
 
-<body onload="llenarlista();">
+<body onload="llenarlista();" style="width: 100%">
     
  
  <div class="statusbar-overlay"></div>
@@ -126,7 +117,7 @@
        <label>AFORO</label>
      </div>
    
-     <div class="container">
+     <div class="page-content">
 			
 			<form name="aforoform">
 				<label>Fuente</label>
@@ -135,10 +126,10 @@
 				</div>
 				<label>Volumen</label>
 					<div class="form-input">
-					<input type="tel" onkeypress="return bloquearLetras(event);" name="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000,0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5">
+					<input type="tel"  name="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000,0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5">
 				</div>
 				
-        <p><a onclick=" obtFuente();" class="button button-fill color-gray" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
+        <p><a onclick=" obtFuente();" class="button button-fill color-gray" style="width: 70%;;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
 			</form>
 		</div>
 
@@ -149,7 +140,7 @@
   
    </div>
    
- </div>
+
 
 
  <script type="text/javascript" src="js/framework7.min.js"></script>
@@ -160,7 +151,7 @@
              localStorage.setItem("fuente", select);
              
              if(document.aforoform.volumen.value == "") {
-alert("Por favor inserte un volumen");
+var mensaje = alert("Error?:Por favor inserte un volumen");
 document.aforoform.volumen.focus();
 return 0;
 }
@@ -169,6 +160,7 @@ location.href="cronometro.html";
 
         
       </script>
+      
        
 </body>
 </html>
