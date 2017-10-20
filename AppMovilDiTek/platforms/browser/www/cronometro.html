@@ -17,11 +17,11 @@
 
 <body onload="fuente();">
     
- <!-- Status bar overlay for full screen mode (PhoneGap) -->
+ <!-- MENÚ LATERAL -->
  <div class="statusbar-overlay"></div>
- <!-- Panels overlay-->
+ 
  <div class="panel-overlay "></div>
- <!-- Left panel with reveal effect-->
+ 
  <div class="panel panel-right panel-reveal" style="background: rgba(0,0,0,0.8);">
    <div class="content-block ">
          <div class="list-block">
@@ -57,11 +57,11 @@
      
    </div>
  </div>
- <!-- Views -->
+
  <div class="views">
-   <!-- Your main view, should have "view-main" class -->
+   
    <div class="view view-main">
-     <!-- Top Navbar-->
+    <!-- CONTENIDO DE LA PAGINA CRONOMETRO -->
      <div class="navbar" style="width: 100%; height: 100px; background-color: black;">
        <div class="navbar-inner">
          <div class="logo"></div>
@@ -88,7 +88,7 @@
         </div>
    </form>
         
-    <div	id="botones" class="botones">
+    <div	id="botones" class="botones" style="margin-top: 10%;">
        
         
        
@@ -108,6 +108,10 @@
  <script type="text/javascript" src="js/cronometro.js"></script>
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
+
+
+<!-- FUNCIONES PARA CAPTURAR LOS DATOS DEL CRONÓMETRO Y PARA DESHABILITAR EL BOTÓN DE INICIAR CRONÓMETRO 
+  DESPUÉS DE REALIZADAS LA CANTIDAD DE MEDICIONES ASIGNADAS POR EL SISTEMA -->
  <script type="text/javascript">
   function fuente(){
     var fu = localStorage.getItem("fuente");
@@ -115,7 +119,7 @@
     document.getElementById("fuente").textContent=fu;
     var m =  parseInt(localStorage.getItem('mediciones'));
     if (m==0) {
-      alert("Se realizaron las 3 mediciones correctamente");
+      myApp.alert('Se realizaron las 3 mediciones correctamente', 'LISTO!!!');
       document.getElementById("inicio").disabled = true;
        
     }

@@ -74,29 +74,20 @@
         function registros(){
           var m =  parseInt(localStorage.getItem('mediciones'));
           var mi=document.getElementById("tiempo").innerHTML;
-          switch (m) {
-            case 1:
-                 localStorage.setItem("tiempo3", mi);
-                 location.href="cronometro.html";
-                 
-              break;
-            
-            case 2:
-                 localStorage.setItem("tiempo2", mi);
-	               location.href="cronometro.html";
-              
-              break; 
-            case 3:
-                 localStorage.setItem("tiempo1", mi);
-	               location.href="cronometro.html";
-              break; 
-          
+          if (localStorage.getItem('tiempo1')=="") {
+            localStorage.setItem("tiempo1", mi);
+	          location.href="cronometro.html";
+          }else if (localStorage.getItem('tiempo2')=="") {
+            localStorage.setItem("tiempo2", mi);
+	          location.href="cronometro.html";
+          }else if (localStorage.getItem('tiempo3')=="") {
+            localStorage.setItem("tiempo3", mi);
+            location.href="cronometro.html";
           }
-
-          
-	          var m =  parseInt(localStorage.getItem('mediciones'));
-          	m=m-1;
-	          localStorage.setItem("mediciones", m);
+                
+	        var m =  parseInt(localStorage.getItem('mediciones'));
+          m=m-1;
+	        localStorage.setItem("mediciones", m);
 
         }
 

@@ -144,12 +144,13 @@ input  {
 }
 
 input[type="submit"] {
-    margin-left: 70%;
-    width: 120px;
-    height: 40px;
+    margin-left: 68%;
+    width: 100px;
+    height: 50px;
     background-color:  #696969;
     color: white;
     border-radius: 8px;
+    font-size: 20px;
    
 }
 
