@@ -42,7 +42,11 @@
     }
     </script>
 
-
+<script language="javascript" type="text/javascript">
+    function guardado(){
+        window.location.href = "guardado.html";
+    }
+  </script>
  
   </head>
   <body onload="cargarTiempos();">
@@ -54,7 +58,7 @@
                <p style="color:white; font-size: 22px; text-align: center;">¿Está seguro de que desea GUARDAR la medición?</p>
                </div>
                <div class="tiempos"> 
-                <div class="list-block " style="color:white; font-size:18px;">
+                <div style="color:white; font-size:18px; text-align: center;">
                     <ul id="list">
                       
                     
@@ -63,7 +67,7 @@
                </div>
 
                <div class="botones" style="text-align: center; margin-top: 8%;">
-                <a  class="button button-fill color-gray" style="width: 20%;;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px; display: inline-block; margin-right:8%;">Sí</a>
+                <a  class="button button-fill color-gray" style="width: 20%;;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px; display: inline-block; margin-right:8%;" onclick="guardado();">Sí</a>
                 <a  class="button button-fill color-gray" style="width: 20%;;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px; display:  inline-block">No</a>
                 
                </div>
