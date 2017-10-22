@@ -12,7 +12,7 @@ function inicio(){
        		var len = results.rows.length, i;
            
        		if (len===1) {
-                  window.location.href = "menu.html";
+                  window.location.href = "cargando.html";
         	}else{
                 window.location.href = "errorinicio.html";
         	}  

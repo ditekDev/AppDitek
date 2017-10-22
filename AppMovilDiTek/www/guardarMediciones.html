@@ -20,9 +20,9 @@
     
      function cargarTiempos() {
       var ul = document.getElementById("list");
-      var li = document.createElement("li");
-      var li2 = document.createElement("li");
-      var li3 = document.createElement("li");
+      var li = document.createElement("lis");
+      var li2 = document.createElement("lis");
+      var li3 = document.createElement("lis");
       var t1 = localStorage.getItem("tiempo1");
       var t2 = localStorage.getItem("tiempo2");
       var t3 = localStorage.getItem("tiempo3");
@@ -57,13 +57,10 @@
                <div style="width: 80%; margin: 0 auto;";>
                <p style="color:white; font-size: 22px; text-align: center;">¿Está seguro de que desea GUARDAR la medición?</p>
                </div>
-               <div class="tiempos" style="text-align: center;"> 
-                <div style="color:white; font-size:18px; text-align: center;">
+               <div class="tiempos"> 
                     <ul id="list">
-                      
-                    
+ 
                     </ul>
-                  </div>
                </div>
 
                <div class="botones" style="text-align: center; margin-top: 8%;">

@@ -70,6 +70,7 @@
     border: 2px solid white;
     border-radius: 10px;
     margin: auto;
+    
 }
 
 li{
@@ -78,6 +79,14 @@ li{
     text-align: center;
     margin:10%;
     
+}
+
+lis{
+    display: block;
+    font-size: 20px;
+    color: white;
+    margin:10%;
+    padding-left:17%;
 }
 
 l{

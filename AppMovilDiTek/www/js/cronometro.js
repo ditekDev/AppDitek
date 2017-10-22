@@ -6,6 +6,7 @@ function inicio () {
 	control = setInterval(cronometro,10);
 	document.getElementById("inicio").disabled = true;
 	document.getElementById("parar").disabled = false;
+	document.getElementById("list").disabled = true;
 }
 function parar () {
 	clearInterval(control);
