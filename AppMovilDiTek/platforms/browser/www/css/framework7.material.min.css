@@ -63,7 +63,15 @@
     margin-top: 10%;
     
 }
-
+.alerta{
+    background:url(../img/Warning.png) no-repeat center top;
+    background-size: 100% 100%;
+    height:120px;          
+    width:120px;   
+    margin: 0 auto;
+    margin-top: 10%;
+    
+}
 .tiempos{
     width: 80%;
     height: 30%;

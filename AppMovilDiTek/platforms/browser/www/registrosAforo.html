@@ -176,22 +176,21 @@
 }
 
 function eliminar() {
-  var m =  parseInt(localStorage.getItem('mediciones'));
+  localStorage.setItem("tiempo1E","");
+  localStorage.setItem("tiempo2E","");
+  localStorage.setItem("tiempo3E","");
   if (document.getElementById("tiempo1").checked ==true) {
-      	m=m+1;
-        localStorage.setItem("mediciones", m);
-        localStorage.setItem("tiempo1", "");
+
+        localStorage.setItem("tiempo1E", localStorage.getItem("tiempo1"));
   }
   if (document.getElementById("tiempo2").checked == true) {
-      	m=m+1;
-        localStorage.setItem("mediciones", m);
-        localStorage.setItem("tiempo2", "");
+       localStorage.setItem("tiempo2E", localStorage.getItem("tiempo2"));
   }
   if (document.getElementById("tiempo3").checked == true) {
-      	m=m+1;
-        localStorage.setItem("mediciones", m);
-        localStorage.setItem("tiempo3", "");
+       localStorage.setItem("tiempo3E", localStorage.getItem("tiempo3"));
   }
+  
+  location.href="eliminar.html";
 }
 </script>
 

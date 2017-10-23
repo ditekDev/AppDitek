@@ -63,13 +63,22 @@
     margin-top: 10%;
     
 }
-
+.alerta{
+    background:url(../img/Warning.png) no-repeat center top;
+    background-size: 100% 100%;
+    height:120px;          
+    width:120px;   
+    margin: 0 auto;
+    margin-top: 10%;
+    
+}
 .tiempos{
     width: 80%;
     height: 30%;
     border: 2px solid white;
     border-radius: 10px;
     margin: auto;
+    
 }
 
 li{
@@ -78,6 +87,14 @@ li{
     text-align: center;
     margin:10%;
     
+}
+
+lis{
+    display: block;
+    font-size: 20px;
+    color: white;
+    margin:10%;
+    padding-left:17%;
 }
 
 l{

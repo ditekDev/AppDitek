@@ -13,42 +13,9 @@
         <script type="text/JavaScript" src="js/aforo.js"></script>
         <title>Menú Principal</title>
     
-    <script type="text/javascript">
-        $(window).load(function(){
-            $("#load").delay(3000).fadeOut("slow");
-        });
-   </script>
-   <script>
-     localStorage.setItem("tiempo1", "");
-     localStorage.setItem("tiempo2", "");
-     localStorage.setItem("tiempo3", "");
-   </script>
-   <style type="text/css">
-       #load{
-               display: block;
-               background: white;
-               width: 100%;
-               height: 100%;
-               position: fixed;
-               top:0;
-               left: 0;
-               z-index: 1000;
 
-       }
 
-       .gota{
-               background:url(../img/gota.png) no-repeat center top; 
-               width: 125px;
-               height: 212px;
-               margin: 0 auto;
-               margin-top: 150px;
-               background-size: 100% 100%;
-               margin-bottom: 30px;
-               z-index: 1002;
-       }
-           
    
-   </style>
 	
 	<script language="javascript" type="text/javascript">
     function enviar(pagina){
@@ -74,12 +41,12 @@
                  <ul>
                     <li class="item-content">
                         <div class="item-inner">
-                          <div class="item-title"><a href="../aforo.html">Aforos</a></div>
+                          <div class="item-title"><a href="./aforo.html">Aforos</a></div>
                         </div>
                     </li>
                     <li class="item-content">
                         <div class="item-inner">
-                          <div class="item-title"><a href="">Lectura de medidores</a></div>
+                          <div class="item-title"><a href="aforo.html">Lectura de medidores</a></div>
                         </div>
                    </li>
                    <li class="item-content">
@@ -107,12 +74,7 @@
  <div class="views">
    <!-- Your main view, should have "view-main" class -->
    <div class="view view-main">
-                <span id="load">
-                                <div class="blink">
-                                   <div class="gota"><img src="img/gota.png" alt=""></div>
-                                   <p class="event listening">Cargando...</p>
-                                </div>
-                        </span>
+
      <!-- Top Navbar-->
      <div class="navbar" style="width: 100%; height: 100px; background-color: black;">
        <div class="navbar-inner">
