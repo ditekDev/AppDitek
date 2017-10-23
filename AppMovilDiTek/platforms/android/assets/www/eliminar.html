@@ -17,29 +17,57 @@
 <!-- FUNCIÓN PARA LLENAR LOS TIEMPOS -->
 
 <script type="text/javascript">
-    
-     function cargarTiempos() {
+    var t1 = localStorage.getItem("tiempo1E");
+    var t2 = localStorage.getItem("tiempo2E");
+    var t3 = localStorage.getItem("tiempo3E");
+    function cargarTiempos() {
       var ul = document.getElementById("list");
       var li = document.createElement("lis");
       var li2 = document.createElement("lis");
       var li3 = document.createElement("lis");
-      var t1 = localStorage.getItem("tiempo1E");
-      var t2 = localStorage.getItem("tiempo2E");
-      var t3 = localStorage.getItem("tiempo3E");
-      //tiempo1
-      li.appendChild(document.createTextNode(t1));
-      li.setAttribute("id", "1"); // added line
-      ul.appendChild(li);
-      //tiempo2
-      li2.appendChild(document.createTextNode(t2));
-      li2.setAttribute("id", "2"); // added line
-      ul.appendChild(li2);
-      //tiempo3
-      li3.appendChild(document.createTextNode(t3));
-      li3.setAttribute("id", "3"); // added line
-      ul.appendChild(li3);
+ 
+      if (t1 !== "") {
+         //tiempo1
+           li.appendChild(document.createTextNode(t1));
+           li.setAttribute("id", "1"); // añadir linea
+           ul.appendChild(li);
+        }
+
+        if (t2 !== "") {
+         //tiempo2
+           li2.appendChild(document.createTextNode(t2));
+           li2.setAttribute("id", "2"); // añadir linea
+           ul.appendChild(li2);
+        }
+
+        if (t3 !== "") {
+         //tiempo3
+           li3.appendChild(document.createTextNode(t3));
+           li3.setAttribute("id", "3"); // añadir linea
+           ul.appendChild(li3);
+        }
       
     }
+
+    function eliminar() {
+    var m =  parseInt(localStorage.getItem('mediciones'));
+    if (t1!=="") {
+            m=m+1;
+          localStorage.setItem("mediciones", m);
+          localStorage.setItem("tiempo1", "");
+    }
+    if (t2!=="") {
+            m=m+1;
+          localStorage.setItem("mediciones", m);
+          localStorage.setItem("tiempo2", "");
+    }
+    if (t3 !== "") {
+            m=m+1;
+          localStorage.setItem("mediciones", m);
+          localStorage.setItem("tiempo3", "");
+    }
+    location.href="cronometro.html"
+  }
     </script>
 
 <script language="javascript" type="text/javascript">
@@ -64,7 +92,7 @@
                </div>
 
                <div class="botones" style="text-align: center; margin-top: 8%;">
-                <a  class="button button-fill color-gray" style="width: 20%;;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px; display: inline-block; margin-right:8%;" onclick="">Sí</a>
+                <a  class="button button-fill color-gray" style="width: 20%;;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px; display: inline-block; margin-right:8%;" onclick="eliminar();">Sí</a>
                 <a  class="button button-fill color-gray" style="width: 20%;;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px; display:  inline-block" onclick="enviar();">No</a>
                 
                </div>

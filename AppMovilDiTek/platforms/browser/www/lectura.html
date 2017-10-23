@@ -18,8 +18,9 @@
    
    <script language="javascript" type="text/javascript">
     function enviar(pagina){
-    document.aforoform.action = pagina;
-    document.aforoform.submit();
+      myApp.confirm('¿Estas seguro que quieres abandonar esta pagina?','Hola', function () {
+        location.href=pagina;
+    });
     }
   </script>
   
@@ -34,36 +35,30 @@
  <!-- Left panel with reveal effect-->
  <div class="panel panel-right panel-reveal" style="background: rgba(0,0,0,0.8);">
    <div class="content-block ">
-         <div class="list-block">
-          <ul>
-            <li class="item-content">
-                <div class="item-inner">
-                  <div class="item-title"><a href="">Aforos</a></div>
-                </div>
-            </li>
-            <li class="item-content">
-                <div class="item-inner">
-                  <div class="item-title"><a href="">Lectura de medidores</a></div>
-                </div>
-           </li>
-           <li class="item-content">
-              <div class="item-inner">
-                <div class="item-title"><a href="">Calidad del agua</a></div>
-              </div>
-          </li>
-           <li class="item-content">
+    <div class="list-block">
+      <ul>
+         <li class="item-content">
              <div class="item-inner">
-               <div class="item-title"><a href="">Cerrar Sesión</a></div>
+               <div class="item-title"><a onClick="enviar('./aforo.html')" >Aforos</a></div>
              </div>
-           </li>
-           <li class="item-content">
+         </li>
+         <li class="item-content">
              <div class="item-inner">
-               <div class="item-title"><a href="#" class="close-panel">Cerrar Menú</a></div>
+               <div class="item-title"><a onClick="enviar('./lectura.html')">Lectura de medidores</a></div>
              </div>
-           </li>
-         </ul>
-      </div>
-     
+        </li>
+        <li class="item-content">
+           <div class="item-inner">
+             <div class="item-title"><a onClick="enviar('./calidadAgua.html')">Calidad del agua</a></div>
+           </div>
+       </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title"><a onClick="enviar('./index.html')">Cerrar Sesión</a></div>
+          </div>
+        </li>
+      </ul>
+    </div>
      
    </div>
  </div>

@@ -32,6 +32,11 @@
       dig.value=valor.slice(0,cuantos);
       }
       }
+      function enviar(pagina){
+      myApp.confirm('¿Estas seguro que quieres abandonar esta pagina?','Hola', function () {
+        location.href=pagina;
+    });
+    }
       </script>
   <!-- FUNCIÓN PARA LIMITAR EL INGRESO DE CARACTERES EN EL INPUT VOLUMEN -->
       <script>
@@ -43,13 +48,6 @@
           }
   </script>
 
-   <!-- Función para pasar las páginas -->
-   <script language="javascript" type="text/javascript">
-    function enviar(pagina){
-    document.aforoform.action = pagina;
-    document.aforoform.submit();
-    }
-  </script>
 
 <!-- Función para llenar el select con las fuentes que se encuentran en la base de datos -->
   <script>
@@ -84,35 +82,30 @@
  <div class="panel-overlay "></div>
  <div class="panel panel-right panel-reveal" style="background: rgba(0,0,0,0.8);">
    <div class="content-block ">
-         <div class="list-block">
-          <ul>
-            <li class="item-content">
-                <div class="item-inner">
-                  <div class="item-title"><a href="./aforo.html">Aforos</a></div>
-                </div>
-            </li>
-            <li class="item-content">
-                <div class="item-inner">
-                  <div class="item-title"><a href="">Lectura de medidores</a></div>
-                </div>
-           </li>
-           <li class="item-content">
-              <div class="item-inner">
-                <div class="item-title"><a href="">Calidad del agua</a></div>
-              </div>
-          </li>
-           <li class="item-content">
+    <div class="list-block">
+      <ul>
+         <li class="item-content">
              <div class="item-inner">
-               <div class="item-title"><a href="">Cerrar Sesión</a></div>
+               <div class="item-title"><a onClick="enviar('./aforo.html')" >Aforos</a></div>
              </div>
-           </li>
-           <li class="item-content">
+         </li>
+         <li class="item-content">
              <div class="item-inner">
-               <div class="item-title"><a href="#" class="close-panel">Cerrar Menú</a></div>
+               <div class="item-title"><a onClick="enviar('./lectura.html')">Lectura de medidores</a></div>
              </div>
-           </li>
-         </ul>
-      </div>
+        </li>
+        <li class="item-content">
+           <div class="item-inner">
+             <div class="item-title"><a onClick="enviar('./calidadAgua.html')">Calidad del agua</a></div>
+           </div>
+       </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title"><a onClick="enviar('./index.html')">Cerrar Sesión</a></div>
+          </div>
+        </li>
+      </ul>
+    </div>
      
      
    </div>
