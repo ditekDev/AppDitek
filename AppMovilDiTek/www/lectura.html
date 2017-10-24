@@ -27,7 +27,7 @@
   
 </head>
 
-<body >
+<body onload="sincro();">
     
  <!-- Status bar overlay for full screen mode (PhoneGap) -->
  <div class="statusbar-overlay"></div>
@@ -102,20 +102,7 @@
 
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
- <script>
-    function regLectura(){
-           
-             if(document.lecturaform.identificacion.value == "") {
-              myApp.alert('Ingrese un número de medidor', 'ERROR!!');
-
-return 0;
-}
-
-location.href="datosLectura.html";
-        }
-
-        
-      </script>
+ 
        
 </body>
 </html>

@@ -7,11 +7,6 @@ this.db= openDatabase('diteklocal', '1.0', 'Test DB', 2 * 1024 * 1024);
 
 function lecturaMed(){
 
-    if(document.lecturaform.identificacion.value == "") {
-        myApp.alert('Ingrese un número de medidor', 'ERROR!!');
-
-return 0;
-} else
     var db = openDatabase("diteklocal", "1.0", "db", 200000);
     var msg;
     var num=document.getElementsByName("identificacion")[0].value;		
@@ -20,13 +15,13 @@ return 0;
     
 	}else{
     	db.transaction(function (tx) {
-        	tx.executeSql('SELECT * FROM numero_medidor WHERE tb_pajas_abonado="'+num, [], function (tx, results) {
+        	tx.executeSql('SELECT * FROM medidores WHERE numero_medidor="'+num, [], function (tx, results) {
        		var len = results.rows.length, i;
            
        		if (len===1) {
                   window.location.href = "datosLectura.html";
         	}else{
-                window.location.href = "errorinicio.html";
+                myApp.alert('El dato no pertenece a ningún abonado', 'ERROR!!');
         	}  
         }, null);
         });
@@ -76,7 +71,7 @@ $.ajax({
                 for (var i = 0; i < l; i++) {
                     e = datos[i];
                    
-                    var params = [e.id, e.num_medidor];
+                    var params = [e.id_abonado, e.numero_medidor];
                     tx.executeSql(sql, params);
                 }
              
