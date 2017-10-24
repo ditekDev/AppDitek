@@ -52,7 +52,7 @@ var app = {
 
 var self = this;
 var db;
-this.db= openDatabase('diteklocal', '1.0', 'Test DB', 2 * 1024 * 1024);
+this.db= openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
 
 
 function crearTabla() {
@@ -84,7 +84,7 @@ $.ajax({
     dataType: 'json',
     url: 'http://grupoditek.com/php/jsonUsuarios.php',
     success: function(datos) {
-        var db = openDatabase('diteklocal', '1.0', 'Test DB', 2 * 1024 * 1024);
+        var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
         db.transaction(
             function(tx) {
                 var l = datos.length;

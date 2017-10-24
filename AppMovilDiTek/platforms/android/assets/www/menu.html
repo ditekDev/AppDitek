@@ -19,9 +19,14 @@
 	
   <script language="javascript" type="text/javascript">
  
-    function enviar(pagina){
+    function cambiarPagina(pagina){
     document.menuform.action = pagina;
     document.menuform.submit();
+    }
+    function enviar(pagina){
+      myApp.confirm('¿Estas seguro que quieres abandonar esta pagina?','Hola', function () {
+        location.href=pagina;
+    });
     }
   </script>
 </head>
@@ -42,27 +47,22 @@
                  <ul>
                     <li class="item-content">
                         <div class="item-inner">
-                          <div class="item-title"><div  window.location.href="./aforo.html">Aforos</div></div>
+                          <div class="item-title"><a onClick="enviar('./aforo.html')" >Aforos</a></div>
                         </div>
                     </li>
                     <li class="item-content">
                         <div class="item-inner">
-                          <div class="item-title"><a  window.location.href="aforo.html">Lectura de medidores</a></div>
+                          <div class="item-title"><a onClick="enviar('./lectura.html')">Lectura de medidores</a></div>
                         </div>
                    </li>
                    <li class="item-content">
                       <div class="item-inner">
-                        <div class="item-title"><a  window.location.href="../aforo.html">Calidad del agua</a></div>
+                        <div class="item-title"><a onClick="enviar('./calidadAgua.html')">Calidad del agua</a></div>
                       </div>
                   </li>
                    <li class="item-content">
                      <div class="item-inner">
-                       <div class="item-title"><a href="">Cerrar Sesión</a></div>
-                     </div>
-                   </li>
-                   <li class="item-content">
-                     <div class="item-inner">
-                       <div class="item-title"><a href="#" class="close-panel">Cerrar Menú</a></div>
+                       <div class="item-title"><a onClick="enviar('./index.html')">Cerrar Sesión</a></div>
                      </div>
                    </li>
                  </ul>
@@ -91,11 +91,11 @@
      
      <form name="menuform" action="" >
         <div class="cuerpo">
-                  <input type="submit" name="" value="Aforos" onClick="enviar('./aforo.html')">
+                  <input type="submit" name="" value="Aforos" onClick="cambiarPagina('./aforo.html')">
                    <br>
-                   <input type="submit" name="" value="Lectura de Medidores">
+                   <input type="submit" name="" value="Lectura de Medidores" onClick="cambiarPagina('./lectura.html')">
                    <br>
-                   <input type="submit" name="" value="Calidad del Agua">
+                   <input type="submit" name="" value="Calidad del Agua" onClick="cambiarPagina('./calidadAgua.html')">
                    <br>
                  
         </div>

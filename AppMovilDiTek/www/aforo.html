@@ -11,6 +11,7 @@
    
         <link rel="stylesheet" type="text/css" href="css/aforo.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/aforo.js"></script>
         <script>
           localStorage.setItem("tiempo1E","");
           localStorage.setItem("tiempo2E","");
@@ -23,11 +24,11 @@
     <!-- Función para llenar el select desde la base de datos -->
     <script>
       function decimales(dig){
-      temp=dig.value.split(",");
+      temp=dig.value.split(".");
       valor=temp.join("");
       cuantos=valor.length;
       if (cuantos>1){
-      dig.value=valor.slice(0,3)+","+valor.slice(3);
+      dig.value=valor.slice(0,3)+"."+valor.slice(3);
       }else{
       dig.value=valor.slice(0,cuantos);
       }
@@ -49,29 +50,7 @@
   </script>
 
 
-<!-- Función para llenar el select con las fuentes que se encuentran en la base de datos -->
-  <script>
-    function llenarlista() {
-      $select = $('#people');
-      var db = openDatabase('diteklocal', '1.0', 'Test DB', 2 * 1024 * 1024);
-    db.transaction(function (tx) {
-      
-      tx.executeSql('SELECT * FROM fuentes', [], function (tx, results) {
-           
-            var len = results.rows.length, i;
-            
-          for (var i = 0; i < len; i++) {
-           
-             $select.append('<option id="' +results.rows.item(i).id+ '">' +results.rows.item(i).nombre + '</option>');
-            
-          }
-       
-    }, null);
-    });
-    }
-      
-  </script>
-  
+
 </head>
 
 <body onload="llenarlista();" style="width: 100%">
@@ -136,7 +115,7 @@
 				</div>
 				<label>Volumen</label>
 					<div class="form-input">
-					<input type="tel"  name="volumen" id="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000,0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5">
+					<input type="tel"  name="volumen" id="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000.0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5">
 				</div>
 				
         <p><a onclick=" obtFuente();" class="button button-fill color-gray" style="width: 70%;;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
@@ -155,28 +134,7 @@
 
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
- <script>
-    function obtFuente(){
-             var select = $("#people option:selected").text();
-             localStorage.setItem("fuente", select);
-             
-             if(document.aforoform.volumen.value == "") {
-              myApp.alert('Inserte un volumen', 'ERROR!!');
 
-return 0;
-}
-
-else if(document.aforoform.volumen.value.length < 5) {
-              myApp.alert('Dato incorrecto, por favor ingrese un valor válido', 'ERROR!!');
-
-return 0;
-}
-
-location.href="cronometro.html";
-        }
-
-        
-      </script>
       
        
 </body>

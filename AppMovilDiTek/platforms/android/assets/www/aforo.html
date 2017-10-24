@@ -11,6 +11,7 @@
    
         <link rel="stylesheet" type="text/css" href="css/aforo.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/aforo.js"></script>
         <script>
           localStorage.setItem("tiempo1E","");
           localStorage.setItem("tiempo2E","");
@@ -23,15 +24,20 @@
     <!-- Función para llenar el select desde la base de datos -->
     <script>
       function decimales(dig){
-      temp=dig.value.split(",");
+      temp=dig.value.split(".");
       valor=temp.join("");
       cuantos=valor.length;
       if (cuantos>1){
-      dig.value=valor.slice(0,3)+","+valor.slice(3);
+      dig.value=valor.slice(0,3)+"."+valor.slice(3);
       }else{
       dig.value=valor.slice(0,cuantos);
       }
       }
+      function enviar(pagina){
+      myApp.confirm('¿Estas seguro que quieres abandonar esta pagina?','Hola', function () {
+        location.href=pagina;
+    });
+    }
       </script>
   <!-- FUNCIÓN PARA LIMITAR EL INGRESO DE CARACTERES EN EL INPUT VOLUMEN -->
       <script>
@@ -43,13 +49,6 @@
           }
   </script>
 
-   <!-- Función para pasar las páginas -->
-   <script language="javascript" type="text/javascript">
-    function enviar(pagina){
-    document.aforoform.action = pagina;
-    document.aforoform.submit();
-    }
-  </script>
 
 <!-- Función para llenar el select con las fuentes que se encuentran en la base de datos -->
   <script>
@@ -64,7 +63,7 @@
             
           for (var i = 0; i < len; i++) {
            
-             $select.append('<option id="' +results.rows.item(i).id+ '">' +results.rows.item(i).nombre + '</option>');
+             $select.append('<option value="' +results.rows.item(i).id+ '">' +results.rows.item(i).nombre + '</option>');
             
           }
        
@@ -84,35 +83,30 @@
  <div class="panel-overlay "></div>
  <div class="panel panel-right panel-reveal" style="background: rgba(0,0,0,0.8);">
    <div class="content-block ">
-         <div class="list-block">
-          <ul>
-            <li class="item-content">
-                <div class="item-inner">
-                  <div class="item-title"><a href="./aforo.html">Aforos</a></div>
-                </div>
-            </li>
-            <li class="item-content">
-                <div class="item-inner">
-                  <div class="item-title"><a href="">Lectura de medidores</a></div>
-                </div>
-           </li>
-           <li class="item-content">
-              <div class="item-inner">
-                <div class="item-title"><a href="">Calidad del agua</a></div>
-              </div>
-          </li>
-           <li class="item-content">
+    <div class="list-block">
+      <ul>
+         <li class="item-content">
              <div class="item-inner">
-               <div class="item-title"><a href="">Cerrar Sesión</a></div>
+               <div class="item-title"><a onClick="enviar('./aforo.html')" >Aforos</a></div>
              </div>
-           </li>
-           <li class="item-content">
+         </li>
+         <li class="item-content">
              <div class="item-inner">
-               <div class="item-title"><a href="#" class="close-panel">Cerrar Menú</a></div>
+               <div class="item-title"><a onClick="enviar('./lectura.html')">Lectura de medidores</a></div>
              </div>
-           </li>
-         </ul>
-      </div>
+        </li>
+        <li class="item-content">
+           <div class="item-inner">
+             <div class="item-title"><a onClick="enviar('./calidadAgua.html')">Calidad del agua</a></div>
+           </div>
+       </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title"><a onClick="enviar('./index.html')">Cerrar Sesión</a></div>
+          </div>
+        </li>
+      </ul>
+    </div>
      
      
    </div>
@@ -143,7 +137,7 @@
 				</div>
 				<label>Volumen</label>
 					<div class="form-input">
-					<input type="tel"  name="volumen" id="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000,0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5" onkeydown="caracteres();">
+					<input type="tel"  name="volumen" id="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000.0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5">
 				</div>
 				
         <p><a onclick=" obtFuente();" class="button button-fill color-gray" style="width: 70%;;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
@@ -162,28 +156,7 @@
 
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
- <script>
-    function obtFuente(){
-             var select = $("#people option:selected").text();
-             localStorage.setItem("fuente", select);
-             
-             if(document.aforoform.volumen.value == "") {
-              myApp.alert('Inserte un volumen', 'ERROR!!');
 
-return 0;
-}
-
-else if(document.aforoform.volumen.value.length < 5) {
-              myApp.alert('Dato incorrecto', 'ERROR!!');
-
-return 0;
-}
-
-location.href="cronometro.html";
-        }
-
-        
-      </script>
       
        
 </body>
