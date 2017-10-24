@@ -7,31 +7,49 @@ this.db= openDatabase('diteklocal', '1.0', 'Test DB', 2 * 1024 * 1024);
 
 function lecturaMed(){
 
-    var db = openDatabase("diteklocal", "1.0", "db", 200000);
-    var msg;
-    var num=document.getElementsByName("identificacion")[0].value;		
+        if(document.lecturaform.txtidentificacion.value == "") {
+            myApp.alert('Inserte un número de medidor', 'ERROR!!');
 
-	if (num=="") {
+        return 0   ;
+        }
     
-	}else{
-    	db.transaction(function (tx) {
-        	tx.executeSql('SELECT * FROM medidores WHERE numero_medidor="'+num, [], function (tx, results) {
-       		var len = results.rows.length, i;
-           
-       		if (len===1) {
-                  window.location.href = "datosLectura.html";
-        	}else{
-                myApp.alert('El dato no pertenece a ningún abonado', 'ERROR!!');
-        	}  
-        }, null);
-        });
+        var db = openDatabase("diteklocal", "1.0", "db", 200000);
+        var msg;
+        var num=document.getElementsByName("txtidentificacion")[0].value;		
     
+        if (num.value=="") {
+            
+        }else{
+            db.transaction(function (tx) {
+                tx.executeSql('SELECT * FROM medidores WHERE numero_medidor="'+num+'"', [], function (tx, results) {
+                   var len = results.rows.length, i;
+               
+                   if (len===1) {
+                      window.location.href = "datosLectura.html";
+                }else{
+                    myApp.alert('El dato no pertenece a ninguno de nuestros abonados', 'ERROR!!');
+                }  
+            }, null);
+            });
+        
+        }
+    
+     
     }
-
- 
-}
-
-
+    
+    
+    
+    function crearTabla() {
+    this.db.transaction(
+        function(tx) {
+            var sql ='CREATE TABLE IF NOT EXISTS medidores (id_abonado, numero_medidor)';
+            tx.executeSql(sql);
+        },
+        this.txErrorHandler,
+          
+    );
+    };
+    
 
 function crearTabla() {
 this.db.transaction(
