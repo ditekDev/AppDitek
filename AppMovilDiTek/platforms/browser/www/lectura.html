@@ -12,6 +12,7 @@
         <link rel="stylesheet" type="text/css" href="css/aforo.css">
         <link rel="stylesheet" type="text/css" href="css/lectura.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/lectura.js"></script>
     <title>Lectura Medidor</title>
     <!-- Función para llenar el select desde la base de datos -->
    
@@ -83,8 +84,8 @@
 			
 			<form name="lecturaform">
                 <p>Número de medidor del abonado</p>
-                <input type="text" id="identificacion" placeholder=" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''Número de medidor'' ">
-                <p><a onclick="" class="button button-fill color-gray" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
+                <input type="text" id="identificacion" name="identificacion" placeholder=" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''Número de medidor'' " >
+                <p><a onclick="lecturaMed();" class="button button-fill color-gray" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
                 
 			</form>
 		</div>
@@ -101,7 +102,20 @@
 
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
- 
+ <script>
+    function regLectura(){
+           
+             if(document.lecturaform.identificacion.value == "") {
+              myApp.alert('Ingrese un número de medidor', 'ERROR!!');
+
+return 0;
+}
+
+location.href="datosLectura.html";
+        }
+
+        
+      </script>
        
 </body>
 </html>

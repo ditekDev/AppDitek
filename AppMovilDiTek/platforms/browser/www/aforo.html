@@ -136,7 +136,7 @@
 				</div>
 				<label>Volumen</label>
 					<div class="form-input">
-					<input type="tel"  name="volumen" id="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000,0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5" onkeydown="caracteres();">
+					<input type="tel"  name="volumen" id="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000,0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5">
 				</div>
 				
         <p><a onclick=" obtFuente();" class="button button-fill color-gray" style="width: 70%;;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
@@ -167,7 +167,7 @@ return 0;
 }
 
 else if(document.aforoform.volumen.value.length < 5) {
-              myApp.alert('Dato incorrecto', 'ERROR!!');
+              myApp.alert('Dato incorrecto, por favor ingrese un valor válido', 'ERROR!!');
 
 return 0;
 }
