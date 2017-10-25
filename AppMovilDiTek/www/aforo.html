@@ -33,7 +33,7 @@
       }
       }
       function enviar(pagina){
-      myApp.confirm('¿Estas seguro que quieres abandonar esta pagina?','Hola', function () {
+      myApp.confirm('¿Está seguro que quiere abandonar esta página?','¡ALERTA!', function () {
         location.href=pagina;
     });
     }
@@ -43,7 +43,7 @@
     function caracteres(){
      var input = document.aforoform.getElementById('volumen');
         if(input.value.length < 5) {
-              myapp.alert('El valor ingresado es incorrecto', 'ERROR!!');
+              myapp.alert('El valor ingresado es incorrecto', '¡ERROR!');
         }
     }
   </script>
