@@ -51,7 +51,6 @@ function insertarTiempos(){
 			var t2=localStorage.getItem("tiempo2");
             var t3=localStorage.getItem("tiempo3");
             var f = new Date();
-            alert(t1+fu);
             var params = ["1",t1,fu,f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()];
 			tx.executeSql(sql, params);
 			var params2 = ["2",t2,fu,f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()];
@@ -81,7 +80,6 @@ function guardarTiempos() {
                         var T=results.rows.item(i)['tiempo'];
                         var idf=results.rows.item(i)['id_fuente'];
                         var fech=results.rows.item(i)['fecha'];
-                        alert(T+fech);
                         archivo = "http://grupoditek.com/php/tiempos.php?jsoncallback=?"
                         $.getJSON( archivo, { numero_tiempo: numT, tiempo: T, id_fuente: idf,fecha: fech })
                         .done(function(respuestaServer) {
@@ -89,11 +87,11 @@ function guardarTiempos() {
                             if(respuestaServer.validacion == "ok"){
                                  /// si la validacion es correcta
                                 borrarTablaTiempos();
-                                location.href="cronometro.html";
+                                location.href="guardado.html";
                               
                             }else{
                               /// ejecutar una conducta cuando la validacion falla
-                              myapp.alert("Error insertando datos");
+                                myapp.alert("Error insertando datos");
                             }
                       
                         })

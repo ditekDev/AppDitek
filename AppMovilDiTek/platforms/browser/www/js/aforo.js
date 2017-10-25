@@ -193,3 +193,12 @@ function llenarlista() {
   }, null);
   });
 };
+
+function elegirFuente(){
+    var select = $("#people option:selected").text();
+    var idf = $("#people option:selected").val();
+    localStorage.setItem("fuenteCalidad", select);
+    localStorage.setItem("fuenteIDCalidad", idf);
+    location.href="seleccionMediciones.html";
+    
+}

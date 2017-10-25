@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+        <meta name="viewport" content="width=device-width, initial-escale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+       <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" href="css/framework7.material.min.css">
+        <link rel="stylesheet" href="css/framework7.material.colors.min.css">    
+   
+        <link rel="stylesheet" type="text/css" href="css/aforo.css">
+        <link rel="stylesheet" type="text/css" href="css/calidadAgua.css">
+        <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+
+        
+        <script>
+          localStorage.setItem("cloro",0);
+          localStorage.setItem("ph",0);
+          localStorage.setItem("turbidez",0);
+          localStorage.setItem("temperatura",0);
+          localStorage.setItem("olorsabor",0);
+         function enviar(pagina){
+      myApp.confirm('¿Está seguro que quiere abandonar esta página?','¡ALERTA!', function () {
+        location.href=pagina;
+    });
+    }</script>
+
+</head>
+
+<body >
+    
+ 
+ <div class="statusbar-overlay"></div>
+
+ <div class="panel-overlay "></div>
+ <div class="panel panel-right panel-reveal" style="background: rgba(0,0,0,0.8);">
+   <div class="content-block ">
+    <div class="list-block">
+      <ul>
+         <li class="item-content">
+             <div class="item-inner">
+               <div class="item-title"><a onClick="enviar('./aforo.html')" >Aforos</a></div>
+             </div>
+         </li>
+         <li class="item-content">
+             <div class="item-inner">
+               <div class="item-title"><a onClick="enviar('./lectura.html')">Lectura de medidores</a></div>
+             </div>
+        </li>
+        <li class="item-content">
+           <div class="item-inner">
+             <div class="item-title"><a onClick="enviar('./calidadAgua.html')">Calidad del agua</a></div>
+           </div>
+       </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title"><a onClick="enviar('./index.html')">Cerrar Sesión</a></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+     
+     
+   </div>
+ </div>
+ <!-- Views -->
+ <div class="views">
+   <!-- Your main view, should have "view-main" class -->
+   <div class="view view-main">
+     <!-- Top Navbar-->
+     <div class="navbar" style="width: 100%; height: 100px; background-color: black;">
+       <div class="navbar-inner">
+         <div class="logo"></div>
+         <div class="right">
+           <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
+         </div>
+       </div>
+     </div>
+     <div class="subencabezado">
+       <label style="font-size: 22px;">CALIDAD DEL AGUA</label>
+     </div>
+   
+     <div class="page-content infinite-scroll">
+			
+			<form name="medicioneAguaform">
+                
+        <div class="list-block" style="margin: 0 auto;">
+          <ul>
+            <li>
+              <label class="label-checkbox item-content">
+                <input type="checkbox" id="cloro" value="Cloro Residual" checked="checked">
+                <div class="item-media">
+                  <i class="icon icon-form-checkbox"></i>
+                </div>
+                <div class="item-inner">
+                  <div class="item-title">Cloro Residual</div>
+                </div>
+              </label>
+            </li>
+         
+            <li>
+              <label class="label-checkbox item-content">
+                <input type="checkbox" id="ph" value="PH">
+                <div class="item-media">
+                  <i class="icon icon-form-checkbox"></i>
+                </div>
+                <div class="item-inner">
+                  <div class="item-title">PH</div>
+                </div>
+              </label>
+            </li>
+            <li>
+              <label class="label-checkbox item-content">
+                <input type="checkbox" id="temperatura" value="Temperatura">
+                <div class="item-media">
+                  <i class="icon icon-form-checkbox"></i>
+                </div>
+                <div class="item-inner">
+                  <div class="item-title">Temperatura</div>
+                </div>
+              </label>
+            </li>
+            <li>
+              <label class="label-checkbox item-content">
+                <input type="checkbox" id="turbidez" value="Turbidez">
+                <div class="item-media">
+                  <i class="icon icon-form-checkbox"></i>
+                </div>
+                <div class="item-inner">
+                  <div class="item-title">Turbidez</div>
+                </div>
+              </label>
+            </li>
+            <li>
+              <label class="label-checkbox item-content">
+                <input type="checkbox" id="olorsabor" value="Olor y Sabor">
+                <div class="item-media">
+                  <i class="icon icon-form-checkbox"></i>
+                </div>
+                <div class="item-inner">
+                  <div class="item-title">Olor y Sabor</div>
+                </div>
+              </label>
+            </li>
+          </ul>
+        </div> 
+       <a onclick="verificarCheck();" class="button button-fill color-gray" style="width: 70%;height: 40px;margin:auto;border-radius: 10px;font-size: 25px; margin-top:-15px;">Listo</a>
+                    
+			</form>
+		</div>
+     </div>
+        
+  
+   </div>
+   
+
+
+
+ <script type="text/javascript" src="js/framework7.min.js"></script>
+ <script type="text/javascript" src="js/my-app.js"></script>
+
+ <script>
+  function verificarCheck() {
+    
+      if (document.getElementById("cloro").checked ==true) {
+    
+            localStorage.setItem("cloro",1);
+      }
+      if (document.getElementById("ph").checked == true) {
+           localStorage.setItem("ph", 1);
+      }
+      if (document.getElementById("temperatura").checked == true) {
+           localStorage.setItem("temperatura",1);
+      }
+      if (document.getElementById("turbidez").checked == true) {
+           localStorage.setItem("turbidez",1);
+      }
+      if (document.getElementById("olorsabor").checked == true) {
+           localStorage.setItem("olorsabor",1);
+      }
+      
+      location.href="mediciones.html";
+    }
+    </script>
+      
+       
+</body>
+</html>
+
+
+
