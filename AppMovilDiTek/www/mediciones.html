@@ -23,7 +23,7 @@
 
 </head>
 
-<body>
+<body onload="habilitarDivs()">
   
  <!-- Views -->
  <div class="views">
@@ -44,13 +44,13 @@
 			<form name="fuenteform">
           <div class="swiper-container">
               <div class="swiper-wrapper">
-                  <div class="swiper-slide" id="cloro">CLORO RESIDUAL
+                  <div class="swiper-slide" id="cloro" style="display:none">CLORO RESIDUAL
       
                 </div>
-                  <div class="swiper-slide" id="ph">PH</div>
-                  <div class="swiper-slide" id="temperatura">TEMPERATURA</div>
-                  <div class="swiper-slide" id="turbidez">TURBIDEZ</div>
-                  <div class="swiper-slide" id="olorysabor">OLOR Y SABOR</div>
+                  <div class="swiper-slide" id="ph" style="display:none">PH</div>
+                  <div class="swiper-slide" id="temperatura" style="display:none">TEMPERATURA</div>
+                  <div class="swiper-slide" id="turbidez" style="display:none">TURBIDEZ</div>
+                  <div class="swiper-slide" id="olorysabor" style="display:none">OLOR Y SABOR</div>
                 
                 
               </div>           
@@ -76,23 +76,23 @@
   </script>
  <script>
  function habilitarDivs(){
-   if (localStorage.getItem("cloro")==0) {
+   if (localStorage.getItem("cloro")==1) {
      var cl = document.getElementById("cloro");
      cl.style.display = "none";
    }
-   if (localStorage.getItem("ph")==0) {
+   if (localStorage.getItem("ph")==1) {
      var ph = document.getElementById("ph");
      ph.style.display = "none";
    }
-   if (localStorage.getItem("temperatura")==0) {
+   if (localStorage.getItem("temperatura")==1) {
      var temp = document.getElementById("temperatura");
      temp.style.display = "none";
    }
-   if (localStorage.getItem("turbidez")==0) {
+   if (localStorage.getItem("turbidez")==1) {
      var tur = document.getElementById("turbidez");
      tur.style.display = "none";
    }
-   if (localStorage.getItem("olorysabor")==0) {
+   if (localStorage.getItem("olorysabor")==1) {
      var os = document.getElementById("olorysabor");
      os.style.display = "none";
    }
