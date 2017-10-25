@@ -17,40 +17,7 @@
 
 <body onload="fuente();">
     
- <!-- MENÚ LATERAL -->
- <div class="statusbar-overlay"></div>
- 
- <div class="panel-overlay "></div>
- 
- <div class="panel panel-right panel-reveal" style="background: rgba(0,0,0,0.8);">
-  <div class="list-block">
-    <ul>
-       <li class="item-content">
-           <div class="item-inner">
-             <div class="item-title"><a onClick="enviar('./aforo.html')" >Aforos</a></div>
-           </div>
-       </li>
-       <li class="item-content">
-           <div class="item-inner">
-             <div class="item-title"><a onClick="enviar('./lectura.html')">Lectura de medidores</a></div>
-           </div>
-      </li>
-      <li class="item-content">
-         <div class="item-inner">
-           <div class="item-title"><a onClick="enviar('./calidadAgua.html')">Calidad del agua</a></div>
-         </div>
-     </li>
-      <li class="item-content">
-        <div class="item-inner">
-          <div class="item-title"><a onClick="enviar('./index.html')">Cerrar Sesión</a></div>
-        </div>
-      </li>
-    </ul>
-  </div>
-     
-     
-   </div>
- </div>
+
 
  <div class="views">
    
@@ -59,9 +26,6 @@
      <div class="navbar" style="width: 100%; height: 100px; background-color: black;">
        <div class="navbar-inner">
          <div class="logo"></div>
-         <div class="right">
-           <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
-         </div>
        </div>
      </div>
      <div class="subencabezado">
@@ -124,11 +88,6 @@
      location.href="registrosAforo.html";
   }
 
-  function enviar(pagina){
-      myApp.confirm('¿Estas seguro que quieres abandonar esta pagina?','Hola', function () {
-        location.href=pagina;
-    });
-    }
 </script> 
 
 </body>

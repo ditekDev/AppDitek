@@ -91,7 +91,7 @@ function guardarTiempos() {
                               
                             }else{
                               /// ejecutar una conducta cuando la validacion falla
-                              myapp.alert("Error insertando datos");
+                                myapp.alert("Error insertando datos");
                             }
                       
                         })
