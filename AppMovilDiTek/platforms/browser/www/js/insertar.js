@@ -77,18 +77,18 @@ function guardarTiempos() {
                 if(len>0)
                 {
                     for (var i = 0; i < len; i++) {
-                        var numT=encodeURI(results.rows.item(i)['numero_tiempo']);
-                        var T=encodeURI(results.rows.item(i)['tiempo']);
-                        var idf=encodeURI(results.rows.item(i)['id_fuente']);
-                        var fech=encodeURI(results.rows.item(i)['fecha']);
+                        var numT=results.rows.item(i)['numero_tiempo'];
+                        var T=results.rows.item(i)['tiempo'];
+                        var idf=results.rows.item(i)['id_fuente'];
+                        var fech=results.rows.item(i)['fecha'];
                         alert(T+fech);
-                        archivo = "http://grupoditek.com/php/insertarTiempos.php?jsoncallback=?"
-                        $.getJSON( archivo, { numero_tiempo: numT, tiempo: T, id_fuente:idf,fecha:fech })
+                        archivo = "http://grupoditek.com/php/tiempos.php?jsoncallback=?"
+                        $.getJSON( archivo, { numero_tiempo: numT, tiempo: T, id_fuente: idf,fecha: fech })
                         .done(function(respuestaServer) {
                             
                             if(respuestaServer.validacion == "ok"){
-                                 /// si la validacion es correcta, muestra la pantalla "home"
-                                borrarTablaaforo();
+                                 /// si la validacion es correcta
+                                borrarTablaTiempos();
                                 location.href="cronometro.html";
                               
                             }else{
