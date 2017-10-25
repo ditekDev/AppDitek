@@ -16,11 +16,11 @@
 
         
         <script>
-          localStorage.setItem("cloro",0);
-          localStorage.setItem("ph",0);
-          localStorage.setItem("turbidez",0);
-          localStorage.setItem("temperatura",0);
-          localStorage.setItem("olorsabor",0);
+          localStorage.setItem("cloro",1);
+          localStorage.setItem("ph",1);
+          localStorage.setItem("turbidez",1);
+          localStorage.setItem("temperatura",1);
+          localStorage.setItem("olorsabor",1);
          function enviar(pagina){
       myApp.confirm('¿Está seguro que quiere abandonar esta página?','¡ALERTA!', function () {
         location.href=pagina;
@@ -166,19 +166,19 @@
     
       if (document.getElementById("cloro").checked ==true) {
     
-            localStorage.setItem("cloro",1);
+            localStorage.setItem("cloro",0);
       }
       if (document.getElementById("ph").checked == true) {
-           localStorage.setItem("ph", 1);
+           localStorage.setItem("ph", 0);
       }
       if (document.getElementById("temperatura").checked == true) {
-           localStorage.setItem("temperatura",1);
+           localStorage.setItem("temperatura",0);
       }
       if (document.getElementById("turbidez").checked == true) {
-           localStorage.setItem("turbidez",1);
+           localStorage.setItem("turbidez",0);
       }
       if (document.getElementById("olorsabor").checked == true) {
-           localStorage.setItem("olorsabor",1);
+           localStorage.setItem("olorsabor",0);
       }
       
       location.href="mediciones.html";
