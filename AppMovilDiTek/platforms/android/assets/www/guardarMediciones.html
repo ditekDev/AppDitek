@@ -2,9 +2,10 @@
 <html>
   <head>
     <!-- Required meta tags-->
-    <meta charset="utf-8">
+    
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+
     <!-- Color theme for statusbar -->
     <meta name="theme-color" content="#2196f3">
     <!-- Your app title -->
@@ -13,43 +14,15 @@
     <link rel="stylesheet" href="css/framework7.material.min.css">
     <!-- Path to Framework7 color related styles, Material Theme -->
     <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/insertar.js"></script>
 
-<!-- FUNCIÓN PARA LLENAR LOS TIEMPOS -->
 
-<script type="text/javascript">
-    
-     function cargarTiempos() {
-      var ul = document.getElementById("list");
-      var li = document.createElement("lis");
-      var li2 = document.createElement("lis");
-      var li3 = document.createElement("lis");
-      var t1 = localStorage.getItem("tiempo1");
-      var t2 = localStorage.getItem("tiempo2");
-      var t3 = localStorage.getItem("tiempo3");
-      //tiempo1
-      li.appendChild(document.createTextNode(t1));
-      li.setAttribute("id", "1"); // added line
-      ul.appendChild(li);
-      //tiempo2
-      li2.appendChild(document.createTextNode(t2));
-      li2.setAttribute("id", "2"); // added line
-      ul.appendChild(li2);
-      //tiempo3
-      li3.appendChild(document.createTextNode(t3));
-      li3.setAttribute("id", "3"); // added line
-      ul.appendChild(li3);
-      
-    }
-    </script>
 
-<script language="javascript" type="text/javascript">
-    function guardado(){
-        window.location.href = "guardado.html";
-    }
-  </script>
+
  
   </head>
-  <body onload="cargarTiempos();">
+  <body onload="cargarTablaTiempos();">
             
             <div class="page-content"  style="background-color: gray; ">
               
@@ -64,7 +37,7 @@
                </div>
 
                <div class="botones" style="text-align: center; margin-top: 8%;">
-                <a  class="button button-fill color-gray" style="width: 20%;;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px; display: inline-block; margin-right:8%;" onclick="guardado();">Sí</a>
+                <a  class="button button-fill color-gray" style="width: 20%;;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px; display: inline-block; margin-right:8%;" onclick="guardarTiempos();">Sí</a>
                 <a  class="button button-fill color-gray" style="width: 20%;;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px; display:  inline-block">No</a>
                 
                </div>
@@ -73,6 +46,6 @@
   
     <script type="text/javascript" src="js/framework7.min.js"></script>
    
-    <script type="text/javascript" src="js/my-app.js"></script>
+
   </body>
 </html>

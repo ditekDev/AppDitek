@@ -1,11 +1,22 @@
-
-
 var self = this;
 var db;
-this.db= openDatabase('diteklocal', '1.0', 'Test DB', 2 * 1024 * 1024);
+this.db= openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
 
 
-function crearTabla() {
+
+
+function crearTablaTiempos() {
+    this.db.transaction(
+        function(tx) {
+            var sql ='CREATE TABLE IF NOT EXISTS tiempos (numero_tiempo, tiempo, id_fuente,fecha)';
+            tx.executeSql(sql);
+        },
+        this.txErrorHandler,
+          
+    );
+};
+
+function crearTablaFuentes() {
 this.db.transaction(
     function(tx) {
         var sql ='CREATE TABLE IF NOT EXISTS fuentes (id unique, nombre)';
@@ -26,7 +37,7 @@ function borrarTablaaforo(){
 };
 
 function insertarAforo(){
-    var db = openDatabase('diteklocal', '1.0', 'Test DB', 2 * 1024 * 1024);
+    var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
     db.transaction(
         function(tx) {
            
@@ -54,7 +65,7 @@ function crearTablaaforo() {
 };
 
 
-function borrarTabla(){
+function borrarTablaFuentes(){
 this.db.transaction(
     function(tx) {
         tx.executeSql('DROP TABLE IF EXISTS fuentes');
@@ -63,13 +74,13 @@ this.db.transaction(
 );
 };
 
-function lee_json() {
+function lee_jsonFuentes() {
 
 $.ajax({
     dataType: 'json',
     url: 'http://grupoditek.com/php/getFuentes.php',
     success: function(datos) {
-        var db = openDatabase('diteklocal', '1.0', 'Test DB', 2 * 1024 * 1024);
+        var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
         db.transaction(
             function(tx) {
                 var l = datos.length;
@@ -93,12 +104,13 @@ $.ajax({
 });     
 } ;
 
-function sincro(){
+function sincroFuentes(){
     var con = localStorage.getItem("conexion");
     if (con=="1") {
-        borrarTabla();
-        crearTabla();
-        lee_json();
+        borrarTablaFuentes();
+        crearTablaFuentes();
+        lee_jsonFuentes();
+        crearTablaTiempos();
     }
     //NUMERO DE VECES DE MEDICIONES
     localStorage.setItem("mediciones", 3);
@@ -142,7 +154,7 @@ function insertarNube(){
                     .done(function(respuestaServer) {
                         
                         if(respuestaServer.validacion == "ok"){
-                             /// si la validacion es correcta, muestra la pantalla "home"
+                             /// si la validacion es correcta
                             borrarTablaaforo();
                             location.href="cronometro.html";
                           
@@ -159,4 +171,25 @@ function insertarNube(){
     }
 
  
+};
+
+//Función para llenar el select con las fuentes que se encuentran en la base de datos -->
+
+function llenarlista() {
+    $select = $('#people');
+    var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
+  db.transaction(function (tx) {
+    
+    tx.executeSql('SELECT * FROM fuentes', [], function (tx, results) {
+         
+          var len = results.rows.length, i;
+          
+        for (var i = 0; i < len; i++) {
+         
+           $select.append('<option value="' +results.rows.item(i).id+ '">' +results.rows.item(i).nombre + '</option>');
+          
+        }
+     
+  }, null);
+  });
 };

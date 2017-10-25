@@ -87,11 +87,11 @@ function guardarTiempos() {
                             if(respuestaServer.validacion == "ok"){
                                  /// si la validacion es correcta
                                 borrarTablaTiempos();
-                                location.href="menu.html";
+                                location.href="guardado.html";
                               
                             }else{
                               /// ejecutar una conducta cuando la validacion falla
-                              myapp.alert("Error insertando datos");
+                                myapp.alert("Error insertando datos");
                             }
                       
                         })

@@ -8,52 +8,22 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" href="css/framework7.material.min.css">
         <link rel="stylesheet" href="css/framework7.material.colors.min.css">    
+        <link rel="stylesheet" href="css/swiper.min.css">
+        <link rel="stylesheet" href="css/swiper.css">  
    
         <link rel="stylesheet" type="text/css" href="css/aforo.css">
+        <link rel="stylesheet" type="text/css" href="css/elegirFuente.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/swiper.min.js"></script>
+        <script type="text/javascript" src="js/swiper.js"></script>
+        <script type="text/javascript" src="js/swiper.esm.js"></script>
+        <script type="text/javascript" src="js/swiper.esm.bundle.js"></script>
         <script type="text/javascript" src="js/aforo.js"></script>
-        <script>
-          localStorage.setItem("tiempo1E","");
-          localStorage.setItem("tiempo2E","");
-          localStorage.setItem("tiempo3E","");
-          localStorage.setItem("tiempo1", "");
-          localStorage.setItem("tiempo2", "");
-          localStorage.setItem("tiempo3", "");
-        </script>
-    <title>Aforos</title>
-    <!-- Función para llenar el select desde la base de datos -->
-    <script>
-      function decimales(dig){
-      temp=dig.value.split(".");
-      valor=temp.join("");
-      cuantos=valor.length;
-      if (cuantos>1){
-      dig.value=valor.slice(0,3)+"."+valor.slice(3);
-      }else{
-      dig.value=valor.slice(0,cuantos);
-      }
-      }
-      function enviar(pagina){
-      myApp.confirm('¿Estas seguro que quieres abandonar esta pagina?','Hola', function () {
-        location.href=pagina;
-    });
-    }
-      </script>
-  <!-- FUNCIÓN PARA LIMITAR EL INGRESO DE CARACTERES EN EL INPUT VOLUMEN -->
-      <script>
-        function caracteres(){
-        var input = document.aforoform.getElementById('volumen');
-          if(input.value.length < 5) {
-              myapp.alert('El valor ingresado es incorrecto', 'ERROR!!');
-            }
-          }
-  </script>
-
-
+        
 
 </head>
 
-<body onload="llenarlista();" style="width: 100%">
+<body onload="llenarlista();">
     
  
  <div class="statusbar-overlay"></div>
@@ -103,37 +73,46 @@
        </div>
      </div>
      <div class="subencabezado">
-       <label>AFORO</label>
+       <label style="font-size: 22px;">CALIDAD DEL AGUA</label>
      </div>
    
-     <div class="page-content">
+     <div class="page-content infinite-scroll">
 			
-			<form name="aforoform">
-				<label>Fuente</label>
-				<div class="selector-fuente" style="text-align: center;">
-         <select id="people"></select>
-				</div>
-				<label>Volumen</label>
-					<div class="form-input">
-					<input type="tel"  name="volumen" id="volumen" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;000.0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L" onkeyup="decimales(this)" maxlength="5">
-				</div>
-				
-        <p><a onclick=" obtFuente();" class="button button-fill color-gray" style="width: 70%;;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
-			</form>
-		</div>
-
-   
-
+			<form name="fuenteform">
+          <div class="swiper-container">
+              <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="selector-fuente" style="text-align: center; margin-top: 50%;">
+                      <select id="people" style=" background-color: gray" ></select>
+                  </div>
+                </div>
+                  <div class="swiper-slide">Slide 2</div>
+                  <div class="swiper-slide">Slide 3</div>
+                  <div class="swiper-slide">Slide 4</div>
+                  <div class="swiper-slide">Slide 5</div>
+                
+                
+              </div>           
+      </form>
+      <div  style="margin-top:20%;">
+       <div class="swiper-pagination"></div> 
+    </div>
+  </div>
      </div>
-        
-  
    </div>
-   
-
 
 
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
+ <script>
+      var myApp = new Framework7(); 
+      
+       // Init slider and store its instance in mySwiper variable
+       var mySwiper = myApp.swiper('.swiper-container', {
+         pagination:'.swiper-pagination',
+         spaceBetween: 100 // 100px between slides
+       });
+  </script>
 
       
        

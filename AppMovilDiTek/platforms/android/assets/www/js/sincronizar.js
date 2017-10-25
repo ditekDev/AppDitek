@@ -1,5 +1,6 @@
 function sincronizar(){
     var con = localStorage.getItem("conexion");
+    this.db= openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
     if (con=="1") {
         db.transaction(function (tx) {
         	tx.executeSql('SELECT volumen,fuente FROM aforo', [], function (tx, results) {
