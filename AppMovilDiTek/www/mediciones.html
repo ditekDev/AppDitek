@@ -44,13 +44,13 @@
 			<form name="fuenteform">
           <div class="swiper-container">
               <div class="swiper-wrapper">
-                  <div class="swiper-slide">
+                  <div class="swiper-slide" id="cloro">CLORO RESIDUAL
       
                 </div>
-                  <div class="swiper-slide">Slide 2</div>
-                  <div class="swiper-slide">Slide 3</div>
-                  <div class="swiper-slide">Slide 4</div>
-                  <div class="swiper-slide">Slide 5</div>
+                  <div class="swiper-slide" id="ph">PH</div>
+                  <div class="swiper-slide" id="temperatura">TEMPERATURA</div>
+                  <div class="swiper-slide" id="turbidez">TURBIDEZ</div>
+                  <div class="swiper-slide" id="olorysabor">OLOR Y SABOR</div>
                 
                 
               </div>           
@@ -74,6 +74,29 @@
          spaceBetween: 100 // 100px between slides
        });
   </script>
- 
+ <script>
+ function habilitarDivs(){
+   if (localStorage.getItem("cloro")==0) {
+     var cl = document.getElementById("cloro");
+     cl.style.display = "none";
+   }
+   if (localStorage.getItem("ph")==0) {
+     var ph = document.getElementById("ph");
+     ph.style.display = "none";
+   }
+   if (localStorage.getItem("temperatura")==0) {
+     var temp = document.getElementById("temperatura");
+     temp.style.display = "none";
+   }
+   if (localStorage.getItem("turbidez")==0) {
+     var tur = document.getElementById("turbidez");
+     tur.style.display = "none";
+   }
+   if (localStorage.getItem("olorysabor")==0) {
+     var os = document.getElementById("olorysabor");
+     os.style.display = "none";
+   }
+ }
+ </script>
 </body>
 </html>
