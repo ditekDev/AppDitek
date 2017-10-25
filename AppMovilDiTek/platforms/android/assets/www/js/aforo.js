@@ -100,7 +100,7 @@ $.ajax({
         
         );
     },
-    error: function() { myapp.alert('No se conecto al servidor. Intente de nuevo','ERROR!!!'); }
+    error: function() { myApp.alert('No se obtuvo conexión con el servidor', 'ERROR!!!'); }
 });     
 } ;
 
@@ -193,3 +193,12 @@ function llenarlista() {
   }, null);
   });
 };
+
+function elegirFuente(){
+    var select = $("#people option:selected").text();
+    var idf = $("#people option:selected").val();
+    localStorage.setItem("fuenteCalidad", select);
+    localStorage.setItem("fuenteIDCalidad", idf);
+    location.href="seleccionMediciones.html";
+    
+}
