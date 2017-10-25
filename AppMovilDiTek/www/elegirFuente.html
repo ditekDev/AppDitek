@@ -8,10 +8,15 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" href="css/framework7.material.min.css">
         <link rel="stylesheet" href="css/framework7.material.colors.min.css">    
+        <link rel="stylesheet" href="css/swiper.min.css">
+        <link rel="stylesheet" href="css/swiper.css">  
    
         <link rel="stylesheet" type="text/css" href="css/aforo.css">
-        <link rel="stylesheet" type="text/css" href="css/calidadAgua.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/swiper.min.js"></script>
+        <script type="text/javascript" src="js/swiper.js"></script>
+        <script type="text/javascript" src="js/swiper.esm.js"></script>
+        <script type="text/javascript" src="js/swiper.esm.bundle.js"></script>
         <script type="text/javascript" src="js/aforo.js"></script>
         
 
@@ -73,11 +78,22 @@
      <div class="page-content infinite-scroll">
 			
 			<form name="fuenteform">
-                     
-                <div class="selector-fuente" style="text-align: center; margin-top: 50%;">
-                    <select id="fuente" style=" background-color: gray" ></select>
-                </div>
-                     
+          <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 5</div>
+                <div class="swiper-slide">Slide 6</div>
+                <div class="swiper-slide">Slide 7</div>
+                <div class="swiper-slide">Slide 8</div>
+                <div class="swiper-slide">Slide 9</div>
+                <div class="swiper-slide">Slide 10</div>
+              </div>
+              <!-- Add Pagination -->
+              <div class="swiper-pagination"></div>
+            </div>
 			</form>
 		</div>
 
@@ -87,12 +103,17 @@
         
   
    </div>
-   
-
 
 
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
+ <script>
+    var swiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+  </script>
 
       
        
