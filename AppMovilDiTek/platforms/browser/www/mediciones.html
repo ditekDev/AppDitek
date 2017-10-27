@@ -15,6 +15,23 @@
         <link rel="stylesheet" type="text/css" href="css/elegirFuente.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
        
+        <script>
+            function decimales(dig){
+            temp=dig.value.split(".");
+            valor=temp.join("");
+            cuantos=valor.length;
+            if (cuantos>5){
+            dig.value=valor.slice(0,1)+"."+valor.slice(1);
+            }else{
+            dig.value=valor.slice(0,cuantos);
+            }
+            }
+            function enviar(pagina){
+            myApp.confirm('¿Está seguro que quiere abandonar esta página?','¡ALERTA!', function () {
+              location.href=pagina;
+          });
+          }
+            </script>
 
   
       
@@ -62,12 +79,12 @@
                             <hr style="width:70%;">
                           </div>
                             
-                          <div class="datosph">
+                          <div class="datosph" style="display:block;">
                             <label>PH</label>
                             <br/>
-                            <input type="tel" id="txtmuestra1" placeholder=" ''Muestra 1'' ">
-                            <input type="tel" id="txtmuestra2" placeholder=" ''Muestra 2'' ">
-                            <input type="tel" id="txtmuestra3" placeholder=" ''Muestra 3'' ">
+                            <input type="tel" id="txtmuestra1" placeholder=" ''Muestra 1'' "  onkeyup="decimales(this)" maxlength="6">
+                            <input type="tel" id="txtmuestra2" placeholder=" ''Muestra 2'' "  onkeyup="decimales(this)" maxlength="6">
+                            <input type="tel" id="txtmuestra3" placeholder=" ''Muestra 3'' "  onkeyup="decimales(this)" maxlength="6">
                           </div>
                         
                     </form>
