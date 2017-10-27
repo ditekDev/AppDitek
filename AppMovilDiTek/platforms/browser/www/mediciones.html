@@ -33,7 +33,7 @@
        </div>
      </div>
      <div class="subencabezado">
-       <label style="font-size: 22px;">CALIDAD DEL AGUA</label>
+       <label >CALIDAD DEL AGUA</label>
      </div>
    
      <div class="page-content infinite-scroll">
@@ -41,16 +41,47 @@
 			<form name="fuenteform">
           <div class="swiper-container">
               <div class="swiper-wrapper">
-                  <div class="swiper-slide" id="cloro"   >CLORO RESIDUAL</div>
-                  <div class="swiper-slide" id="ph"  >PH</div>
+                  <div class="swiper-slide" id="cloro" style="height: 95%;">
+                    <form name="cloroform">
+                        <div style="color:black; font-size:22px; text-align: center; font-style: italic;">
+                            <p  name="fuente" id="fuente">"Punto de muestra"</p>
+                            <hr style="width:70%;">
+                          </div>
+                            
+                        <div class="datoscloro">
+                          <label>Cloro Residual</label>
+                          <input type="tel" id="txtCloro" placeholder=" ''Valor de cloro en la muestra'' ">
+                        </div>
+                        
+                    </form>
+                  </div>
+                  <div class="swiper-slide" id="ph" style="height: 95%;" >
+                    <form name="phform">
+                        <div style="color:black; font-size:22px; text-align: center; font-style: italic;">
+                            <p  name="fuente" id="fuente">"Punto de muestra"</p>
+                            <hr style="width:70%;">
+                          </div>
+                            
+                          <div class="datosph">
+                            <label>PH</label>
+                            <br/>
+                            <input type="tel" id="txtmuestra1" placeholder=" ''Muestra 1'' ">
+                            <input type="tel" id="txtmuestra2" placeholder=" ''Muestra 2'' ">
+                            <input type="tel" id="txtmuestra3" placeholder=" ''Muestra 3'' ">
+                          </div>
+                        
+                    </form>
+                  </div>
                   <div class="swiper-slide" id="temperatura" >TEMPERATURA</div>
                   <div class="swiper-slide" id="turbidez" >TURBIDEZ</div>
                   <div class="swiper-slide" id="olorysabor" >OLOR Y SABOR</div>
                   <div class="swiper-slide" id="guardar" >GUARDAR</div>
-              </div>           
+              </div>   
+              <div class="swiper-pagination"></div>         
+              </div>
       </form>
-      <div  style="margin-top:52%;"></div>
-       <div class="swiper-pagination"></div> 
+     
+       
     
   </div>
      </div>
