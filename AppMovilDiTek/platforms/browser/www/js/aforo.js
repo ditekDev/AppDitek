@@ -54,6 +54,7 @@ function insertarAforo(){
 };
 
 function crearTablaaforo() {
+     //borrarTablaFuentes();
     this.db.transaction(
         function(tx) {
             var sql ='CREATE TABLE IF NOT EXISTS aforo (volumen, fuente)';
@@ -107,7 +108,7 @@ $.ajax({
 function sincroFuentes(){
     var con = localStorage.getItem("conexion");
     if (con=="1") {
-        borrarTablaFuentes();
+       
         crearTablaFuentes();
         lee_jsonFuentes();
         crearTablaTiempos();
@@ -155,6 +156,7 @@ function insertarNube(){
                         
                         if(respuestaServer.validacion == "ok"){
                              /// si la validacion es correcta
+                             localStorage.setItem("idregistro",respuestaServer.registro)
                             borrarTablaaforo();
                             location.href="cronometro.html";
                           
