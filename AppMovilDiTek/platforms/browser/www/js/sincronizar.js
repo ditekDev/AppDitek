@@ -1,35 +1,176 @@
-function sincronizar(){
-    var con = localStorage.getItem("conexion");
-    this.db= openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
-    if (con=="1") {
-        db.transaction(function (tx) {
-        	tx.executeSql('SELECT volumen,fuente FROM aforo', [], function (tx, results) {
-                var len = results.rows.length;
-                if(len>0)
-                {
-                    var v=results.rows.item(0)['volumen'];
-                    var fu=results.rows.item(0)['fuente'];
-                    archivo = "http://grupoditek.com/php/insertar.php?jsoncallback=?"
-                    $.getJSON( archivo, { volumen: v, fuente: fu })
-                    .done(function(respuestaServer) {
-                        
-                        alert(respuestaServer.mensaje );
-                        
-                        if(respuestaServer.validacion == "ok"){
-                             /// si la validacion es correcta, muestra la pantalla "home"
-                            borrarTabla();
-                          
-                        }else{
-                          /// ejecutar una conducta cuando la validacion falla
-                          myapp.alert("Error insertando datos");
-                        }
-                  
-                    })
+var self = this;
+var db;
+this.db= openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+
+
+
+function borrarTablaaforo(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS aforo');
+        },
+        this.txErrorHandler,
+    );
+};
+
+function insertarAforo(){
+    var db = openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+    db.transaction(
+        function(tx) {
+           
+            var sql ="INSERT OR REPLACE INTO aforo (volumen,fuente) VALUES (?, ?)";
+            var vol=document.getElementsByName("volumen")[0].value;	
+            var f=localStorage.getItem("fuenteID")
+            var params = [vol,f];
+            tx.executeSql(sql, params);
+            
+        },
+        this.txErrorHandler,
+    
+    );
+};
+
+
+
+
+function borrarTablaFuentes(){
+this.db.transaction(
+    function(tx) {
+        tx.executeSql('DROP TABLE IF EXISTS fuentes');
+    },
+    this.txErrorHandler,
+);
+};
+
+function lee_jsonFuentes() {
+
+$.ajax({
+    dataType: 'json',
+    url: 'http://grupoditek.com/php/getFuentes.php',
+    success: function(datos) {
+        var db = openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+        db.transaction(
+            function(tx) {
+                var l = datos.length;
+                var sql =
+                    "INSERT OR REPLACE INTO fuentes (id,nombre) VALUES (?, ?)";
+    
+                var e;
+                for (var i = 0; i < l; i++) {
+                    e = datos[i];
+                   
+                    var params = [e.id, e.nombre];
+                    tx.executeSql(sql, params);
                 }
-        }, null);
-        });
+             
+            },
+            this.txErrorHandler,
         
-    }else{
-        myapp.alert("No hay conexión a internet");
+        );
+    },
+    error: function() { myApp.alert('No se obtuvo conexión con el servidor', 'ERROR!!!'); }
+});     
+} ;
+
+function sincro(){
+    var con = localStorage.getItem("conexion");
+    if (con=="1") {
+
+        lee_jsonFuentes();
+        lee_jsonAbonados();
+        lee_jsonMedidores();
     }
-}
+    //NUMERO DE VECES DE MEDICIONES
+    localStorage.setItem("mediciones", 3);
+ 
+};
+
+
+
+
+
+function borrarTablaMedidores(){
+this.db.transaction(
+    function(tx) {
+        tx.executeSql('DROP TABLE IF EXISTS medidores');
+    },
+    this.txErrorHandler,
+);
+};
+
+function lee_jsonMedidores() {
+
+$.ajax({
+    dataType: 'json',
+    url: 'http://grupoditek.com/php/getMedidores.php',
+    success: function(datos) {
+        var db = openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+        db.transaction(
+            function(tx) {
+                var l = datos.length;
+                var sql =
+                    "INSERT OR REPLACE INTO medidores (id_abonado,numero_medidor) VALUES (?, ?)";
+    
+                var e;
+                for (var i = 0; i < l; i++) {
+                    e = datos[i];
+                   
+                    var params = [e.id_abonado, e.numero_medidor];
+                    tx.executeSql(sql, params);
+                }
+             
+            },
+            this.txErrorHandler,
+        
+        );
+    },
+    error: function() { myapp.alert('No se conecto al servidor. Intente de nuevo','ERROR!!!'); }
+});     
+} ;
+
+
+
+
+
+
+
+
+function borrarTablaAbonados(){
+this.db.transaction(
+    function(tx) {
+        tx.executeSql('DROP TABLE IF EXISTS abonados');
+    },
+    this.txErrorHandler,
+);
+};
+
+function lee_jsonAbonados() {
+
+$.ajax({
+    dataType: 'json',
+    url: 'http://grupoditek.com/php/getAbonados.php',
+    success: function(datos) {
+        var db = openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+        db.transaction(
+            function(tx) {
+                var l = datos.length;
+                var sql =
+                    "INSERT OR REPLACE INTO abonados (nombre,direccion,id_abonado) VALUES (?, ?, ?)";
+    
+                var e;
+                for (var i = 0; i < l; i++) {
+                    e = datos[i];
+                   
+                    var params = [e.nombre,e.direccion,e.id_abonado];
+                    tx.executeSql(sql, params);
+                }
+             
+            },
+            this.txErrorHandler,
+        
+        );
+    },
+    error: function() { myapp.alert('No se conecto al servidor. Intente de nuevo','ERROR!!!'); }
+});     
+} ;
+
