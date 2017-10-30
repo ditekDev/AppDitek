@@ -14,3 +14,15 @@ body{
 .item-title{
     font-size: 20px;
 }
+
+#tanque {
+    width: 70%;
+    height: 40px;
+    font-size: 28px; 
+}
+
+#people {
+    width: 70%;
+    height: 40px;
+    font-size: 28px; 
+}

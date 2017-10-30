@@ -10,3 +10,68 @@
   margin:20px;
   font-size:21px;
 }
+
+.datoscloro{
+  margin-top: 25%;
+  text-align: center;
+}
+
+.datoscloro2{
+  margin-top: 45%;
+  text-align: center;
+}
+
+.datosph{
+  margin-top: 10%;
+  text-align: center;
+  height: 100%;
+}
+
+.datostemp{
+  margin-top: 10%;
+  text-align: center;
+  height: 100%;
+}
+
+.datostur{
+  margin-top: 10%;
+  text-align: center;
+  height: 100%;
+}
+.datosolysab{
+  margin-top: 10%;
+  text-align: center;
+  height: 100%;
+}
+
+.guardar{
+  margin-top: 40%;
+  text-align: center;
+  height: 100%;
+}
+
+#txtCloro{
+  width: 80%;
+  font-size: 20px;
+  border-radius: 20px;
+  margin-top: 6%;
+  text-align: center;
+}
+
+input[type="tel"] {
+  width: 50%;
+  font-size: 20px;
+  border-radius: 20px;
+  display: block;
+  margin: .5em auto;
+  text-align: center;
+}
+
+select{
+  width: 70%;
+  font-size: 20px;
+  border-radius: 20px;
+  display: block;
+  margin: .5em auto;
+}
+

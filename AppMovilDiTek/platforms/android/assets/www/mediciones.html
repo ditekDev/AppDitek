@@ -15,12 +15,32 @@
         <link rel="stylesheet" type="text/css" href="css/elegirFuente.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
        
+        <script>
+
+            function decimales(dig){
+
+            temp=dig.value.split(".");
+            valor=temp.join("");
+            cuantos=valor.length;
+            if (cuantos>5){
+            dig.value=valor.slice(0,1)+"."+valor.slice(1);
+            }else{
+            dig.value=valor.slice(0,cuantos);
+            }
+            }
+          
+            function enviar(pagina){
+            myApp.confirm('¿Está seguro que quiere abandonar esta página?','¡ALERTA!', function () {
+              location.href=pagina;
+          });
+          }
+            </script>
 
   
       
 </head>
 
-<body >
+<body onload="fuente();">
   
  <!-- Views -->
  <div class="views">
@@ -35,22 +55,98 @@
      <div class="subencabezado">
        <label >CALIDAD DEL AGUA</label>
      </div>
-   
+     <div style="color:black; font-size:22px; text-align: center; font-style: italic;">
+      <p  name="fuente" id="fuente">"Punto de muestra"</p>
+      <hr style="width:70%;">
+    </div>
      <div class="page-content infinite-scroll">
 			
 			<form name="fuenteform">
           <div class="swiper-container">
               <div class="swiper-wrapper">
-                  <div class="swiper-slide" id="cloro"   >CLORO RESIDUAL</div>
-                  <div class="swiper-slide" id="ph"  >PH</div>
-                  <div class="swiper-slide" id="temperatura" >TEMPERATURA</div>
-                  <div class="swiper-slide" id="turbidez" >TURBIDEZ</div>
-                  <div class="swiper-slide" id="olorysabor" >OLOR Y SABOR</div>
-                  <div class="swiper-slide" id="guardar" >GUARDAR</div>
-              </div>           
+                  <div class="swiper-slide" id="cloro" style="height: 95%;">
+                    <form name="cloroform">
+                       
+                            
+                        <div class="datoscloro">
+                          <label>Cloro Residual</label>
+                          <input type="tel" id="txtCloro" placeholder=" ''Valor de cloro en la muestra'' ">
+                        </div>
+                        <div class="datoscloro2"></div>
+                        
+                    </form>
+                  </div>
+                  <div class="swiper-slide" id="ph" style="height: 95%;" >
+                    <form name="phform">      
+                          <div class="datosph">
+                            <label>PH</label>
+                            <br/>
+                            <input type="tel" id="txtph1" placeholder=" ''Medición 1'' "  onkeyup="decimales(this)" maxlength="6" minlength="6">
+                            <input type="tel" id="txph2" placeholder=" ''Medición 2'' "  onkeyup="decimales(this)" maxlength="6" minlength="6">
+                            <input type="tel" id="txtph3" placeholder=" ''Medición 3'' "  onkeyup="decimales(this)" maxlength="6" minlength="6">
+                          </div>
+                        
+                    </form>
+                  </div>
+                  <div class="swiper-slide" id="temperatura" >
+                    <form name="tempform">
+                        <div class="datostemp" style="display:block;">
+                          <label>Temperatura</label>
+                          <br/>
+                          <input type="tel" id="txttemp1" placeholder=" ''Medición 1'' "  onkeyup="" maxlength="">
+                          <input type="tel" id="txttemp2" placeholder=" ''Medición 2'' "  onkeyup="" maxlength="">
+                          <input type="tel" id="txttemp3" placeholder=" ''Medición 3'' "  onkeyup="" maxlength="">
+                        </div>
+                      
+                  </form>
+                  </div>
+                  <div class="swiper-slide" id="turbidez" >
+                    <form name="turbform">
+                        <div class="datostur" style="display:block;">
+                          <label>Turbidez</label>
+                          <br/>
+                          <input type="tel" id="txtturb1" placeholder=" ''Medición 1'' "  onkeyup="" maxlength="10">
+                          <input type="tel" id="txtturb2" placeholder=" ''Medición 2'' "  onkeyup="" maxlength="10">
+                          <input type="tel" id="txtturb3" placeholder=" ''Medición 3'' "  onkeyup="" maxlength="10">
+                        </div>
+                      
+                  </form>
+                  </div>
+                  <div class="swiper-slide" id="olorysabor" >
+                      <form name="olysabform">
+                          <div class="datosolysab" style="display:block;">
+                            <div><label>Olor</label>
+                              <br/>
+                              <select>
+                                  <option value="Aceptable">Aceptable</option>
+                                  <option value="No Aceptable">No Aceptable</option>
+                                </select>
+                            </div>
+                            <div><label>Sabor</label>
+                              <br/>
+                              <select>
+                                  <option value="Aceptable">Aceptable</option>
+                                  <option value="No Aceptable">No Aceptable</option>
+                                </select>
+                            </div>
+                          </div>
+                        
+                    </form>
+                  </div>
+                  <div class="swiper-slide" id="guardar" >
+                    <div class="guardar" style="display:block;">
+                      <form>
+                       <p><a onclick="" class="button button-fill color-gray" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Guardar</a></p>
+                      </form>
+                    </div>
+
+                  </div>
+              </div>   
+              <div class="swiper-pagination"></div>         
+              </div>
       </form>
-      <div  style="margin-top:52%;"></div>
-       <div class="swiper-pagination"></div> 
+     
+       
     
   </div>
      </div>
@@ -83,6 +179,15 @@
          spaceBetween: 100 // 100px between slides
        });
   </script>
+  
+   <script type="text/javascript">
+  function fuente(){
+    var fu = localStorage.getItem("fuenteCalidad");
+
+    document.getElementById("fuente").textContent=fu;
+  }
+</script>
+
    <script type="text/javascript" src="js/swiper.min.js"></script>
    <script type="text/javascript" src="js/swiper.js"></script>
    <script type="text/javascript" src="js/swiper.esm.js"></script>

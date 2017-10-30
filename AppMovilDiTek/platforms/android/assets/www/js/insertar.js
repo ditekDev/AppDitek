@@ -43,19 +43,19 @@ function insertarTiempos(){
     db.transaction(
         function(tx) {
            
-			var sql ="INSERT into tiempos (numero_tiempo, tiempo, id_fuente,fecha) values (?,?,?,?);";
-			var sql2="INSERT into tiempos (numero_tiempo, tiempo, id_fuente,fecha) values (?,?,?,?);";
-			var sql3="INSERT into tiempos (numero_tiempo, tiempo, id_fuente,fecha) values (?,?,?,?);";
-			var fu=localStorage.getItem("fuenteID");
+			var sql ="INSERT into tiempos (numero_tiempo, tiempo,fecha) values (?,?,?);";
+			var sql2="INSERT into tiempos (numero_tiempo, tiempo,fecha) values (?,?,?);";
+			var sql3="INSERT into tiempos (numero_tiempo, tiempo,fecha) values (?,?,?);";
+		
 			var t1=localStorage.getItem("tiempo1");
 			var t2=localStorage.getItem("tiempo2");
             var t3=localStorage.getItem("tiempo3");
             var f = new Date();
-            var params = ["1",t1,fu,f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()];
+            var params = ["1",t1,f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()];
 			tx.executeSql(sql, params);
-			var params2 = ["2",t2,fu,f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()];
+			var params2 = ["2",t2,f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()];
 			tx.executeSql(sql2, params2);
-			var params3 = ["3",t3,fu,f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()];
+			var params3 = ["3",t3,f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()];
             tx.executeSql(sql3, params3);
             
         },
@@ -73,20 +73,23 @@ function guardarTiempos() {
         db.transaction(function (tx) {
         	tx.executeSql('SELECT * FROM tiempos', [], function (tx, results) {
                 var len = results.rows.length;
+                
                 if(len>0)
                 {
                     for (var i = 0; i < len; i++) {
                         var numT=results.rows.item(i)['numero_tiempo'];
                         var T=results.rows.item(i)['tiempo'];
-                        var idf=results.rows.item(i)['id_fuente'];
+                        var idr= localStorage.getItem("idregistro");
                         var fech=results.rows.item(i)['fecha'];
+                    
                         archivo = "http://grupoditek.com/php/tiempos.php?jsoncallback=?"
-                        $.getJSON( archivo, { numero_tiempo: numT, tiempo: T, id_fuente: idf,fecha: fech })
+                        $.getJSON( archivo, { numero_tiempo: numT, tiempo: T, id_registro: idr,fecha: fech })
                         .done(function(respuestaServer) {
                             
                             if(respuestaServer.validacion == "ok"){
                                  /// si la validacion es correcta
                                 borrarTablaTiempos();
+                                localStorage.setItem("idregistro","");
                                 location.href="guardado.html";
                               
                             }else{

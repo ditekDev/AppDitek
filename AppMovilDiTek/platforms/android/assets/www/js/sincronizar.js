@@ -1,35 +1,144 @@
-function sincronizar(){
-    var con = localStorage.getItem("conexion");
-    this.db= openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
-    if (con=="1") {
-        db.transaction(function (tx) {
-        	tx.executeSql('SELECT volumen,fuente FROM aforo', [], function (tx, results) {
-                var len = results.rows.length;
-                if(len>0)
-                {
-                    var v=results.rows.item(0)['volumen'];
-                    var fu=results.rows.item(0)['fuente'];
-                    archivo = "http://grupoditek.com/php/insertar.php?jsoncallback=?"
-                    $.getJSON( archivo, { volumen: v, fuente: fu })
-                    .done(function(respuestaServer) {
-                        
-                        alert(respuestaServer.mensaje );
-                        
-                        if(respuestaServer.validacion == "ok"){
-                             /// si la validacion es correcta, muestra la pantalla "home"
-                            borrarTabla();
-                          
-                        }else{
-                          /// ejecutar una conducta cuando la validacion falla
-                          myapp.alert("Error insertando datos");
-                        }
-                  
-                    })
+var self = this;
+var db;
+this.db= openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+
+
+function lee_jsonFuentes() {
+
+$.ajax({
+    dataType: 'json',
+    url: 'http://grupoditek.com/php/getFuentes.php',
+    success: function(datos) {
+        var db = openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+        db.transaction(
+            function(tx) {
+                var l = datos.length;
+                var sql =
+                    "INSERT OR REPLACE INTO fuentes (id,nombre) VALUES (?, ?)";
+    
+                var e;
+                for (var i = 0; i < l; i++) {
+                    e = datos[i];
+                   
+                    var params = [e.id, e.nombre];
+                    tx.executeSql(sql, params);
                 }
-        }, null);
-        });
+             
+            },
+            this.txErrorHandler,
         
-    }else{
-        myapp.alert("No hay conexión a internet");
+        );
+    },
+    error: function() { myApp.alert('No se obtuvo conexión con el servidor', 'ERROR!!!'); }
+});     
+} ;
+
+function sincro(){
+    var con = localStorage.getItem("conexion");
+    if (con=="1") {
+
+        lee_jsonFuentes();
+        lee_jsonAbonados();
+        lee_jsonMedidores();
+        lee_jsonTanques();
     }
-}
+    //NUMERO DE VECES DE MEDICIONES
+    localStorage.setItem("mediciones", 3);
+ 
+};
+
+ 
+
+function lee_jsonMedidores() {
+
+$.ajax({
+    dataType: 'json',
+    url: 'http://grupoditek.com/php/getMedidores.php',
+    success: function(datos) {
+        var db = openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+        db.transaction(
+            function(tx) {
+                var l = datos.length;
+                var sql =
+                    "INSERT OR REPLACE INTO medidores (id_abonado,numero_medidor) VALUES (?, ?)";
+    
+                var e;
+                for (var i = 0; i < l; i++) {
+                    e = datos[i];
+                   
+                    var params = [e.id_abonado, e.numero_medidor];
+                    tx.executeSql(sql, params);
+                }
+             
+            },
+            this.txErrorHandler,
+        
+        );
+    },
+    error: function() { myapp.alert('No se conecto al servidor. Intente de nuevo','ERROR!!!'); }
+});     
+} ;
+
+
+
+function lee_jsonAbonados() {
+
+$.ajax({
+    dataType: 'json',
+    url: 'http://grupoditek.com/php/getAbonados.php',
+    success: function(datos) {
+        var db = openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+        db.transaction(
+            function(tx) {
+                var l = datos.length;
+                var sql =
+                    "INSERT OR REPLACE INTO abonados (nombre,direccion,id_abonado) VALUES (?, ?, ?)";
+    
+                var e;
+                for (var i = 0; i < l; i++) {
+                    e = datos[i];
+                   
+                    var params = [e.nombre,e.direccion,e.id_abonado];
+                    tx.executeSql(sql, params);
+                }
+             
+            },
+            this.txErrorHandler,
+        
+        );
+    },
+    error: function() { myapp.alert('No se conecto al servidor. Intente de nuevo','ERROR!!!'); }
+});     
+} ;
+
+
+function lee_jsonTanques() {
+    
+    $.ajax({
+        dataType: 'json',
+        url: 'http://grupoditek.com/php/getTanques.php',
+        success: function(datos) {
+            var db = openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+            db.transaction(
+                function(tx) {
+                    var l = datos.length;
+                    var sql =
+                        "INSERT OR REPLACE INTO tanques (id_tanque_almacenamiento,nombre) VALUES (?, ?)";
+        
+                    var e;
+                    for (var i = 0; i < l; i++) {
+                        e = datos[i];
+                       
+                        var params = [e.id_tanque_almacenamiento,e.nombre];
+                        tx.executeSql(sql, params);
+                    }
+                 
+                },
+                this.txErrorHandler,
+            
+            );
+        },
+        error: function() { myapp.alert('No se conecto al servidor. Intente de nuevo','ERROR!!!'); }
+    });     
+} ;
+    

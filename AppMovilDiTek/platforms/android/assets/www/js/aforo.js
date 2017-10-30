@@ -3,30 +3,6 @@ var db;
 this.db= openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
 
 
-
-
-function crearTablaTiempos() {
-    this.db.transaction(
-        function(tx) {
-            var sql ='CREATE TABLE IF NOT EXISTS tiempos (numero_tiempo, tiempo, id_fuente,fecha)';
-            tx.executeSql(sql);
-        },
-        this.txErrorHandler,
-          
-    );
-};
-
-function crearTablaFuentes() {
-this.db.transaction(
-    function(tx) {
-        var sql ='CREATE TABLE IF NOT EXISTS fuentes (id unique, nombre)';
-        tx.executeSql(sql);
-    },
-    this.txErrorHandler,
-      
-);
-};
-
 function borrarTablaaforo(){
     this.db.transaction(
         function(tx) {
@@ -37,7 +13,7 @@ function borrarTablaaforo(){
 };
 
 function insertarAforo(){
-    var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
+    var db = openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
     db.transaction(
         function(tx) {
            
@@ -53,70 +29,19 @@ function insertarAforo(){
     );
 };
 
+
+
 function crearTablaaforo() {
-    this.db.transaction(
-        function(tx) {
-            var sql ='CREATE TABLE IF NOT EXISTS aforo (volumen, fuente)';
-            tx.executeSql(sql);
-        },
-        this.txErrorHandler,
-          
-    );
+    //borrarTablaFuentes();
+   this.db.transaction(
+       function(tx) {
+           var sql ='CREATE TABLE IF NOT EXISTS aforo (volumen, fuente)';
+           tx.executeSql(sql);
+       },
+       this.txErrorHandler,
+         
+   );
 };
-
-
-function borrarTablaFuentes(){
-this.db.transaction(
-    function(tx) {
-        tx.executeSql('DROP TABLE IF EXISTS fuentes');
-    },
-    this.txErrorHandler,
-);
-};
-
-function lee_jsonFuentes() {
-
-$.ajax({
-    dataType: 'json',
-    url: 'http://grupoditek.com/php/getFuentes.php',
-    success: function(datos) {
-        var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
-        db.transaction(
-            function(tx) {
-                var l = datos.length;
-                var sql =
-                    "INSERT OR REPLACE INTO fuentes (id,nombre) VALUES (?, ?)";
-    
-                var e;
-                for (var i = 0; i < l; i++) {
-                    e = datos[i];
-                   
-                    var params = [e.id, e.nombre];
-                    tx.executeSql(sql, params);
-                }
-             
-            },
-            this.txErrorHandler,
-        
-        );
-    },
-    error: function() { myApp.alert('No se obtuvo conexión con el servidor', 'ERROR!!!'); }
-});     
-} ;
-
-function sincroFuentes(){
-    var con = localStorage.getItem("conexion");
-    if (con=="1") {
-        borrarTablaFuentes();
-        crearTablaFuentes();
-        lee_jsonFuentes();
-        crearTablaTiempos();
-    }
-    //NUMERO DE VECES DE MEDICIONES
-    localStorage.setItem("mediciones", 3);
- 
-};
-
 
 function obtFuente(){
     var select = $("#people option:selected").text();
@@ -155,6 +80,7 @@ function insertarNube(){
                         
                         if(respuestaServer.validacion == "ok"){
                              /// si la validacion es correcta
+                             localStorage.setItem("idregistro",respuestaServer.registro)
                             borrarTablaaforo();
                             location.href="cronometro.html";
                           
