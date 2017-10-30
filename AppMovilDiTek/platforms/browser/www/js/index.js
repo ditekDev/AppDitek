@@ -117,6 +117,7 @@ function sincronizar() {
     crearTablaFuentes();
     crearTablaTiempos();
     crearTablaMedidores();
+    crearTablaTanques();
 }
 
   
@@ -158,6 +159,16 @@ function crearTablaMedidores() {
     this.db.transaction(
         function(tx) {
             var sql ='CREATE TABLE IF NOT EXISTS medidores (id_abonado, numero_medidor)';
+            tx.executeSql(sql);
+        },
+        this.txErrorHandler,
+          
+    );
+};
+function crearTablaTanques() {
+    this.db.transaction(
+        function(tx) {
+            var sql ='CREATE TABLE IF NOT EXISTS tanques (id_tanque_almacenamiento, nombre)';
             tx.executeSql(sql);
         },
         this.txErrorHandler,

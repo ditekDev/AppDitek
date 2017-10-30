@@ -79,6 +79,7 @@ function sincro(){
         lee_jsonFuentes();
         lee_jsonAbonados();
         lee_jsonMedidores();
+        lee_jsonTanques();
     }
     //NUMERO DE VECES DE MEDICIONES
     localStorage.setItem("mediciones", 3);
@@ -97,6 +98,16 @@ this.db.transaction(
     this.txErrorHandler,
 );
 };
+
+function borrarTablaTanques(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS tanques');
+        },
+        this.txErrorHandler,
+    );
+    };
+    
 
 function lee_jsonMedidores() {
 
@@ -127,11 +138,6 @@ $.ajax({
     error: function() { myapp.alert('No se conecto al servidor. Intente de nuevo','ERROR!!!'); }
 });     
 } ;
-
-
-
-
-
 
 
 
@@ -174,3 +180,34 @@ $.ajax({
 });     
 } ;
 
+
+function lee_jsonTanques() {
+    
+    $.ajax({
+        dataType: 'json',
+        url: 'http://grupoditek.com/php/getTanques.php',
+        success: function(datos) {
+            var db = openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+            db.transaction(
+                function(tx) {
+                    var l = datos.length;
+                    var sql =
+                        "INSERT OR REPLACE INTO tanques (id_tanque_almacenamiento,nombre) VALUES (?, ?, ?)";
+        
+                    var e;
+                    for (var i = 0; i < l; i++) {
+                        e = datos[i];
+                       
+                        var params = [e.id_tanque_almacenamiento,e.nombre];
+                        tx.executeSql(sql, params);
+                    }
+                 
+                },
+                this.txErrorHandler,
+            
+            );
+        },
+        error: function() { myapp.alert('No se conecto al servidor. Intente de nuevo','ERROR!!!'); }
+    });     
+    } ;
+    

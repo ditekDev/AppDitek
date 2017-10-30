@@ -3,20 +3,6 @@ var db;
 this.db= openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
 
 
-
-function crearTablaTanques() {
-     //borrarTablaFuentes();
-    this.db.transaction(
-        function(tx) {
-            var sql ='CREATE TABLE IF NOT EXISTS tanques (id, nombre)';
-            tx.executeSql(sql);
-        },
-        this.txErrorHandler,
-          
-    );
-};
-
-
 function borrarTablaTanques(){
 this.db.transaction(
     function(tx) {
@@ -26,35 +12,7 @@ this.db.transaction(
 );
 };
 
-function lee_jsonTanques() {
 
-$.ajax({
-    dataType: 'json',
-    url: 'http://grupoditek.com/php/getTanques.php',
-    success: function(datos) {
-        var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
-        db.transaction(
-            function(tx) {
-                var l = datos.length;
-                var sql =
-                    "INSERT OR REPLACE INTO tanques (id,nombre) VALUES (?, ?)";
-    
-                var e;
-                for (var i = 0; i < l; i++) {
-                    e = datos[i];
-                   
-                    var params = [e.id, e.nombre];
-                    tx.executeSql(sql, params);
-                }
-             
-            },
-            this.txErrorHandler,
-        
-        );
-    },
-    error: function() { myApp.alert('No se obtuvo conexión con el servidor', 'ERROR!!!'); }
-});     
-} ;
 
 function sincroTanques(){
     var con = localStorage.getItem("conexion");
@@ -64,8 +22,6 @@ function sincroTanques(){
         lee_jsonTanques();
     }
     //NUMERO DE VECES DE MEDICIONES
-
- 
 };
 
 
