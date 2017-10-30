@@ -16,12 +16,8 @@
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
        
         <script>
-            function decimales(dig){
 
-              var input = document.aforoform.getElementById('txtmuestra1', 'txtmuestra2', 'txtmuestra3');
-        if(input.value.length < 6) {
-              myapp.alert('El valor ingresado es incorrecto', '¡ERROR!');
-        }
+            function decimales(dig){
 
             temp=dig.value.split(".");
             valor=temp.join("");
@@ -32,6 +28,7 @@
             dig.value=valor.slice(0,cuantos);
             }
             }
+          
             function enviar(pagina){
             myApp.confirm('¿Está seguro que quiere abandonar esta página?','¡ALERTA!', function () {
               location.href=pagina;
@@ -84,9 +81,9 @@
                           <div class="datosph">
                             <label>PH</label>
                             <br/>
-                            <input type="tel" id="txtmuestra1" placeholder=" ''Medición 1'' "  onkeyup="decimales(this)" maxlength="6">
-                            <input type="tel" id="txtmuestra2" placeholder=" ''Medición 2'' "  onkeyup="decimales(this)" maxlength="6">
-                            <input type="tel" id="txtmuestra3" placeholder=" ''Medición 3'' "  onkeyup="decimales(this)" maxlength="6">
+                            <input type="tel" id="txtph1" placeholder=" ''Medición 1'' "  onkeyup="decimales(this)" maxlength="6" minlength="6">
+                            <input type="tel" id="txph2" placeholder=" ''Medición 2'' "  onkeyup="decimales(this)" maxlength="6" minlength="6">
+                            <input type="tel" id="txtph3" placeholder=" ''Medición 3'' "  onkeyup="decimales(this)" maxlength="6" minlength="6">
                           </div>
                         
                     </form>
@@ -96,9 +93,9 @@
                         <div class="datostemp" style="display:block;">
                           <label>Temperatura</label>
                           <br/>
-                          <input type="tel" id="txtmuestra1" placeholder=" ''Medición 1'' "  onkeyup="" maxlength="">
-                          <input type="tel" id="txtmuestra2" placeholder=" ''Medición 2'' "  onkeyup="" maxlength="">
-                          <input type="tel" id="txtmuestra3" placeholder=" ''Medición 3'' "  onkeyup="" maxlength="">
+                          <input type="tel" id="txttemp1" placeholder=" ''Medición 1'' "  onkeyup="" maxlength="">
+                          <input type="tel" id="txttemp2" placeholder=" ''Medición 2'' "  onkeyup="" maxlength="">
+                          <input type="tel" id="txttemp3" placeholder=" ''Medición 3'' "  onkeyup="" maxlength="">
                         </div>
                       
                   </form>
@@ -108,9 +105,9 @@
                         <div class="datostur" style="display:block;">
                           <label>Turbidez</label>
                           <br/>
-                          <input type="tel" id="txtmuestra1" placeholder=" ''Medición 1'' "  onkeyup="" maxlength="">
-                          <input type="tel" id="txtmuestra2" placeholder=" ''Medición 2'' "  onkeyup="" maxlength="">
-                          <input type="tel" id="txtmuestra3" placeholder=" ''Medición 3'' "  onkeyup="" maxlength="">
+                          <input type="tel" id="txtturb1" placeholder=" ''Medición 1'' "  onkeyup="" maxlength="10">
+                          <input type="tel" id="txtturb2" placeholder=" ''Medición 2'' "  onkeyup="" maxlength="10">
+                          <input type="tel" id="txtturb3" placeholder=" ''Medición 3'' "  onkeyup="" maxlength="10">
                         </div>
                       
                   </form>

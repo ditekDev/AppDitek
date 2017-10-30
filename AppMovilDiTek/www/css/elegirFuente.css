@@ -43,28 +43,11 @@
   width: 80%;
   font-size: 20px;
   border-radius: 20px;
-  margin-top: 8%;
+  margin-top: 6%;
   text-align: center;
 }
 
-#txtmuestra1{
-  width: 50%;
-  font-size: 20px;
-  border-radius: 20px;
-  display: block;
-  margin: .5em auto;
-  text-align: center;
-  
-}
-#txtmuestra2{
-  width: 50%;
-  font-size: 20px;
-  border-radius: 20px;
-  display: block;
-  margin: .5em auto;
-  text-align: center;
-}
-#txtmuestra3{
+input[type="tel"] {
   width: 50%;
   font-size: 20px;
   border-radius: 20px;
