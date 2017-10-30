@@ -176,17 +176,7 @@ function crearTablaTanques() {
     );
 };
 
-function crearTablaaforo() {
-    //borrarTablaFuentes();
-   this.db.transaction(
-       function(tx) {
-           var sql ='CREATE TABLE IF NOT EXISTS aforo (volumen, fuente)';
-           tx.executeSql(sql);
-       },
-       this.txErrorHandler,
-         
-   );
-};
+
 
 function crearTablaFuentes() {
     this.db.transaction(

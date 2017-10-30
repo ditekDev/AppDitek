@@ -3,6 +3,46 @@ var db;
 this.db= openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
 
 
+function borrarTablaaforo(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS aforo');
+        },
+        this.txErrorHandler,
+    );
+};
+
+function insertarAforo(){
+    var db = openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+    db.transaction(
+        function(tx) {
+           
+            var sql ="INSERT OR REPLACE INTO aforo (volumen,fuente) VALUES (?, ?)";
+            var vol=document.getElementsByName("volumen")[0].value;	
+            var f=localStorage.getItem("fuenteID")
+            var params = [vol,f];
+            tx.executeSql(sql, params);
+            
+        },
+        this.txErrorHandler,
+    
+    );
+};
+
+
+
+function crearTablaaforo() {
+    //borrarTablaFuentes();
+   this.db.transaction(
+       function(tx) {
+           var sql ='CREATE TABLE IF NOT EXISTS aforo (volumen, fuente)';
+           tx.executeSql(sql);
+       },
+       this.txErrorHandler,
+         
+   );
+};
+
 function obtFuente(){
     var select = $("#people option:selected").text();
     var idf = $("#people option:selected").val();
