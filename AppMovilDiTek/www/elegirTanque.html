@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,7 @@
         <link rel="stylesheet" type="text/css" href="css/aforo.css">
         <link rel="stylesheet" type="text/css" href="css/calidadAgua.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="js/aforo.js"></script>
+        <script type="text/javascript" src="js/elegirTanque.js"></script>
         
         <script>
          function enviar(pagina){
@@ -23,7 +24,7 @@
 
 </head>
 
-<body>
+<body onload="llenarlista();">
     
  
  <div class="statusbar-overlay"></div>
@@ -79,53 +80,14 @@
      <div class="page-content infinite-scroll">
 			
 			<form name="calAguaform">
-                    <div class="list-block">
-                            <ul>
-                              <li>
-                                <!-- Additional "smart-select" class -->
-                                <a href="elegirFuente.html" class="item-link smart-select">
-                               
-                                  <div class="item-content">
-                                    <div class="item-inner">
-                                      <!-- Select label -->
-                                      <div class="item-title">Fuentes</div>
-                                      <!-- Selected value, not required -->
-                                      <div class="item-after"></div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-                              <li>
-                                  <a href="elegirTanque.html" class="item-link smart-select">   
-                                      <div class="item-content">
-                                        <div class="item-inner">
-                                          <!-- Select label -->
-                                          <div class="item-title">Tanques</div>
-                                          <!-- Selected value, not required -->
-                                          <div class="item-after"></div>
-                                        </div>
-                                      </div>
-                                    </a>
-                                  </li>
-                                  <li>
-                                        <a href="#" class="item-link smart-select">   
-                                            <div class="item-content">
-                                              <div class="item-inner">
-                                                <!-- Select label -->
-                                                <div class="item-title">Red de Distribución</div>
-                                                <!-- Selected value, not required -->
-                                                <div class="item-after"></div>
-                                              </div>
-                                            </div>
-                                          </a>
-                                        </li>
-                            </ul>
-                          </div>   
+                
+                    <div class="selector-tanque" style="text-align: center; margin-top: 40%;">
+                      <select id="tanque" style=" background-color: gray" ></select>
+                    </div>
+                    <p><a onclick="elegirTanque();" class="button button-fill color-gray" style="width: 70%;;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
+                    
 			</form>
 		</div>
-
-   
-
      </div>
         
   
@@ -136,6 +98,7 @@
 
  <script type="text/javascript" src="js/framework7.min.js"></script>
  <script type="text/javascript" src="js/my-app.js"></script>
+
 
       
        
