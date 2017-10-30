@@ -88,7 +88,8 @@ function guardarTiempos() {
                             
                             if(respuestaServer.validacion == "ok"){
                                  /// si la validacion es correcta
-                                //borrarTablaTiempos();
+                                borrarTablaTiempos();
+                                localStorage.setItem("idregistro","");
                                 location.href="guardado.html";
                               
                             }else{

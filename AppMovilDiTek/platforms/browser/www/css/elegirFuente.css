@@ -16,9 +16,27 @@
   text-align: center;
 }
 
+.datoscloro2{
+  margin-top: 35%;
+  text-align: center;
+}
+
 .datosph{
   margin-top: 10%;
   text-align: center;
+  height: 100%;
+}
+
+.datostemp{
+  margin-top: 10%;
+  text-align: center;
+  height: 100%;
+}
+
+.datostur{
+  margin-top: 10%;
+  text-align: center;
+  height: 100%;
 }
 
 #txtCloro{
@@ -30,22 +48,27 @@
 }
 
 #txtmuestra1{
-  width: 60%;
+  width: 50%;
   font-size: 20px;
   border-radius: 20px;
+  display: block;
+  margin: .5em auto;
   text-align: center;
+  
 }
 #txtmuestra2{
-  width: 60%;
+  width: 50%;
   font-size: 20px;
   border-radius: 20px;
-  margin-top: -5%;
+  display: block;
+  margin: .5em auto;
   text-align: center;
 }
 #txtmuestra3{
-  width: 60%;
+  width: 50%;
   font-size: 20px;
   border-radius: 20px;
-  margin-top: -5%;
+  display: block;
+  margin: .5em auto;
   text-align: center;
 }
