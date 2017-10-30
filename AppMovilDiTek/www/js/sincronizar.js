@@ -3,17 +3,6 @@ var db;
 this.db= openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
 
 
-
-
-function borrarTablaFuentes(){
-this.db.transaction(
-    function(tx) {
-        tx.executeSql('DROP TABLE IF EXISTS fuentes');
-    },
-    this.txErrorHandler,
-);
-};
-
 function lee_jsonFuentes() {
 
 $.ajax({
@@ -58,28 +47,7 @@ function sincro(){
  
 };
 
-
-
-
-
-function borrarTablaMedidores(){
-this.db.transaction(
-    function(tx) {
-        tx.executeSql('DROP TABLE IF EXISTS medidores');
-    },
-    this.txErrorHandler,
-);
-};
-
-function borrarTablaTanques(){
-    this.db.transaction(
-        function(tx) {
-            tx.executeSql('DROP TABLE IF EXISTS tanques');
-        },
-        this.txErrorHandler,
-    );
-    };
-    
+ 
 
 function lee_jsonMedidores() {
 
@@ -112,15 +80,6 @@ $.ajax({
 } ;
 
 
-
-function borrarTablaAbonados(){
-this.db.transaction(
-    function(tx) {
-        tx.executeSql('DROP TABLE IF EXISTS abonados');
-    },
-    this.txErrorHandler,
-);
-};
 
 function lee_jsonAbonados() {
 
@@ -164,7 +123,7 @@ function lee_jsonTanques() {
                 function(tx) {
                     var l = datos.length;
                     var sql =
-                        "INSERT OR REPLACE INTO tanques (id_tanque_almacenamiento,nombre) VALUES (?, ?, ?)";
+                        "INSERT OR REPLACE INTO tanques (id_tanque_almacenamiento,nombre) VALUES (?, ?)";
         
                     var e;
                     for (var i = 0; i < l; i++) {
@@ -181,5 +140,5 @@ function lee_jsonTanques() {
         },
         error: function() { myapp.alert('No se conecto al servidor. Intente de nuevo','ERROR!!!'); }
     });     
-    } ;
+} ;
     

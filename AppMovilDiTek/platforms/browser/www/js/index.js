@@ -27,6 +27,7 @@ var app = {
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
         
+        
     },
 
     // deviceready Event Handler
@@ -35,7 +36,7 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
-       
+        
     },
 
     // Update DOM on a Received Event
@@ -43,7 +44,7 @@ var app = {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
-
+        
         console.log('Received Event: ' + id);
         checkConnection();
     }
@@ -108,19 +109,52 @@ $.ajax({
 });     
 }   
 
+function borrarTablaFuentes(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS fuentes');
+        },
+        this.txErrorHandler,
+    );
+};
 
 function sincronizar() {
-    borrarTabla();
-    crearTabla();
-    lee_json();
+    //borrarTabla();
     crearTablaAbonados();
     crearTablaFuentes();
     crearTablaTiempos();
     crearTablaMedidores();
     crearTablaTanques();
+    crearTabla();
+    lee_json();
 }
 
-  
+function borrarTablaMedidores(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS medidores');
+        },
+        this.txErrorHandler,
+    );
+};
+    
+function borrarTablaTanques(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS tanques');
+        },
+        this.txErrorHandler,
+    );
+};
+
+function borrarTablaAbonados(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS abonados');
+        },
+        this.txErrorHandler,
+    );
+};
 
 function checkConnection(){
     var networkState = navigator.connection.type;
@@ -136,6 +170,11 @@ function checkConnection(){
 
     var online=states[networkState];
     if (online=="1") {
+        
+        borrarTablaFuentes();
+        borrarTablaAbonados();
+        borrarTablaMedidores();
+        borrarTablaTanques();
         sincronizar();
 
     }
