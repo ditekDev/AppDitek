@@ -60,16 +60,17 @@ function sincro(){
         setTimeout(borrarTablaMedidores, 1000);
         setTimeout(borrarTablaTanques, 1000);
 
-        setTimeout(crearTablaFuentes, 1200);
-        setTimeout(crearTablaAbonados, 1200);
-        setTimeout(crearTablaMedidores, 1200);
-        setTimeout(crearTablaTanques, 1200);
-        setTimeout(crearTablaTiempos, 1200);
+        setTimeout(crearTablaFuentes, 2000);
+        setTimeout(crearTablaAbonados, 2000);
+        setTimeout(crearTablaMedidores, 2000);
+        setTimeout(crearTablaTanques, 2000);
+        setTimeout(crearTablaTiempos, 2000);
 
-        setTimeout(lee_jsonFuentes, 1300);
-        setTimeout(lee_jsonAbonados, 1300);
-        setTimeout(lee_jsonMedidores, 1300);
-        setTimeout(lee_jsonTanques, 1300);
+        setTimeout(lee_jsonFuentes, 3000);
+        setTimeout(lee_jsonAbonados, 3000);
+        setTimeout(lee_jsonMedidores, 3000);
+        setTimeout(lee_jsonTanques, 3000);
+ 
     }
     //NUMERO DE VECES DE MEDICIONES
     localStorage.setItem("mediciones", 3);
