@@ -16,7 +16,7 @@ function lecturaMed(){
         var db = openDatabase("diteklocal", "1.0", "db", 200000);
         var msg;
         var num=document.getElementsByName("txtidentificacion")[0].value;		
-    
+        localStorage.setItem("medidor",num)
         if (num.value=="") {
             
         }else{
@@ -32,13 +32,26 @@ function lecturaMed(){
             }, null);
             });
         
-        }
-    
-     
     }
+}
     
     
+function obtenerDatos() {
+    var db = openDatabase("diteklocal", "1.0", "db", 200000);
+    var me=localStorage.getItem("medidor");
+
+    	db.transaction(function (tx) {
+        	tx.executeSql('SELECT nombre, direccion FROM abonados INNER JOIN medidores ON abonados.id_abonado=medidores.id_abonado  WHERE medidores.numero_medidor="'+me+'"', [], function (tx, results) {
+       		var len = results.rows.length, i;
+            var v=results.rows.item(0)['nombre'];
+            alert(v);
+       		if (len===1) {
+                 
+        	}else{
+                myApp.alert("Error al obtener datos de abonado")
+        	}  
+        }, null);
+        });
     
-
-
-
+    
+}

@@ -32,10 +32,8 @@ function lecturaMed(){
             }, null);
             });
         
-        }
-    
-     
     }
+}
     
     
     

@@ -2,6 +2,25 @@ var self = this;
 var db;
 this.db= openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
 
+function crearTablaFuentes() {
+    this.db.transaction(
+        function(tx) {
+            var sql ='CREATE TABLE IF NOT EXISTS fuentes (id unique, nombre)';
+            tx.executeSql(sql);
+        },
+        this.txErrorHandler,
+          
+    );
+};
+
+function borrarTablaFuentes(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS fuentes');
+        },
+        this.txErrorHandler,
+    );
+};
 
 function lee_jsonFuentes() {
 
@@ -36,17 +55,104 @@ $.ajax({
 function sincro(){
     var con = localStorage.getItem("conexion");
     if (con=="1") {
+        setTimeout(borrarTablaFuentes, 1000);
+        setTimeout(borrarTablaAbonados, 1000);
+        setTimeout(borrarTablaMedidores, 1000);
+        setTimeout(borrarTablaTanques, 1000);
 
-        lee_jsonFuentes();
-        lee_jsonAbonados();
-        lee_jsonMedidores();
-        lee_jsonTanques();
+        setTimeout(crearTablaFuentes, 1200);
+        setTimeout(crearTablaAbonados, 1200);
+        setTimeout(crearTablaMedidores, 1200);
+        setTimeout(crearTablaTanques, 1200);
+        setTimeout(crearTablaTiempos, 1200);
+
+        setTimeout(lee_jsonFuentes, 1300);
+        setTimeout(lee_jsonAbonados, 1300);
+        setTimeout(lee_jsonMedidores, 1300);
+        setTimeout(lee_jsonTanques, 1300);
     }
     //NUMERO DE VECES DE MEDICIONES
     localStorage.setItem("mediciones", 3);
  
 };
 
+
+
+function borrarTablaMedidores(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS medidores');
+        },
+        this.txErrorHandler,
+    );
+};
+    
+function borrarTablaTanques(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS tanques');
+        },
+        this.txErrorHandler,
+    );
+};
+
+function borrarTablaAbonados(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS abonados');
+        },
+        this.txErrorHandler,
+    );
+};
+
+
+   
+
+function crearTablaAbonados() {
+    this.db.transaction(
+        function(tx) {
+            var sql ='CREATE TABLE IF NOT EXISTS abonados (nombre,direccion,id_abonado)';
+            tx.executeSql(sql);
+        },
+        this.txErrorHandler,
+          
+    );
+};
+
+function crearTablaMedidores() {
+    this.db.transaction(
+        function(tx) {
+            var sql ='CREATE TABLE IF NOT EXISTS medidores (id_abonado, numero_medidor)';
+            tx.executeSql(sql);
+        },
+        this.txErrorHandler,
+          
+    );
+};
+function crearTablaTanques() {
+    this.db.transaction(
+        function(tx) {
+            var sql ='CREATE TABLE IF NOT EXISTS tanques (id_tanque_almacenamiento, nombre)';
+            tx.executeSql(sql);
+        },
+        this.txErrorHandler,
+          
+    );
+};
+
+
+
+function crearTablaTiempos() {
+        this.db.transaction(
+            function(tx) {
+                var sql ='CREATE TABLE IF NOT EXISTS tiempos (numero_tiempo, tiempo, id_fuente,fecha)';
+                tx.executeSql(sql);
+            },
+            this.txErrorHandler,
+              
+        );
+};
+    
  
 
 function lee_jsonMedidores() {
