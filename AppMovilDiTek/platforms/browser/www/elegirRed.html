@@ -10,22 +10,24 @@
         <link rel="stylesheet" href="css/framework7.material.colors.min.css">    
    
         <link rel="stylesheet" type="text/css" href="css/aforo.css">
-        <link rel="stylesheet" type="text/css" href="css/alertas.css">
+        <link rel="stylesheet" type="text/css" href="css/lectura.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-    <title>Sincronización</title>
+        <script type="text/javascript" src="js/lectura.js"></script>
+    <title>Red de Distribución</title>
     <!-- Función para llenar el select desde la base de datos -->
    
    
    <script language="javascript" type="text/javascript">
     function enviar(pagina){
-    document.aforoform.action = pagina;
-    document.aforoform.submit();
+      myApp.confirm('¿Estas seguro que quieres abandonar esta pagina?','¡ALERTA!', function () {
+        location.href=pagina;
+    });
     }
   </script>
   
 </head>
 
-<body >
+<body>
     
  <!-- Status bar overlay for full screen mode (PhoneGap) -->
  <div class="statusbar-overlay"></div>
@@ -34,36 +36,30 @@
  <!-- Left panel with reveal effect-->
  <div class="panel panel-right panel-reveal" style="background: rgba(0,0,0,0.8);">
    <div class="content-block ">
-         <div class="list-block">
-          <ul>
-            <li class="item-content">
-                <div class="item-inner">
-                  <div class="item-title"><a href="">Aforos</a></div>
-                </div>
-            </li>
-            <li class="item-content">
-                <div class="item-inner">
-                  <div class="item-title"><a href="">Lectura de medidores</a></div>
-                </div>
-           </li>
-           <li class="item-content">
-              <div class="item-inner">
-                <div class="item-title"><a href="">Calidad del agua</a></div>
-              </div>
-          </li>
-           <li class="item-content">
+    <div class="list-block">
+      <ul>
+         <li class="item-content">
              <div class="item-inner">
-               <div class="item-title"><a href="">Cerrar Sesión</a></div>
+               <div class="item-title"><a onClick="enviar('./aforo.html')" >Aforos</a></div>
              </div>
-           </li>
-           <li class="item-content">
+         </li>
+         <li class="item-content">
              <div class="item-inner">
-               <div class="item-title"><a href="#" class="close-panel">Cerrar Menú</a></div>
+               <div class="item-title"><a onClick="enviar('./lectura.html')">Lectura de medidores</a></div>
              </div>
-           </li>
-         </ul>
-      </div>
-     
+        </li>
+        <li class="item-content">
+           <div class="item-inner">
+             <div class="item-title"><a onClick="enviar('./calidadAgua.html')">Calidad del agua</a></div>
+           </div>
+       </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <div class="item-title"><a onClick="enviar('./index.html')">Cerrar Sesión</a></div>
+          </div>
+        </li>
+      </ul>
+    </div>
      
    </div>
  </div>
@@ -81,18 +77,20 @@
        </div>
      </div>
      <div class="subencabezado">
-       <label style="font-size: 30px;">SINCRONIZACIÓN</label>
+       <label style="font-size: 30px;">CALIDAD DE AGUA</label>
      </div>
-     
-    <div class="containerSincro">
-		<div style="text-align: center;">
-            <label style=" font-weight: normal; font-size: 28px;">¿Desea <span style="color:orange">SINCRONIZAR</span> sus datos?</label>
-        </div>
-        <div class="botones" style="margin-top: 30%;" >
-            <a onclick="" class="button button-fill color-gray" style="width: 70px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 22px; float:left;">Sí</a>
-            <a onclick="" class="button button-fill color-gray" style="width: 70px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 22px;">No</a>
-        </div>
-    </div>
+   
+     <div class="container">
+			
+			<form name="lecturaform">
+                <p>Número de paja</p>
+                <input type="text" id="txtpaja" name="txtpaja" placeholder=" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''Número de paja'' " >
+                <p><a onclick="" class="button button-fill color-gray" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Listo</a></p>
+                
+			</form>
+		</div>
+
+   
 
      </div>
         

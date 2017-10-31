@@ -183,8 +183,14 @@
    <script type="text/javascript">
   function fuente(){
     var fu = localStorage.getItem("fuenteCalidad");
+    var tan= localStorage.getItem("tanque");
+    if (fu ==="") {
+      document.getElementById("fuente").textContent=tan;
+    }else{
+      document.getElementById("fuente").textContent=fu;
+    }
 
-    document.getElementById("fuente").textContent=fu;
+    
   }
 </script>
 
