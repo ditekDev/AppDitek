@@ -3,6 +3,7 @@ var db;
 this.db= openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
 
 function crearTablaFuentes() {
+    
     this.db.transaction(
         function(tx) {
             var sql ='CREATE TABLE IF NOT EXISTS fuentes (id unique, nombre)';
@@ -11,6 +12,7 @@ function crearTablaFuentes() {
         this.txErrorHandler,
           
     );
+  
 };
 
 function borrarTablaFuentes(){
@@ -20,9 +22,11 @@ function borrarTablaFuentes(){
         },
         this.txErrorHandler,
     );
+    
 };
 
 function lee_jsonFuentes() {
+    
 
 $.ajax({
     dataType: 'json',
@@ -49,28 +53,52 @@ $.ajax({
         );
     },
     error: function() { myApp.alert('No se obtuvo conexión con el servidor', 'ERROR!!!'); }
-});     
+});    
 } ;
 
+function ejecutarEnOrden(callbackPaso1, callbackPaso2, callbackPaso3){
+    //ejecuta primero
+    callbackPaso1();
+
+    //ejecuta segundo
+    var miVar = setTimeout(function(){ callbackPaso2() }, 500);
+    //más código de la función principal
+    var miVar2 = setTimeout(function(){ callbackPaso3() }, 1000);
+    
+
+   
+};
+
+function borrarTablas() {
+    borrarTablaFuentes();
+    borrarTablaAbonados();
+    borrarTablaMedidores();
+    borrarTablaTanques();
+    console.log("borrar tablas");
+}
+
+function crearTablas() {
+    crearTablaFuentes();
+    crearTablaAbonados();
+    crearTablaMedidores();
+    crearTablaTanques();
+    crearTablaTiempos();
+    console.log("crear");
+}
+
+function llenarTablas() {
+    lee_jsonFuentes();
+    lee_jsonAbonados();
+    lee_jsonMedidores();
+    lee_jsonTanques();
+    console.log("llenar"); 
+}
 function sincro(){
     var con = localStorage.getItem("conexion");
     if (con=="1") {
-        setTimeout(borrarTablaFuentes, 1000);
-        setTimeout(borrarTablaAbonados, 1000);
-        setTimeout(borrarTablaMedidores, 1000);
-        setTimeout(borrarTablaTanques, 1000);
+        
+        ejecutarEnOrden(borrarTablas,crearTablas,llenarTablas);
 
-        setTimeout(crearTablaFuentes, 2000);
-        setTimeout(crearTablaAbonados, 2000);
-        setTimeout(crearTablaMedidores, 2000);
-        setTimeout(crearTablaTanques, 2000);
-        setTimeout(crearTablaTiempos, 2000);
-
-        setTimeout(lee_jsonFuentes, 3000);
-        setTimeout(lee_jsonAbonados, 3000);
-        setTimeout(lee_jsonMedidores, 3000);
-        setTimeout(lee_jsonTanques, 3000);
- 
     }
     //NUMERO DE VECES DE MEDICIONES
     localStorage.setItem("mediciones", 3);
