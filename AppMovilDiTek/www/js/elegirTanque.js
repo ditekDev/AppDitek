@@ -3,27 +3,6 @@ var db;
 this.db= openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
 
 
-function borrarTablaTanques(){
-this.db.transaction(
-    function(tx) {
-        tx.executeSql('DROP TABLE IF EXISTS tanques');
-    },
-    this.txErrorHandler,
-);
-};
-
-
-
-function sincroTanques(){
-    var con = localStorage.getItem("conexion");
-    if (con=="1") {
-        borrarTablaTanques();
-        crearTablaTanques();
-        lee_jsonTanques();
-    }
-    //NUMERO DE VECES DE MEDICIONES
-};
-
 
 function obtTanque(){
     var select = $("#tanque option:selected").text();
