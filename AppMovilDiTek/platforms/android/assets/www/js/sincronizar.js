@@ -2,8 +2,31 @@ var self = this;
 var db;
 this.db= openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
 
+function crearTablaFuentes() {
+    
+    this.db.transaction(
+        function(tx) {
+            var sql ='CREATE TABLE IF NOT EXISTS fuentes (id unique, nombre)';
+            tx.executeSql(sql);
+        },
+        this.txErrorHandler,
+          
+    );
+  
+};
+
+function borrarTablaFuentes(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS fuentes');
+        },
+        this.txErrorHandler,
+    );
+    
+};
 
 function lee_jsonFuentes() {
+    
 
 $.ajax({
     dataType: 'json',
@@ -30,23 +53,135 @@ $.ajax({
         );
     },
     error: function() { myApp.alert('No se obtuvo conexión con el servidor', 'ERROR!!!'); }
-});     
+});    
 } ;
 
+function ejecutarEnOrden(callbackPaso1, callbackPaso2, callbackPaso3){
+    //ejecuta primero
+    callbackPaso1();
+
+    //ejecuta segundo
+    var miVar = setTimeout(function(){ callbackPaso2() }, 500);
+    //más código de la función principal
+    var miVar2 = setTimeout(function(){ callbackPaso3() }, 1000);
+    
+
+   
+};
+
+function borrarTablas() {
+    borrarTablaFuentes();
+    borrarTablaAbonados();
+    borrarTablaMedidores();
+    borrarTablaTanques();
+    console.log("borrar tablas");
+}
+
+function crearTablas() {
+    crearTablaFuentes();
+    crearTablaAbonados();
+    crearTablaMedidores();
+    crearTablaTanques();
+    crearTablaTiempos();
+    console.log("crear");
+}
+
+function llenarTablas() {
+    lee_jsonFuentes();
+    lee_jsonAbonados();
+    lee_jsonMedidores();
+    lee_jsonTanques();
+    console.log("llenar"); 
+}
 function sincro(){
     var con = localStorage.getItem("conexion");
     if (con=="1") {
+        
+        ejecutarEnOrden(borrarTablas,crearTablas,llenarTablas);
 
-        lee_jsonFuentes();
-        lee_jsonAbonados();
-        lee_jsonMedidores();
-        lee_jsonTanques();
     }
     //NUMERO DE VECES DE MEDICIONES
     localStorage.setItem("mediciones", 3);
  
 };
 
+
+
+function borrarTablaMedidores(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS medidores');
+        },
+        this.txErrorHandler,
+    );
+};
+    
+function borrarTablaTanques(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS tanques');
+        },
+        this.txErrorHandler,
+    );
+};
+
+function borrarTablaAbonados(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS abonados');
+        },
+        this.txErrorHandler,
+    );
+};
+
+
+   
+
+function crearTablaAbonados() {
+    this.db.transaction(
+        function(tx) {
+            var sql ='CREATE TABLE IF NOT EXISTS abonados (nombre,direccion,id_abonado)';
+            tx.executeSql(sql);
+        },
+        this.txErrorHandler,
+          
+    );
+};
+
+function crearTablaMedidores() {
+    this.db.transaction(
+        function(tx) {
+            var sql ='CREATE TABLE IF NOT EXISTS medidores (id_abonado, numero_medidor)';
+            tx.executeSql(sql);
+        },
+        this.txErrorHandler,
+          
+    );
+};
+function crearTablaTanques() {
+    this.db.transaction(
+        function(tx) {
+            var sql ='CREATE TABLE IF NOT EXISTS tanques (id_tanque_almacenamiento, nombre)';
+            tx.executeSql(sql);
+        },
+        this.txErrorHandler,
+          
+    );
+};
+
+
+
+function crearTablaTiempos() {
+        this.db.transaction(
+            function(tx) {
+                var sql ='CREATE TABLE IF NOT EXISTS tiempos (numero_tiempo, tiempo, id_fuente,fecha)';
+                tx.executeSql(sql);
+            },
+            this.txErrorHandler,
+              
+        );
+};
+    
  
 
 function lee_jsonMedidores() {

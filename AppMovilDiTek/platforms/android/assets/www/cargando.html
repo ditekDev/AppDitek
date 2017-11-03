@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">      
     <link rel="stylesheet" type="text/css" href="css/menu.css"> 
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/JavaScript" src="js/sincronizar.js"></script>
     <title>cargando</title>
     <style type="text/css">
         #load{
@@ -34,10 +36,10 @@
     </style>
         <script>
                 function r() { location.href="./menu.html" } 
-                setTimeout ("r()", 3000);
+                setTimeout ("r()", 4000);
         </script>
 </head>
-<body>
+<body onload="sincro();">
 
         <div id="load">
                 <div class="blink">

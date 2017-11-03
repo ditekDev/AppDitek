@@ -1,5 +1,5 @@
 function inicio(){
-    var db = openDatabase("diteklocal", "1.0", "db", 200000);
+    var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
     var msg;
     var usu=document.getElementsByName("txtuser")[0].value;	
     var pass=document.getElementsByName("txtpassword")[0].value;	

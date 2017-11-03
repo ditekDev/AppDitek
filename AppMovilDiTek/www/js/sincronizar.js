@@ -1,6 +1,6 @@
 var self = this;
 var db;
-this.db= openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+this.db= openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
 
 function crearTablaFuentes() {
     
@@ -8,8 +8,7 @@ function crearTablaFuentes() {
         function(tx) {
             var sql ='CREATE TABLE IF NOT EXISTS fuentes (id unique, nombre)';
             tx.executeSql(sql);
-        },
-        this.txErrorHandler,
+        }
           
     );
   
@@ -19,8 +18,7 @@ function borrarTablaFuentes(){
     this.db.transaction(
         function(tx) {
             tx.executeSql('DROP TABLE IF EXISTS fuentes');
-        },
-        this.txErrorHandler,
+        }
     );
     
 };
@@ -32,7 +30,7 @@ $.ajax({
     dataType: 'json',
     url: 'http://grupoditek.com/php/getFuentes.php',
     success: function(datos) {
-        var db = openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+        var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
         db.transaction(
             function(tx) {
                 var l = datos.length;
@@ -47,8 +45,7 @@ $.ajax({
                     tx.executeSql(sql, params);
                 }
              
-            },
-            this.txErrorHandler,
+            }
         
         );
     },
@@ -111,8 +108,7 @@ function borrarTablaMedidores(){
     this.db.transaction(
         function(tx) {
             tx.executeSql('DROP TABLE IF EXISTS medidores');
-        },
-        this.txErrorHandler,
+        }
     );
 };
     
@@ -120,8 +116,7 @@ function borrarTablaTanques(){
     this.db.transaction(
         function(tx) {
             tx.executeSql('DROP TABLE IF EXISTS tanques');
-        },
-        this.txErrorHandler,
+        }
     );
 };
 
@@ -129,8 +124,7 @@ function borrarTablaAbonados(){
     this.db.transaction(
         function(tx) {
             tx.executeSql('DROP TABLE IF EXISTS abonados');
-        },
-        this.txErrorHandler,
+        }
     );
 };
 
@@ -142,8 +136,7 @@ function crearTablaAbonados() {
         function(tx) {
             var sql ='CREATE TABLE IF NOT EXISTS abonados (nombre,direccion,id_abonado)';
             tx.executeSql(sql);
-        },
-        this.txErrorHandler,
+        }
           
     );
 };
@@ -153,8 +146,7 @@ function crearTablaMedidores() {
         function(tx) {
             var sql ='CREATE TABLE IF NOT EXISTS medidores (id_abonado, numero_medidor)';
             tx.executeSql(sql);
-        },
-        this.txErrorHandler,
+        }
           
     );
 };
@@ -163,8 +155,7 @@ function crearTablaTanques() {
         function(tx) {
             var sql ='CREATE TABLE IF NOT EXISTS tanques (id_tanque_almacenamiento, nombre)';
             tx.executeSql(sql);
-        },
-        this.txErrorHandler,
+        }
           
     );
 };
@@ -176,9 +167,7 @@ function crearTablaTiempos() {
             function(tx) {
                 var sql ='CREATE TABLE IF NOT EXISTS tiempos (numero_tiempo, tiempo, id_fuente,fecha)';
                 tx.executeSql(sql);
-            },
-            this.txErrorHandler,
-              
+            }   
         );
 };
     
@@ -190,7 +179,7 @@ $.ajax({
     dataType: 'json',
     url: 'http://grupoditek.com/php/getMedidores.php',
     success: function(datos) {
-        var db = openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+        var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
         db.transaction(
             function(tx) {
                 var l = datos.length;
@@ -205,8 +194,7 @@ $.ajax({
                     tx.executeSql(sql, params);
                 }
              
-            },
-            this.txErrorHandler,
+            }
         
         );
     },
@@ -222,7 +210,7 @@ $.ajax({
     dataType: 'json',
     url: 'http://grupoditek.com/php/getAbonados.php',
     success: function(datos) {
-        var db = openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+        var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
         db.transaction(
             function(tx) {
                 var l = datos.length;
@@ -237,8 +225,7 @@ $.ajax({
                     tx.executeSql(sql, params);
                 }
              
-            },
-            this.txErrorHandler,
+            }
         
         );
     },
@@ -253,7 +240,7 @@ function lee_jsonTanques() {
         dataType: 'json',
         url: 'http://grupoditek.com/php/getTanques.php',
         success: function(datos) {
-            var db = openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+            var db =openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
             db.transaction(
                 function(tx) {
                     var l = datos.length;
@@ -268,8 +255,7 @@ function lee_jsonTanques() {
                         tx.executeSql(sql, params);
                     }
                  
-                },
-                this.txErrorHandler,
+                }
             
             );
         },
