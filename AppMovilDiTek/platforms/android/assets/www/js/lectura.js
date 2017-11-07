@@ -24,17 +24,91 @@ function lecturaMed(){
                 tx.executeSql('SELECT * FROM medidores WHERE numero_medidor="'+num+'"', [], function (tx, results) {
                    var len = results.rows.length, i;
                
-                   if (len===1) {
+                    if (len===1) {
                       window.location.href = "datosLectura.html";
-                }else{
-                    myApp.alert('El dato no pertenece a ninguno de nuestros abonados', 'ERROR!!');
-                }  
+                    }else{
+                      myApp.alert('El dato no pertenece a ninguno de nuestros abonados', 'ERROR!!');
+                    }  
             }, null);
             });
         
     }
 }
+
+
+function insertarRegistroLectura(){
+    var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
+    db.transaction(
+        function(tx) {
+           
+            var sql ="INSERT OR REPLACE INTO RegistroLectura (lectura,medidor) VALUES (?, ?)";
+            var numL=document.getElementsByName("lecNum")[0].value;	
+            var med=localStorage.getItem("medidor")
+            var params = [numL,med];
+            tx.executeSql(sql, params);
+            
+        }
     
+    );
+};
+    
+
+function insertarNube(){
+    var con = localStorage.getItem("conexion");
+    if (con=="1") {
+        db.transaction(function (tx) {
+        	tx.executeSql('SELECT lectura,medidor FROM RegistroLectura', [], function (tx, results) {
+                var len = results.rows.length;
+                if(len>0)
+                {
+                    var v=results.rows.item(0)['lectura'];
+                    var m=results.rows.item(0)['medidor'];
+                    archivo = "http://grupoditek.com/php/insertarRegistroLectura.php?jsoncallback=?"
+                    $.getJSON( archivo, { lectura: v, medidor: m })
+                    .done(function(respuestaServer) {
+                        
+                        if(respuestaServer.validacion == "ok"){
+                             /// si la validacion es correcta
+                            borrarRegistroLectura();
+                            location.href="menu.html";
+                          
+                        }else{
+                          /// ejecutar una conducta cuando la validacion falla
+                          myapp.alert("Error insertando datos");
+                        }
+                  
+                    })
+                }
+        }, null);
+        });
+        
+    }
+
+ 
+};
+
+function registrarLectura(){
+ 
+   
+    if(document.datoslecturaform.lecNum.value == "") {
+      myApp.alert('Inserte medición', 'ERROR!!');
+      return 0;
+    }else{
+        insertarRegistroLectura();
+        insertarNube();
+        borrarRegistroLectura();
+    }
+    
+}
+
+function borrarRegistroLectura(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS RegistroLectura');
+        }
+    );
+    
+};
     
 function obtenerDatos() {
     var db = openDatabase("diteklocal", "1.0", "db", 200000);

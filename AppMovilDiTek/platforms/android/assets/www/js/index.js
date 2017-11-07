@@ -61,8 +61,7 @@ this.db.transaction(
     function(tx) {
         var sql ='CREATE TABLE IF NOT EXISTS usuarios (id unique, usuario,contrasena)';
         tx.executeSql(sql);
-    },
-    this.txErrorHandler,
+    }
       
 );
 };
@@ -72,8 +71,7 @@ function borrarTabla(){
 this.db.transaction(
     function(tx) {
         tx.executeSql('DROP TABLE IF EXISTS usuarios');
-    },
-    this.txErrorHandler,
+    }
 );
 };
 
@@ -100,9 +98,7 @@ $.ajax({
                     tx.executeSql(sql, params);
                 }
              
-            },
-            this.txErrorHandler,
-        
+            }
         );
     },
     error: function() { myApp.alert('No se obtuvo conexión con el servidor', 'ERROR!!!'); }
