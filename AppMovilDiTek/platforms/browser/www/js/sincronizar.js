@@ -80,6 +80,7 @@ function crearTablas() {
     crearTablaMedidores();
     crearTablaTanques();
     crearTablaTiempos();
+    crearRegistroLectura()
     console.log("crear");
 }
 
@@ -263,3 +264,18 @@ function lee_jsonTanques() {
     });     
 } ;
     
+
+
+function crearRegistroLectura() {
+    
+    this.db.transaction(
+        function(tx) {
+            var sql ='CREATE TABLE IF NOT EXISTS RegistroLectura (id,lectura,medidor,promedio)';
+            tx.executeSql(sql);
+        }
+          
+    );
+  
+};
+
+
