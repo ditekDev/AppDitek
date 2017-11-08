@@ -96,7 +96,6 @@ function registrarLectura(){
     }else{
         insertarRegistroLectura();
         insertarNube();
-        borrarRegistroLectura();
     }
     
 }
