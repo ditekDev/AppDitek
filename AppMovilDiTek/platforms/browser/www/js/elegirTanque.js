@@ -29,7 +29,7 @@ function llenarlista() {
           
         for (var i = 0; i < len; i++) {
          
-           $select.append('<option value="' +results.rows.item(i).id+ '">' +results.rows.item(i).nombre + '</option>');
+           $select.append('<option value="' +results.rows.item(i).id_tanque_almacenamiento+ '">' +results.rows.item(i).nombre + '</option>');
           
         }
      
