@@ -2,7 +2,7 @@
 
 var self = this;
 var db;
-this.db= openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+this.db= openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
 
 
 function lecturaMed(){
@@ -13,7 +13,7 @@ function lecturaMed(){
         return 0   ;
         }
     
-        var db = openDatabase("diteklocal", "1.0", "db", 200000);
+        var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
         var msg;
         var num=document.getElementsByName("txtidentificacion")[0].value;		
         localStorage.setItem("medidor",num)

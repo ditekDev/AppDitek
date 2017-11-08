@@ -182,5 +182,52 @@ function guardarMediciones() {
     if (localStorage.getItem("olorsabor")=="0") {
         insertarCalidadFuenteOlorSabor();
     }
+
+    insertarNubeCalidadFuente();
     
 }
+
+
+
+function insertarNubeCalidadFuente() {
+	var con = localStorage.getItem("conexion");
+    if (con=="1") {
+        db.transaction(function (tx) {
+        	tx.executeSql('SELECT * FROM CalidadFuente', [], function (tx, results) {
+                var len = results.rows.length;
+                
+                if(len>0)
+                {
+                    for (var i = 0; i < len; i++) {
+                       
+                        var fuen=results.rows.item(i)['idfuente'];
+                        var t=results.rows.item(i)['tipo'];
+                        var n=results.rows.item(i)['numero'];
+                        var v=results.rows.item(i)['valor'];
+                        var fech=results.rows.item(i)['fecha'];
+                    
+                        archivo = "http://grupoditek.com/php/insertarCalidadFuente.php?jsoncallback=?"
+                        $.getJSON( archivo, { fuente: fuen, tipo: t ,numero: n , valor: v , fecha:fech })
+                        .done(function(respuestaServer) {
+                            
+                            if(respuestaServer.validacion == "ok"){
+                                 /// si la validacion es correcta
+                                 borrarTablaCalidadFuente();
+                                location.href="menu.html";
+                              
+                            }else{
+                              /// ejecutar una conducta cuando la validacion falla
+                              myapp.alert("Error insertando datos");
+                            }
+                      
+                        })
+                        
+                    }
+
+                }
+        }, null);
+        });
+        
+    }
+	
+};
