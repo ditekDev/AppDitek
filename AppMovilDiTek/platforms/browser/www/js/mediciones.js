@@ -20,6 +20,15 @@ function borrarTablaCalidadTanque(){
     );
 };
 
+//RED
+function borrarTablaCalidadRed(){
+    this.db.transaction(
+        function(tx) {
+            tx.executeSql('DROP TABLE IF EXISTS CalidadRed');
+        }
+    );
+};
+
 //FUENTE
 function insertarCalidadFuenteCloro(){
     var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
@@ -64,6 +73,29 @@ function insertarCalidadTanqueCloro(){
     );
 };
 
+//RED
+function insertarCalidadRedCloro(){
+    var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
+    db.transaction(
+        function(tx) {
+           
+            var sql ="INSERT OR REPLACE INTO CalidadRed (numero_paja, tipo, numero, valor, fecha) VALUES (?, ?, ?, ?, ?)";
+            var val=document.getElementsByName("txtCloro")[0].value;	
+            var fu=localStorage.getItem("pajaID")
+            var t="cloro";
+           // alert("ins"+fu+t+val);
+            var f = new Date();
+            var fec=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+            var params = [fu,t,1,val,fec];
+            
+            tx.executeSql(sql, params);
+            
+        }
+    
+    );
+};
+
+
 //FUENTE
 function insertarCalidadFuentePH(){
     var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
@@ -102,6 +134,35 @@ function insertarCalidadTanquePH(){
             var sql ="INSERT OR REPLACE INTO CalidadTanque (idtanque, tipo, numero, valor, fecha) VALUES (?, ?, ?, ?, ?)";
             var val=document.getElementsByName("txtph1")[0].value;	
             var fu=localStorage.getItem("tanqueID")
+            var t="ph";
+           // alert("ins"+fu+t+val);
+            var f = new Date();
+            var fec=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+            var params = [fu,t,1,val,fec];
+            tx.executeSql(sql, params);
+
+            var val2=document.getElementsByName("txph2")[0].value;
+            var params2 = [fu,t,2,val2,fec];
+            tx.executeSql(sql, params2);
+
+            var val3=document.getElementsByName("txtph3")[0].value;
+            var params3 = [fu,t,3,val3,fec];
+            tx.executeSql(sql, params3);
+            
+        }
+    
+    );
+};
+
+//RED
+function insertarCalidadFuentePH(){
+    var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
+    db.transaction(
+        function(tx) {
+           
+            var sql ="INSERT OR REPLACE INTO CalidadRed (numero_paja, tipo, numero, valor, fecha) VALUES (?, ?, ?, ?, ?)";
+            var val=document.getElementsByName("txtph1")[0].value;	
+            var fu=localStorage.getItem("pajaID")
             var t="ph";
            // alert("ins"+fu+t+val);
             var f = new Date();
@@ -180,6 +241,36 @@ function insertarCalidadTanqueTemperatura(){
     );
 };
 
+//RED
+function insertarCalidadTanqueTemperatura(){
+    var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
+    db.transaction(
+        function(tx) {
+           
+            var sql ="INSERT OR REPLACE INTO CalidadRed (numero_paja, tipo, numero, valor, fecha) VALUES (?, ?, ?, ?, ?)";
+            var val=document.getElementsByName("txttemp1")[0].value;	
+            var fu=localStorage.getItem("pajaID")
+            var t="temperatura";
+           // alert("ins"+fu+t+val);
+            var f = new Date();
+            var fec=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+            var params = [fu,t,1,val,fec];
+            tx.executeSql(sql, params);
+
+            var val2=document.getElementsByName("txttemp2")[0].value;
+            var params2 = [fu,t,2,val2,fec];
+            tx.executeSql(sql, params2);
+
+            var val3=document.getElementsByName("txttemp3")[0].value;
+            var params3 = [fu,t,3,val3,fec];
+            tx.executeSql(sql, params3);
+            
+        }
+    
+    );
+};
+
+
 //FUENTE
 function insertarCalidadFuenteTurbidez(){
     var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
@@ -238,6 +329,34 @@ function insertarCalidadTanqueTurbidez(){
     );
 };
 
+//RED
+function insertarCalidadFuenteTurbidez(){
+    var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
+    db.transaction(
+        function(tx) {
+           
+            var sql ="INSERT OR REPLACE INTO CalidadRed (numero_paja, tipo, numero, valor, fecha) VALUES (?, ?, ?, ?, ?)";
+            var val=document.getElementsByName("txtturb1")[0].value;	
+            var fu=localStorage.getItem("pajaID")
+            var t="turbidez";
+           // alert("ins"+fu+t+val);
+            var f = new Date();
+            var fec=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+            var params = [fu,t,1,val,fec];
+            tx.executeSql(sql, params);
+
+            var val2=document.getElementsByName("txtturb2")[0].value;
+            var params2 = [fu,t,2,val2,fec];
+            tx.executeSql(sql, params2);
+
+            var val3=document.getElementsByName("txtturb3")[0].value;
+            var params3 = [fu,t,3,val3,fec];
+            tx.executeSql(sql, params3);
+            
+        }
+    
+    );
+};
 
 //FUENTE
 function crearTablaCalidadFuente() {
@@ -252,10 +371,19 @@ function crearTablaCalidadFuente() {
 
 //TANQUE
 function crearTablaCalidadTanque() {
-    //borrarTablaFuentes();
    this.db.transaction(
        function(tx) {
            var sql ='CREATE TABLE IF NOT EXISTS CalidadTanque (idtanque, tipo, numero, valor, fecha)';
+           tx.executeSql(sql);
+       }  
+   );
+};
+
+//RED
+function crearTablaCalidadRed() {
+   this.db.transaction(
+       function(tx) {
+           var sql ='CREATE TABLE IF NOT EXISTS CalidadRed (numero_paja, tipo, numero, valor, fecha)';
            tx.executeSql(sql);
        }  
    );
@@ -319,15 +447,47 @@ function insertarCalidadTanqueOlorSabor(){
     );
 };
 
+//RED
+function insertarCalidadRedOlorSabor(){
+    var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
+    db.transaction(
+        function(tx) {
+           
+            var sql ="INSERT OR REPLACE INTO CalidadRed (numero_paja, tipo, numero, valor, fecha) VALUES (?, ?, ?, ?, ?)";
+           
+            var val = $("#olor option:selected").text();
+            var val2 = $("#sabor option:selected").text();	
+            var fu=localStorage.getItem("pajaID")
+            var t="olor";
+            var t2="sabor";
+           // alert("ins"+fu+t+val);
+            var f = new Date();
+            var fec=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+
+            var params = [fu,t,1,val,fec];
+            tx.executeSql(sql, params);
+
+            var params2 = [fu,t2,1,val2,fec];
+            tx.executeSql(sql, params2);
+
+            
+        }
+    
+    );
+};
+
+
 
 function cargarTabla() {
     borrarTablaCalidadFuente();
     borrarTablaCalidadTanque();
+    borrarTablaCalidadRed();
     crearTablaCalidadFuente();
     crearTablaCalidadTanque();
+    crearTablaCalidadRed();
 }
 
-//FUENTE
+//GUARDAR MEDICIONES FUENTE - TANQUE - RED
 function guardarMediciones() {
     if (localStorage.getItem("fuenteCalidad")=="") {
         if (localStorage.getItem("cloro")=="0") {
@@ -443,6 +603,50 @@ function insertarNubeCalidadTanque() {
                             if(respuestaServer.validacion == "ok"){
                                  /// si la validacion es correcta
                                  borrarTablaCalidadTanque();
+                                location.href="menu.html";
+                              
+                            }else{
+                              /// ejecutar una conducta cuando la validacion falla
+                              myapp.alert("Error insertando datos");
+                            }
+                      
+                        })
+                        
+                    }
+
+                }
+        }, null);
+        });
+        
+    }
+	
+};
+
+//RED
+function insertarNubeCalidadRed() {
+	var con = localStorage.getItem("conexion");
+    if (con=="1") {
+        db.transaction(function (tx) {
+        	tx.executeSql('SELECT * FROM CalidadRed', [], function (tx, results) {
+                var len = results.rows.length;
+                
+                if(len>0)
+                {
+                    for (var i = 0; i < len; i++) {
+                       
+                        var r=results.rows.item(i)['idred'];
+                        var t=results.rows.item(i)['tipo'];
+                        var n=results.rows.item(i)['numero'];
+                        var v=results.rows.item(i)['valor'];
+                        var fech=results.rows.item(i)['fecha'];
+                    
+                        archivo = "http://grupoditek.com/php/insertarCalidadRed.php?jsoncallback=?"
+                        $.getJSON( archivo, { red: r, tipo: t ,numero: n , valor: v , fecha:fech })
+                        .done(function(respuestaServer) {
+                            
+                            if(respuestaServer.validacion == "ok"){
+                                 /// si la validacion es correcta
+                                 borrarTablaCalidadRed();
                                 location.href="menu.html";
                               
                             }else{

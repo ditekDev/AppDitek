@@ -45,3 +45,4 @@ function elegirTanque(){
     location.href="seleccionMediciones.html";
     
 }
+

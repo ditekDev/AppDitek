@@ -36,6 +36,38 @@ function lecturaMed(){
 }
 
 
+function lecturaRed(){
+    
+            if(document.pajaform.txtpaja.value == "") {
+                myApp.alert('Inserte un número de paja', 'ERROR!!');
+    
+            return 0   ;
+            }
+        
+            var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
+            var msg;
+            var num=document.getElementsByName("txtpaja")[0].value;		
+            localStorage.setItem("numero_paja",num)
+            if (num.value=="") {
+                
+            }else{
+                db.transaction(function (tx) {
+                    tx.executeSql('SELECT * FROM medidores WHERE numero_paja="'+num+'"', [], function (tx, results) {
+                       var len = results.rows.length, i;
+                   
+                        if (len===1) {
+                          window.location.href = "seleccionMediciones.html";
+                        }else{
+                          myApp.alert('El dato no pertenece a ninguno de nuestros abonados', 'ERROR!!');
+                        }  
+                }, null);
+                });
+            
+        }
+    }
+    
+
+
 function insertarRegistroLectura(){
     var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
     db.transaction(
@@ -130,5 +162,12 @@ function obtenerDatos() {
         }, null);
         });
     
+    
+}
+
+function elegirRed(){
+    var paja = $("#paja").text();
+    localStorage.setItem("pajaID", paja);
+    location.href="seleccionMediciones.html";
     
 }
