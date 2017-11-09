@@ -191,7 +191,7 @@ $.ajax({
                 for (var i = 0; i < l; i++) {
                     e = datos[i];
                    
-                    var params = [e.id_abonado, e.numero_medidor];
+                    var params = [e.id_abonado, e.numero_medidor, e.numero_paja];
                     tx.executeSql(sql, params);
                 }
              
