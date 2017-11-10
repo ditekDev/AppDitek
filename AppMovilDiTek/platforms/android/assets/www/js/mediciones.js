@@ -81,28 +81,12 @@ function insertarCalidadRedCloro(){
            
             var sql ="INSERT OR REPLACE INTO CalidadRed (numero_paja, tipo, numero, valor, fecha) VALUES (?, ?, ?, ?, ?)";
             var val=document.getElementsByName("txtCloro")[0].value;	
-<<<<<<< HEAD
-<<<<<<< HEAD
             var paja=localStorage.getItem("pajaID")
-=======
-            var fu=localStorage.getItem("pajaID")
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
-            var fu=localStorage.getItem("pajaID")
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
             var t="cloro";
            // alert("ins"+fu+t+val);
             var f = new Date();
             var fec=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
-<<<<<<< HEAD
-<<<<<<< HEAD
             var params = [paja,t,1,val,fec];
-=======
-            var params = [fu,t,1,val,fec];
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
-            var params = [fu,t,1,val,fec];
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
             
             tx.executeSql(sql, params);
             
@@ -171,36 +155,18 @@ function insertarCalidadTanquePH(){
 };
 
 //RED
-<<<<<<< HEAD
-<<<<<<< HEAD
 function insertarCalidadRedPH(){
-=======
-function insertarCalidadFuentePH(){
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
-function insertarCalidadFuentePH(){
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
     var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
     db.transaction(
         function(tx) {
            
             var sql ="INSERT OR REPLACE INTO CalidadRed (numero_paja, tipo, numero, valor, fecha) VALUES (?, ?, ?, ?, ?)";
             var val=document.getElementsByName("txtph1")[0].value;	
-<<<<<<< HEAD
-<<<<<<< HEAD
             var paja=localStorage.getItem("pajaID")
-=======
-            var fu=localStorage.getItem("pajaID")
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
-            var fu=localStorage.getItem("pajaID")
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
             var t="ph";
            // alert("ins"+fu+t+val);
             var f = new Date();
             var fec=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
-<<<<<<< HEAD
-<<<<<<< HEAD
             var params = [paja,t,1,val,fec];
             tx.executeSql(sql, params);
 
@@ -210,22 +176,6 @@ function insertarCalidadFuentePH(){
 
             var val3=document.getElementsByName("txtph3")[0].value;
             var params3 = [paja,t,3,val3,fec];
-=======
-=======
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-            var params = [fu,t,1,val,fec];
-            tx.executeSql(sql, params);
-
-            var val2=document.getElementsByName("txph2")[0].value;
-            var params2 = [fu,t,2,val2,fec];
-            tx.executeSql(sql, params2);
-
-            var val3=document.getElementsByName("txtph3")[0].value;
-            var params3 = [fu,t,3,val3,fec];
-<<<<<<< HEAD
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
             tx.executeSql(sql, params3);
             
         }
@@ -292,36 +242,18 @@ function insertarCalidadTanqueTemperatura(){
 };
 
 //RED
-<<<<<<< HEAD
-<<<<<<< HEAD
 function insertarCalidadRedTemperatura(){
-=======
-function insertarCalidadTanqueTemperatura(){
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
-function insertarCalidadTanqueTemperatura(){
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
     var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
     db.transaction(
         function(tx) {
            
             var sql ="INSERT OR REPLACE INTO CalidadRed (numero_paja, tipo, numero, valor, fecha) VALUES (?, ?, ?, ?, ?)";
             var val=document.getElementsByName("txttemp1")[0].value;	
-<<<<<<< HEAD
-<<<<<<< HEAD
             var paja=localStorage.getItem("pajaID")
-=======
-            var fu=localStorage.getItem("pajaID")
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
-            var fu=localStorage.getItem("pajaID")
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
             var t="temperatura";
            // alert("ins"+fu+t+val);
             var f = new Date();
             var fec=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
-<<<<<<< HEAD
-<<<<<<< HEAD
             var params = [paja,t,1,val,fec];
             tx.executeSql(sql, params);
 
@@ -331,22 +263,6 @@ function insertarCalidadTanqueTemperatura(){
 
             var val3=document.getElementsByName("txttemp3")[0].value;
             var params3 = [paja,t,3,val3,fec];
-=======
-=======
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-            var params = [fu,t,1,val,fec];
-            tx.executeSql(sql, params);
-
-            var val2=document.getElementsByName("txttemp2")[0].value;
-            var params2 = [fu,t,2,val2,fec];
-            tx.executeSql(sql, params2);
-
-            var val3=document.getElementsByName("txttemp3")[0].value;
-            var params3 = [fu,t,3,val3,fec];
-<<<<<<< HEAD
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
             tx.executeSql(sql, params3);
             
         }
@@ -414,36 +330,18 @@ function insertarCalidadTanqueTurbidez(){
 };
 
 //RED
-<<<<<<< HEAD
-<<<<<<< HEAD
 function insertarCalidadRedTurbidez(){
-=======
-function insertarCalidadFuenteTurbidez(){
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
-function insertarCalidadFuenteTurbidez(){
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
     var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
     db.transaction(
         function(tx) {
            
             var sql ="INSERT OR REPLACE INTO CalidadRed (numero_paja, tipo, numero, valor, fecha) VALUES (?, ?, ?, ?, ?)";
             var val=document.getElementsByName("txtturb1")[0].value;	
-<<<<<<< HEAD
-<<<<<<< HEAD
             var paja=localStorage.getItem("pajaID")
-=======
-            var fu=localStorage.getItem("pajaID")
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
-            var fu=localStorage.getItem("pajaID")
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
             var t="turbidez";
            // alert("ins"+fu+t+val);
             var f = new Date();
             var fec=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
-<<<<<<< HEAD
-<<<<<<< HEAD
             var params = [paja,t,1,val,fec];
             tx.executeSql(sql, params);
 
@@ -453,22 +351,6 @@ function insertarCalidadFuenteTurbidez(){
 
             var val3=document.getElementsByName("txtturb3")[0].value;
             var params3 = [paja,t,3,val3,fec];
-=======
-=======
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-            var params = [fu,t,1,val,fec];
-            tx.executeSql(sql, params);
-
-            var val2=document.getElementsByName("txtturb2")[0].value;
-            var params2 = [fu,t,2,val2,fec];
-            tx.executeSql(sql, params2);
-
-            var val3=document.getElementsByName("txtturb3")[0].value;
-            var params3 = [fu,t,3,val3,fec];
-<<<<<<< HEAD
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
             tx.executeSql(sql, params3);
             
         }
@@ -575,38 +457,17 @@ function insertarCalidadRedOlorSabor(){
            
             var val = $("#olor option:selected").text();
             var val2 = $("#sabor option:selected").text();	
-<<<<<<< HEAD
-<<<<<<< HEAD
             var paja=localStorage.getItem("pajaID")
-=======
-            var fu=localStorage.getItem("pajaID")
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
-            var fu=localStorage.getItem("pajaID")
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
             var t="olor";
             var t2="sabor";
            // alert("ins"+fu+t+val);
             var f = new Date();
             var fec=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
             var params = [paja,t,1,val,fec];
             tx.executeSql(sql, params);
 
             var params2 = [paja,t2,1,val2,fec];
-=======
-=======
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-            var params = [fu,t,1,val,fec];
-            tx.executeSql(sql, params);
-
-            var params2 = [fu,t2,1,val2,fec];
-<<<<<<< HEAD
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
             tx.executeSql(sql, params2);
 
             
@@ -628,8 +489,6 @@ function cargarTabla() {
 
 //GUARDAR MEDICIONES FUENTE - TANQUE - RED
 function guardarMediciones() {
-<<<<<<< HEAD
-<<<<<<< HEAD
     if (localStorage.getItem("fuenteCalidad")!=="") {
 
         if (localStorage.getItem("cloro")=="0") {
@@ -654,12 +513,6 @@ function guardarMediciones() {
     
     if (localStorage.getItem("tanque")!=="") {
         
-=======
-    if (localStorage.getItem("fuenteCalidad")=="") {
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
-    if (localStorage.getItem("fuenteCalidad")=="") {
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
         if (localStorage.getItem("cloro")=="0") {
             insertarCalidadTanqueCloro();
         }
@@ -677,8 +530,6 @@ function guardarMediciones() {
         }
     
         insertarNubeCalidadTanque();
-<<<<<<< HEAD
-<<<<<<< HEAD
     }
 
     if (localStorage.getItem("pajaID")!=="") {
@@ -702,35 +553,6 @@ function guardarMediciones() {
         insertarNubeCalidadRed();
     }
    
-=======
-=======
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-    }else{
-        if (localStorage.getItem("cloro")=="0") {
-            insertarCalidadFuenteCloro();
-        }
-        if (localStorage.getItem("ph")=="0") {
-            insertarCalidadFuentePH();
-        }
-        if (localStorage.getItem("turbidez")=="0") {
-            insertarCalidadFuenteTurbidez();
-        }
-        if (localStorage.getItem("temperatura")=="0") {
-            insertarCalidadFuenteTemperatura();
-        }
-        if (localStorage.getItem("olorsabor")=="0") {
-            insertarCalidadFuenteOlorSabor();
-        }
-    
-        insertarNubeCalidadFuente();
-
-    }
-   
-    
-<<<<<<< HEAD
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
 }
 
 
@@ -836,43 +658,19 @@ function insertarNubeCalidadRed() {
                 {
                     for (var i = 0; i < len; i++) {
                        
-<<<<<<< HEAD
-<<<<<<< HEAD
                         var r=results.rows.item(i)['numero_paja'];
-=======
-                        var r=results.rows.item(i)['idred'];
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
-                        var r=results.rows.item(i)['idred'];
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
                         var t=results.rows.item(i)['tipo'];
                         var n=results.rows.item(i)['numero'];
                         var v=results.rows.item(i)['valor'];
                         var fech=results.rows.item(i)['fecha'];
                     
                         archivo = "http://grupoditek.com/php/insertarCalidadRed.php?jsoncallback=?"
-<<<<<<< HEAD
-<<<<<<< HEAD
                         $.getJSON( archivo, { paja: r, tipo: t ,numero: n , valor: v , fecha:fech })
-=======
-                        $.getJSON( archivo, { red: r, tipo: t ,numero: n , valor: v , fecha:fech })
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
-                        $.getJSON( archivo, { red: r, tipo: t ,numero: n , valor: v , fecha:fech })
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
                         .done(function(respuestaServer) {
                             
                             if(respuestaServer.validacion == "ok"){
                                  /// si la validacion es correcta
-<<<<<<< HEAD
-<<<<<<< HEAD
                                  //borrarTablaCalidadRed();
-=======
-                                 borrarTablaCalidadRed();
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
-=======
-                                 borrarTablaCalidadRed();
->>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
                                 location.href="menu.html";
                               
                             }else{
