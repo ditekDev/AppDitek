@@ -19,6 +19,8 @@ function obtTanque(){
 //Función para llenar el select con las fuentes que se encuentran en la base de datos -->
 
 function llenarlista() {
+   
+  
     $select = $('#tanque');
     var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
   db.transaction(function (tx) {
@@ -29,7 +31,7 @@ function llenarlista() {
           
         for (var i = 0; i < len; i++) {
          
-           $select.append('<option value="' +results.rows.item(i).id+ '">' +results.rows.item(i).nombre + '</option>');
+           $select.append('<option value="' +results.rows.item(i).id_tanque_almacenamiento+ '">' +results.rows.item(i).nombre + '</option>');
           
         }
      
@@ -45,3 +47,4 @@ function elegirTanque(){
     location.href="seleccionMediciones.html";
     
 }
+

@@ -2,7 +2,7 @@
 
 var self = this;
 var db;
-this.db= openDatabase('diteklocal', '1.0', 'db', 2 * 1024 * 1024);
+this.db= openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
 
 
 function lecturaMed(){
@@ -13,7 +13,7 @@ function lecturaMed(){
         return 0   ;
         }
     
-        var db = openDatabase("diteklocal", "1.0", "db", 200000);
+        var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
         var msg;
         var num=document.getElementsByName("txtidentificacion")[0].value;		
         localStorage.setItem("medidor",num)
@@ -36,13 +36,54 @@ function lecturaMed(){
 }
 
 
+function lecturaRed(){
+    
+            if(document.pajaform.txtpaja.value == "") {
+                myApp.alert('Inserte un número de paja', 'ERROR!!');
+    
+            return 0   ;
+            }
+        
+            var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
+            var msg;
+            var num=document.getElementsByName("txtpaja")[0].value;		
+            localStorage.setItem("numero_paja",num)
+            if (num.value=="") {
+                
+            }else{
+                db.transaction(function (tx) {
+                    tx.executeSql('SELECT * FROM medidores WHERE numero_paja="'+num+'"', [], function (tx, results) {
+                       var len = results.rows.length, i;
+                   
+                        if (len===1) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+                            
+                            var pa=document.getElementsByName("txtpaja")[0].value;	
+                            localStorage.setItem("pajaID", pa);
+=======
+>>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
+=======
+>>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
+                          window.location.href = "seleccionMediciones.html";
+                        }else{
+                          myApp.alert('El dato no pertenece a ninguno de nuestros abonados', 'ERROR!!');
+                        }  
+                }, null);
+                });
+            
+        }
+    }
+    
+
+
 function insertarRegistroLectura(){
     var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
     db.transaction(
         function(tx) {
            
             var sql ="INSERT OR REPLACE INTO RegistroLectura (lectura,medidor) VALUES (?, ?)";
-            var numL=document.getElementsByName("lecNum")[0].value;	
+            var numL=localStorage.getItem("numLectura");
             var med=localStorage.getItem("medidor")
             var params = [numL,med];
             tx.executeSql(sql, params);
@@ -70,7 +111,7 @@ function insertarNube(){
                         if(respuestaServer.validacion == "ok"){
                              /// si la validacion es correcta
                             borrarRegistroLectura();
-                            location.href="menu.html";
+                            location.href="guardado.html";
                           
                         }else{
                           /// ejecutar una conducta cuando la validacion falla
@@ -88,6 +129,8 @@ function insertarNube(){
 };
 
 function registrarLectura(){
+<<<<<<< HEAD
+<<<<<<< HEAD
  
    
     if(document.datoslecturaform.lecNum.value == "") {
@@ -96,11 +139,32 @@ function registrarLectura(){
     }else{
         insertarRegistroLectura();
         insertarNube();
-        borrarRegistroLectura();
     }
+=======
+    insertarRegistroLectura();
+    insertarNube();
+    
+>>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
+=======
+    insertarRegistroLectura();
+    insertarNube();
+    
+>>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
     
 }
 
+function comprobarLectura(){
+    
+      
+       if(document.datoslecturaform.lecNum.value == "") {
+         myApp.alert('Inserte medición', 'ERROR!!');
+         return 0;
+       }else{
+           localStorage.setItem("numLectura",document.getElementsByName("lecNum")[0].value)
+           location.href="guardarNumeroLectura.html";
+       }
+       
+   }
 function borrarRegistroLectura(){
     this.db.transaction(
         function(tx) {
@@ -133,3 +197,20 @@ function obtenerDatos() {
     
     
 }
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
+function elegirRed(){
+    var paja = $("#paja").text();
+    localStorage.setItem("pajaID", paja);
+    location.href="seleccionMediciones.html";
+    
+<<<<<<< HEAD
+}
+>>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7
+=======
+}
+>>>>>>> 7ebdc6b3fc558cfb04e82a98c1f9fdd63543f2e7

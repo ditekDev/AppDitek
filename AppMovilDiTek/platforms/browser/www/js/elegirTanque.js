@@ -19,6 +19,8 @@ function obtTanque(){
 //Función para llenar el select con las fuentes que se encuentran en la base de datos -->
 
 function llenarlista() {
+   
+  
     $select = $('#tanque');
     var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
   db.transaction(function (tx) {

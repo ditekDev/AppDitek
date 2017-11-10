@@ -56,6 +56,9 @@ function lecturaRed(){
                        var len = results.rows.length, i;
                    
                         if (len===1) {
+                            
+                            var pa=document.getElementsByName("txtpaja")[0].value;	
+                            localStorage.setItem("pajaID", pa);
                           window.location.href = "seleccionMediciones.html";
                         }else{
                           myApp.alert('El dato no pertenece a ninguno de nuestros abonados', 'ERROR!!');
@@ -165,9 +168,3 @@ function obtenerDatos() {
     
 }
 
-function elegirRed(){
-    var paja = $("#paja").text();
-    localStorage.setItem("pajaID", paja);
-    location.href="seleccionMediciones.html";
-    
-}

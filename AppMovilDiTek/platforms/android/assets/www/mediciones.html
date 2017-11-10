@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <meta name="viewport" content="width=device-width, initial-escale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
        <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="stylesheet" href="css/framework7.material.min.css">
         <link rel="stylesheet" href="css/framework7.material.colors.min.css">    
         <link rel="stylesheet" href="css/swiper.min.css">
@@ -14,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="css/aforo.css">
         <link rel="stylesheet" type="text/css" href="css/elegirFuente.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/mediciones.js"></script>
        
         <script>
 
@@ -40,7 +40,7 @@
       
 </head>
 
-<body onload="fuente();">
+<body onload="fuente();cargarTabla();">
   
  <!-- Views -->
  <div class="views">
@@ -70,7 +70,7 @@
                             
                         <div class="datoscloro">
                           <label>Cloro Residual</label>
-                          <input type="tel" id="txtCloro" placeholder=" ''Valor de cloro en la muestra'' ">
+                          <input type="tel" name="txtCloro" id="txtCloro" placeholder=" ''Valor de cloro en la muestra'' ">
                         </div>
                         <div class="datoscloro2"></div>
                         
@@ -81,9 +81,9 @@
                           <div class="datosph">
                             <label>PH</label>
                             <br/>
-                            <input type="tel" id="txtph1" placeholder=" ''Medición 1'' "  onkeyup="decimales(this)" maxlength="6" minlength="6">
-                            <input type="tel" id="txph2" placeholder=" ''Medición 2'' "  onkeyup="decimales(this)" maxlength="6" minlength="6">
-                            <input type="tel" id="txtph3" placeholder=" ''Medición 3'' "  onkeyup="decimales(this)" maxlength="6" minlength="6">
+                            <input type="tel" name="txtph1" placeholder=" ''Medición 1'' "  onkeyup="decimales(this)" maxlength="6" minlength="6">
+                            <input type="tel" name="txph2" placeholder=" ''Medición 2'' "  onkeyup="decimales(this)" maxlength="6" minlength="6">
+                            <input type="tel" name="txtph3" placeholder=" ''Medición 3'' "  onkeyup="decimales(this)" maxlength="6" minlength="6">
                           </div>
                         
                     </form>
@@ -93,9 +93,9 @@
                         <div class="datostemp" style="display:block;">
                           <label>Temperatura</label>
                           <br/>
-                          <input type="tel" id="txttemp1" placeholder=" ''Medición 1'' "  onkeyup="" maxlength="">
-                          <input type="tel" id="txttemp2" placeholder=" ''Medición 2'' "  onkeyup="" maxlength="">
-                          <input type="tel" id="txttemp3" placeholder=" ''Medición 3'' "  onkeyup="" maxlength="">
+                          <input type="tel" name="txttemp1" placeholder=" ''Medición 1'' "  onkeyup="" maxlength="">
+                          <input type="tel" name="txttemp2" placeholder=" ''Medición 2'' "  onkeyup="" maxlength="">
+                          <input type="tel" name="txttemp3" placeholder=" ''Medición 3'' "  onkeyup="" maxlength="">
                         </div>
                       
                   </form>
@@ -105,9 +105,9 @@
                         <div class="datostur" style="display:block;">
                           <label>Turbidez</label>
                           <br/>
-                          <input type="tel" id="txtturb1" placeholder=" ''Medición 1'' "  onkeyup="" maxlength="10">
-                          <input type="tel" id="txtturb2" placeholder=" ''Medición 2'' "  onkeyup="" maxlength="10">
-                          <input type="tel" id="txtturb3" placeholder=" ''Medición 3'' "  onkeyup="" maxlength="10">
+                          <input type="tel" name="txtturb1" placeholder=" ''Medición 1'' "  onkeyup="" maxlength="10">
+                          <input type="tel" name="txtturb2" placeholder=" ''Medición 2'' "  onkeyup="" maxlength="10">
+                          <input type="tel" name="txtturb3" placeholder=" ''Medición 3'' "  onkeyup="" maxlength="10">
                         </div>
                       
                   </form>
@@ -117,14 +117,14 @@
                           <div class="datosolysab" style="display:block;">
                             <div><label>Olor</label>
                               <br/>
-                              <select>
+                              <select id="olor">
                                   <option value="Aceptable">Aceptable</option>
                                   <option value="No Aceptable">No Aceptable</option>
                                 </select>
                             </div>
                             <div><label>Sabor</label>
                               <br/>
-                              <select>
+                              <select id="sabor">
                                   <option value="Aceptable">Aceptable</option>
                                   <option value="No Aceptable">No Aceptable</option>
                                 </select>
@@ -136,7 +136,7 @@
                   <div class="swiper-slide" id="guardar" >
                     <div class="guardar" style="display:block;">
                       <form>
-                       <p><a onclick="" class="button button-fill color-gray" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Guardar</a></p>
+                       <p><a onclick="guardarMediciones();" class="button button-fill color-gray" style="width: 150px;height: 40px;margin:0 auto;border-radius: 10px;font-size: 25px;">Guardar</a></p>
                       </form>
                     </div>
 
@@ -184,10 +184,16 @@
   function fuente(){
     var fu = localStorage.getItem("fuenteCalidad");
     var tan= localStorage.getItem("tanque");
-    if (fu ==="") {
-      document.getElementById("fuente").textContent=tan;
-    }else{
+    var red = localStorage.getItem("pajaID")
+    if (fu !=="") {
       document.getElementById("fuente").textContent=fu;
+    }
+    if (tan !==""){
+      document.getElementById("fuente").textContent=tan;
+    }
+
+    if (red !==""){
+      document.getElementById("fuente").textContent=red;
     }
 
     

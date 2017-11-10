@@ -33,8 +33,8 @@ function borrarTablaTiempos(){
     this.db.transaction(
         function(tx) {
             tx.executeSql('DROP TABLE IF EXISTS tiempos');
-        },
-        this.txErrorHandler,
+        }
+        
     );
 };
 
@@ -58,8 +58,7 @@ function insertarTiempos(){
 			var params3 = ["3",t3,f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()];
             tx.executeSql(sql3, params3);
             
-        },
-        this.txErrorHandler,
+        }
     
     );
 };

@@ -98,8 +98,6 @@ function sincro(){
         ejecutarEnOrden(borrarTablas,crearTablas,llenarTablas);
 
     }
-    //NUMERO DE VECES DE MEDICIONES
-    localStorage.setItem("mediciones", 3);
  
 };
 
@@ -145,7 +143,7 @@ function crearTablaAbonados() {
 function crearTablaMedidores() {
     this.db.transaction(
         function(tx) {
-            var sql ='CREATE TABLE IF NOT EXISTS medidores (id_abonado, numero_medidor)';
+            var sql ='CREATE TABLE IF NOT EXISTS medidores (id_abonado, numero_medidor, numero_paja)';
             tx.executeSql(sql);
         }
           
@@ -185,13 +183,13 @@ $.ajax({
             function(tx) {
                 var l = datos.length;
                 var sql =
-                    "INSERT OR REPLACE INTO medidores (id_abonado,numero_medidor) VALUES (?, ?)";
+                    "INSERT OR REPLACE INTO medidores (id_abonado,numero_medidor, numero_paja) VALUES (?, ?, ?)";
     
                 var e;
                 for (var i = 0; i < l; i++) {
                     e = datos[i];
                    
-                    var params = [e.id_abonado, e.numero_medidor];
+                    var params = [e.id_abonado, e.numero_medidor, e.numero_paja];
                     tx.executeSql(sql, params);
                 }
              

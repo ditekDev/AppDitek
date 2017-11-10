@@ -10,7 +10,8 @@
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
     </feature>
-    <name>HelloCordova</name>
+    <name>Di'Tek</name>
+    <icon src="res/drop.png" />
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>

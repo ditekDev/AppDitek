@@ -14,7 +14,9 @@
         <script type="text/javascript" src="js/aforo.js"></script>
         
         <script>
-          
+            localStorage.setItem("tanque","");
+    localStorage.setItem("fuenteCalidad","");
+    localStorage.setItem("pajaID","");
          function enviar(pagina){
       myApp.confirm('¿Está seguro que quiere abandonar esta página?','¡ALERTA!', function () {
         location.href=pagina;

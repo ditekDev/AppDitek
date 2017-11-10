@@ -184,10 +184,16 @@
   function fuente(){
     var fu = localStorage.getItem("fuenteCalidad");
     var tan= localStorage.getItem("tanque");
-    if (fu ==="") {
-      document.getElementById("fuente").textContent=tan;
-    }else{
+    var red = localStorage.getItem("pajaID")
+    if (fu !=="") {
       document.getElementById("fuente").textContent=fu;
+    }
+    if (tan !==""){
+      document.getElementById("fuente").textContent=tan;
+    }
+
+    if (red !==""){
+      document.getElementById("fuente").textContent=red;
     }
 
     

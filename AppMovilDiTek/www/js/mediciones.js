@@ -81,12 +81,12 @@ function insertarCalidadRedCloro(){
            
             var sql ="INSERT OR REPLACE INTO CalidadRed (numero_paja, tipo, numero, valor, fecha) VALUES (?, ?, ?, ?, ?)";
             var val=document.getElementsByName("txtCloro")[0].value;	
-            var fu=localStorage.getItem("pajaID")
+            var paja=localStorage.getItem("pajaID")
             var t="cloro";
            // alert("ins"+fu+t+val);
             var f = new Date();
             var fec=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
-            var params = [fu,t,1,val,fec];
+            var params = [paja,t,1,val,fec];
             
             tx.executeSql(sql, params);
             
@@ -155,27 +155,27 @@ function insertarCalidadTanquePH(){
 };
 
 //RED
-function insertarCalidadFuentePH(){
+function insertarCalidadRedPH(){
     var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
     db.transaction(
         function(tx) {
            
             var sql ="INSERT OR REPLACE INTO CalidadRed (numero_paja, tipo, numero, valor, fecha) VALUES (?, ?, ?, ?, ?)";
             var val=document.getElementsByName("txtph1")[0].value;	
-            var fu=localStorage.getItem("pajaID")
+            var paja=localStorage.getItem("pajaID")
             var t="ph";
            // alert("ins"+fu+t+val);
             var f = new Date();
             var fec=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
-            var params = [fu,t,1,val,fec];
+            var params = [paja,t,1,val,fec];
             tx.executeSql(sql, params);
 
             var val2=document.getElementsByName("txph2")[0].value;
-            var params2 = [fu,t,2,val2,fec];
+            var params2 = [paja,t,2,val2,fec];
             tx.executeSql(sql, params2);
 
             var val3=document.getElementsByName("txtph3")[0].value;
-            var params3 = [fu,t,3,val3,fec];
+            var params3 = [paja,t,3,val3,fec];
             tx.executeSql(sql, params3);
             
         }
@@ -242,27 +242,27 @@ function insertarCalidadTanqueTemperatura(){
 };
 
 //RED
-function insertarCalidadTanqueTemperatura(){
+function insertarCalidadRedTemperatura(){
     var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
     db.transaction(
         function(tx) {
            
             var sql ="INSERT OR REPLACE INTO CalidadRed (numero_paja, tipo, numero, valor, fecha) VALUES (?, ?, ?, ?, ?)";
             var val=document.getElementsByName("txttemp1")[0].value;	
-            var fu=localStorage.getItem("pajaID")
+            var paja=localStorage.getItem("pajaID")
             var t="temperatura";
            // alert("ins"+fu+t+val);
             var f = new Date();
             var fec=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
-            var params = [fu,t,1,val,fec];
+            var params = [paja,t,1,val,fec];
             tx.executeSql(sql, params);
 
             var val2=document.getElementsByName("txttemp2")[0].value;
-            var params2 = [fu,t,2,val2,fec];
+            var params2 = [paja,t,2,val2,fec];
             tx.executeSql(sql, params2);
 
             var val3=document.getElementsByName("txttemp3")[0].value;
-            var params3 = [fu,t,3,val3,fec];
+            var params3 = [paja,t,3,val3,fec];
             tx.executeSql(sql, params3);
             
         }
@@ -330,27 +330,27 @@ function insertarCalidadTanqueTurbidez(){
 };
 
 //RED
-function insertarCalidadFuenteTurbidez(){
+function insertarCalidadRedTurbidez(){
     var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
     db.transaction(
         function(tx) {
            
             var sql ="INSERT OR REPLACE INTO CalidadRed (numero_paja, tipo, numero, valor, fecha) VALUES (?, ?, ?, ?, ?)";
             var val=document.getElementsByName("txtturb1")[0].value;	
-            var fu=localStorage.getItem("pajaID")
+            var paja=localStorage.getItem("pajaID")
             var t="turbidez";
            // alert("ins"+fu+t+val);
             var f = new Date();
             var fec=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
-            var params = [fu,t,1,val,fec];
+            var params = [paja,t,1,val,fec];
             tx.executeSql(sql, params);
 
             var val2=document.getElementsByName("txtturb2")[0].value;
-            var params2 = [fu,t,2,val2,fec];
+            var params2 = [paja,t,2,val2,fec];
             tx.executeSql(sql, params2);
 
             var val3=document.getElementsByName("txtturb3")[0].value;
-            var params3 = [fu,t,3,val3,fec];
+            var params3 = [paja,t,3,val3,fec];
             tx.executeSql(sql, params3);
             
         }
@@ -457,17 +457,17 @@ function insertarCalidadRedOlorSabor(){
            
             var val = $("#olor option:selected").text();
             var val2 = $("#sabor option:selected").text();	
-            var fu=localStorage.getItem("pajaID")
+            var paja=localStorage.getItem("pajaID")
             var t="olor";
             var t2="sabor";
            // alert("ins"+fu+t+val);
             var f = new Date();
             var fec=f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
 
-            var params = [fu,t,1,val,fec];
+            var params = [paja,t,1,val,fec];
             tx.executeSql(sql, params);
 
-            var params2 = [fu,t2,1,val2,fec];
+            var params2 = [paja,t2,1,val2,fec];
             tx.executeSql(sql, params2);
 
             
@@ -489,25 +489,8 @@ function cargarTabla() {
 
 //GUARDAR MEDICIONES FUENTE - TANQUE - RED
 function guardarMediciones() {
-    if (localStorage.getItem("fuenteCalidad")=="") {
-        if (localStorage.getItem("cloro")=="0") {
-            insertarCalidadTanqueCloro();
-        }
-        if (localStorage.getItem("ph")=="0") {
-            insertarCalidadTanquePH();
-        }
-        if (localStorage.getItem("turbidez")=="0") {
-            insertarCalidadTanqueTurbidez();
-        }
-        if (localStorage.getItem("temperatura")=="0") {
-            insertarCalidadTanqueTemperatura();
-        }
-        if (localStorage.getItem("olorsabor")=="0") {
-            insertarCalidadTanqueOlorSabor();
-        }
-    
-        insertarNubeCalidadTanque();
-    }else{
+    if (localStorage.getItem("fuenteCalidad")!=="") {
+
         if (localStorage.getItem("cloro")=="0") {
             insertarCalidadFuenteCloro();
         }
@@ -525,10 +508,51 @@ function guardarMediciones() {
         }
     
         insertarNubeCalidadFuente();
+        
+    }
+    
+    if (localStorage.getItem("tanque")!=="") {
+        
+        if (localStorage.getItem("cloro")=="0") {
+            insertarCalidadTanqueCloro();
+        }
+        if (localStorage.getItem("ph")=="0") {
+            insertarCalidadTanquePH();
+        }
+        if (localStorage.getItem("turbidez")=="0") {
+            insertarCalidadTanqueTurbidez();
+        }
+        if (localStorage.getItem("temperatura")=="0") {
+            insertarCalidadTanqueTemperatura();
+        }
+        if (localStorage.getItem("olorsabor")=="0") {
+            insertarCalidadTanqueOlorSabor();
+        }
+    
+        insertarNubeCalidadTanque();
+    }
 
+    if (localStorage.getItem("pajaID")!=="") {
+        
+        if (localStorage.getItem("cloro")=="0") {
+            insertarCalidadRedCloro();
+        }
+        if (localStorage.getItem("ph")=="0") {
+            insertarCalidadRedPH();
+        }
+        if (localStorage.getItem("turbidez")=="0") {
+            insertarCalidadRedTurbidez();
+        }
+        if (localStorage.getItem("temperatura")=="0") {
+            insertarCalidadRedTemperatura();
+        }
+        if (localStorage.getItem("olorsabor")=="0") {
+            insertarCalidadRedOlorSabor();
+        }
+    
+        insertarNubeCalidadRed();
     }
    
-    
 }
 
 
@@ -634,19 +658,19 @@ function insertarNubeCalidadRed() {
                 {
                     for (var i = 0; i < len; i++) {
                        
-                        var r=results.rows.item(i)['idred'];
+                        var r=results.rows.item(i)['numero_paja'];
                         var t=results.rows.item(i)['tipo'];
                         var n=results.rows.item(i)['numero'];
                         var v=results.rows.item(i)['valor'];
                         var fech=results.rows.item(i)['fecha'];
                     
                         archivo = "http://grupoditek.com/php/insertarCalidadRed.php?jsoncallback=?"
-                        $.getJSON( archivo, { red: r, tipo: t ,numero: n , valor: v , fecha:fech })
+                        $.getJSON( archivo, { paja: r, tipo: t ,numero: n , valor: v , fecha:fech })
                         .done(function(respuestaServer) {
                             
                             if(respuestaServer.validacion == "ok"){
                                  /// si la validacion es correcta
-                                 borrarTablaCalidadRed();
+                                 //borrarTablaCalidadRed();
                                 location.href="menu.html";
                               
                             }else{
