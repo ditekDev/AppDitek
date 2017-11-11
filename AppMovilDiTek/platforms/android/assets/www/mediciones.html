@@ -14,28 +14,9 @@
         <link rel="stylesheet" type="text/css" href="css/elegirFuente.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="js/mediciones.js"></script>
+        <title>Mediciones</title>
        
-        <script>
-
-            function decimales(dig){
-
-            temp=dig.value.split(".");
-            valor=temp.join("");
-            cuantos=valor.length;
-            if (cuantos>5){
-            dig.value=valor.slice(0,1)+"."+valor.slice(1);
-            }else{
-            dig.value=valor.slice(0,cuantos);
-            }
-            }
-          
-            function enviar(pagina){
-            myApp.confirm('¿Está seguro que quiere abandonar esta página?','¡ALERTA!', function () {
-              location.href=pagina;
-          });
-          }
-            </script>
-
+       
   
       
 </head>
@@ -70,7 +51,7 @@
                             
                         <div class="datoscloro">
                           <label>Cloro Residual</label>
-                          <input type="tel" name="txtCloro" id="txtCloro" placeholder=" ''Valor de cloro en la muestra'' ">
+                          <input type="tel" name="txtCloro" id="txtCloro" onkeyup="decimales(this)" maxlength="5" placeholder=" ''Valor de cloro en la muestra'' ">
                         </div>
                         <div class="datoscloro2"></div>
                         
@@ -81,9 +62,9 @@
                           <div class="datosph">
                             <label>PH</label>
                             <br/>
-                            <input type="tel" name="txtph1" placeholder=" ''Medición 1'' "  onkeyup="decimales(this)" maxlength="6" minlength="6">
-                            <input type="tel" name="txph2" placeholder=" ''Medición 2'' "  onkeyup="decimales(this)" maxlength="6" minlength="6">
-                            <input type="tel" name="txtph3" placeholder=" ''Medición 3'' "  onkeyup="decimales(this)" maxlength="6" minlength="6">
+                            <input type="tel" name="txtph1" placeholder=" ''Medición 1'' "  onkeyup="decimalesph(this)" maxlength="6" minlength="6">
+                            <input type="tel" name="txph2" placeholder=" ''Medición 2'' "  onkeyup="decimalesph(this)" maxlength="6" minlength="6">
+                            <input type="tel" name="txtph3" placeholder=" ''Medición 3'' "  onkeyup="decimalesph(this)" maxlength="6" minlength="6">
                           </div>
                         
                     </form>
@@ -105,9 +86,9 @@
                         <div class="datostur" style="display:block;">
                           <label>Turbidez</label>
                           <br/>
-                          <input type="tel" name="txtturb1" placeholder=" ''Medición 1'' "  onkeyup="" maxlength="10">
-                          <input type="tel" name="txtturb2" placeholder=" ''Medición 2'' "  onkeyup="" maxlength="10">
-                          <input type="tel" name="txtturb3" placeholder=" ''Medición 3'' "  onkeyup="" maxlength="10">
+                          <input type="tel" name="txtturb1" placeholder=" ''Medición 1'' "  onkeyup="decimalesturb(this)" maxlength="10">
+                          <input type="tel" name="txtturb2" placeholder=" ''Medición 2'' "  onkeyup="decimalesturb(this)" maxlength="10">
+                          <input type="tel" name="txtturb3" placeholder=" ''Medición 3'' "  onkeyup="decimalesturb(this)" maxlength="10">
                         </div>
                       
                   </form>
