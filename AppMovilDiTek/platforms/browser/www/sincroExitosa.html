@@ -12,20 +12,19 @@
         <link rel="stylesheet" type="text/css" href="css/aforo.css">
         <link rel="stylesheet" type="text/css" href="css/alertas.css">
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/insertarNube.js"></script>
     <title>Alerta</title>
     <!-- Función para llenar el select desde la base de datos -->
    
    
-   <script language="javascript" type="text/javascript">
-    function enviar(pagina){
-    document.aforoform.action = pagina;
-    document.aforoform.submit();
-    }
-  </script>
+    <script>
+      function r() { location.href="./menu.html" } 
+      setTimeout ("r()", 2000);
+    </script>
   
 </head>
 
-<body >
+<body onload="borrartablas();">
     
  <!-- Status bar overlay for full screen mode (PhoneGap) -->
  <div class="statusbar-overlay"></div>
@@ -33,39 +32,7 @@
  <div class="panel-overlay "></div>
  <!-- Left panel with reveal effect-->
  <div class="panel panel-right panel-reveal" style="background: rgba(0,0,0,0.8);">
-   <div class="content-block ">
-         <div class="list-block">
-          <ul>
-            <li class="item-content">
-                <div class="item-inner">
-                  <div class="item-title"><a href="">Aforos</a></div>
-                </div>
-            </li>
-            <li class="item-content">
-                <div class="item-inner">
-                  <div class="item-title"><a href="">Lectura de medidores</a></div>
-                </div>
-           </li>
-           <li class="item-content">
-              <div class="item-inner">
-                <div class="item-title"><a href="">Calidad del agua</a></div>
-              </div>
-          </li>
-           <li class="item-content">
-             <div class="item-inner">
-               <div class="item-title"><a href="">Cerrar Sesión</a></div>
-             </div>
-           </li>
-           <li class="item-content">
-             <div class="item-inner">
-               <div class="item-title"><a href="#" class="close-panel">Cerrar Menú</a></div>
-             </div>
-           </li>
-         </ul>
-      </div>
-     
-     
-   </div>
+
  </div>
  <!-- Views -->
  <div class="views">

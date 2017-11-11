@@ -479,9 +479,6 @@ function insertarCalidadRedOlorSabor(){
 
 
 function cargarTabla() {
-    borrarTablaCalidadFuente();
-    borrarTablaCalidadTanque();
-    borrarTablaCalidadRed();
     crearTablaCalidadFuente();
     crearTablaCalidadTanque();
     crearTablaCalidadRed();
@@ -515,83 +512,113 @@ function guardarMediciones() {
             localStorage.setItem("z",1);
         }
     }
- 
-
-
+    
+    if(localStorage.getItem("z")==2){
+        ejecutarEnOrden(llenarTablasCa,insertNube);
+       
+    }
     
 
-
-    if(localStorage.getItem("z")==2){
-        if (localStorage.getItem("fuenteCalidad")!=="") {
-            
-                    if (localStorage.getItem("cloro")=="0") {
-                        insertarCalidadFuenteCloro();
-                    }
-                    if (localStorage.getItem("ph")=="0") {
-                        insertarCalidadFuentePH();
-                    }
-                    if (localStorage.getItem("turbidez")=="0") {
-                        insertarCalidadFuenteTurbidez();
-                    }
-                    if (localStorage.getItem("temperatura")=="0") {
-                        insertarCalidadFuenteTemperatura();
-                    }
-                    if (localStorage.getItem("olorsabor")=="0") {
-                        insertarCalidadFuenteOlorSabor();
-                    }
-                
-                    insertarNubeCalidadFuente();
-                   
-                    
-                }
-                
-                if (localStorage.getItem("tanque")!=="") {
-                    
-                    if (localStorage.getItem("cloro")=="0") {
-                        insertarCalidadTanqueCloro();
-                    }
-                    if (localStorage.getItem("ph")=="0") {
-                        insertarCalidadTanquePH();
-                    }
-                    if (localStorage.getItem("turbidez")=="0") {
-                        insertarCalidadTanqueTurbidez();
-                    }
-                    if (localStorage.getItem("temperatura")=="0") {
-                        insertarCalidadTanqueTemperatura();
-                    }
-                    if (localStorage.getItem("olorsabor")=="0") {
-                        insertarCalidadTanqueOlorSabor();
-                    }
-                
-                    insertarNubeCalidadTanque();
-                   
-                }
-            
-                if (localStorage.getItem("pajaID")!=="") {
-                    
-                    if (localStorage.getItem("cloro")=="0") {
-                        insertarCalidadRedCloro();
-                    }
-                    if (localStorage.getItem("ph")=="0") {
-                        insertarCalidadRedPH();
-                    }
-                    if (localStorage.getItem("turbidez")=="0") {
-                        insertarCalidadRedTurbidez();
-                    }
-                    if (localStorage.getItem("temperatura")=="0") {
-                        insertarCalidadRedTemperatura();
-                    }
-                    if (localStorage.getItem("olorsabor")=="0") {
-                        insertarCalidadRedOlorSabor();
-                    }
-                
-                    insertarNubeCalidadRed();
-                }
-        
-    }
+    
 }
 
+function ejecutarEnOrden(callbackPaso1, callbackPaso2){
+    //ejecuta primero
+    callbackPaso1();
 
+    //ejecuta segundo
+    var miVar = setTimeout(function(){ callbackPaso2() }, 1000);
+ 
+};
+
+function insertNube() {
+    var con = localStorage.getItem("conexion");
+    if (con=="1") {
+      
+        if (localStorage.getItem("fuenteCalidad")!=="") {
+            insertarNubeCalidadFuente();
+        }
+                
+        if (localStorage.getItem("tanque")!=="") {
+                    
+            insertarNubeCalidadTanque();
+            borrarTablaCalidadTanque();
+        }
+            
+        if (localStorage.getItem("pajaID")!=="") {
+                
+            insertarNubeCalidadRed();
+        }
+
+    }else{
+        location.href="guardado.html";
+    }
+
+   
+    
+    
+}
+function llenarTablasCa() {
+    if (localStorage.getItem("fuenteCalidad")!=="") {
+        
+        if (localStorage.getItem("cloro")=="0") {
+                insertarCalidadFuenteCloro();
+        }
+        if (localStorage.getItem("ph")=="0") {
+                insertarCalidadFuentePH();
+        }
+        if (localStorage.getItem("turbidez")=="0") {
+                insertarCalidadFuenteTurbidez();
+        }
+        if (localStorage.getItem("temperatura")=="0") {
+                insertarCalidadFuenteTemperatura();
+        }
+        if (localStorage.getItem("olorsabor")=="0") {
+                    insertarCalidadFuenteOlorSabor();
+        }      
+    }
+            
+    if (localStorage.getItem("tanque")!=="") {
+                
+                if (localStorage.getItem("cloro")=="0") {
+                    insertarCalidadTanqueCloro();
+                }
+                if (localStorage.getItem("ph")=="0") {
+                    insertarCalidadTanquePH();
+                }
+                if (localStorage.getItem("turbidez")=="0") {
+                    insertarCalidadTanqueTurbidez();
+                }
+                if (localStorage.getItem("temperatura")=="0") {
+                    insertarCalidadTanqueTemperatura();
+                }
+                if (localStorage.getItem("olorsabor")=="0") {
+                    insertarCalidadTanqueOlorSabor();
+                }
+               
+    }
+        
+    if (localStorage.getItem("pajaID")!=="") {
+                
+                if (localStorage.getItem("cloro")=="0") {
+                    insertarCalidadRedCloro();
+                }
+                if (localStorage.getItem("ph")=="0") {
+                    insertarCalidadRedPH();
+                }
+                if (localStorage.getItem("turbidez")=="0") {
+                    insertarCalidadRedTurbidez();
+                }
+                if (localStorage.getItem("temperatura")=="0") {
+                    insertarCalidadRedTemperatura();
+                }
+                if (localStorage.getItem("olorsabor")=="0") {
+                    insertarCalidadRedOlorSabor();
+                }
+               
+    }
+
+}
 
   // if(document.cloroform.txtCloro.value == "") {
     //     myApp.alert('No registro el dato Cloro Residual', 'ERROR!!');
@@ -621,7 +648,7 @@ function insertarNubeCalidadFuente() {
                         var n=results.rows.item(i)['numero'];
                         var v=results.rows.item(i)['valor'];
                         var fech=results.rows.item(i)['fecha'];
-                    
+                        
                         archivo = "http://grupoditek.com/php/insertarCalidadFuente.php?jsoncallback=?"
                         $.getJSON( archivo, { fuente: fuen, tipo: t ,numero: n , valor: v , fecha:fech })
                         .done(function(respuestaServer) {
@@ -673,7 +700,7 @@ function insertarNubeCalidadTanque() {
                             
                             if(respuestaServer.validacion == "ok"){
                                  /// si la validacion es correcta
-                                 borrarTablaCalidadTanque();
+                                 
                                  location.href="guardado.html";
                               
                             }else{

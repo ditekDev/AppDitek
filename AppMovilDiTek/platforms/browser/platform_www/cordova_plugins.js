@@ -44,8 +44,8 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "cordova-plugin-dialogs": "1.3.3",
-    "cordova-plugin-network-information": "1.3.3",
-    "cordova-plugin-whitelist": "1.3.2"
+    "cordova-plugin-whitelist": "1.3.2",
+    "cordova-plugin-network-information": "1.3.4"
 }
 // BOTTOM OF METADATA
 });

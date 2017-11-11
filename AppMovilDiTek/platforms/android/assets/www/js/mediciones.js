@@ -479,9 +479,6 @@ function insertarCalidadRedOlorSabor(){
 
 
 function cargarTabla() {
-    borrarTablaCalidadFuente();
-    borrarTablaCalidadTanque();
-    borrarTablaCalidadRed();
     crearTablaCalidadFuente();
     crearTablaCalidadTanque();
     crearTablaCalidadRed();
@@ -540,7 +537,7 @@ function guardarMediciones() {
                         insertarCalidadFuenteOlorSabor();
                     }
                 
-                    insertarNubeCalidadFuente();
+         
                    
                     
                 }
@@ -563,7 +560,7 @@ function guardarMediciones() {
                         insertarCalidadTanqueOlorSabor();
                     }
                 
-                    insertarNubeCalidadTanque();
+               
                    
                 }
             
@@ -585,10 +582,31 @@ function guardarMediciones() {
                         insertarCalidadRedOlorSabor();
                     }
                 
-                    insertarNubeCalidadRed();
+                   
+                }
+
+
+                var con = localStorage.getItem("conexion");
+                if (con=="1") {
+                    if (localStorage.getItem("fuenteCalidad")!=="") {
+                        insertarNubeCalidadFuente();
+                    }
+                            
+                    if (localStorage.getItem("tanque")!=="") {
+                                
+                        insertarNubeCalidadTanque();
+                               
+                    }
+                        
+                    if (localStorage.getItem("pajaID")!=="") {
+                            
+                        insertarNubeCalidadRed();
+                    }
                 }
         
     }
+
+    
 }
 
 
@@ -645,6 +663,8 @@ function insertarNubeCalidadFuente() {
         }, null);
         });
         
+    }else{
+        location.href="guardado.html";
     }
 	
 };
@@ -689,6 +709,8 @@ function insertarNubeCalidadTanque() {
         }, null);
         });
         
+    }else{
+        location.href="guardado.html";
     }
 	
 };
@@ -733,6 +755,8 @@ function insertarNubeCalidadRed() {
         }, null);
         });
         
+    }else{
+        location.href="guardado.html";
     }
 	
 };

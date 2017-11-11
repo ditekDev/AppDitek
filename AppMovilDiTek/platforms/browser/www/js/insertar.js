@@ -104,6 +104,8 @@ function guardarTiempos() {
         }, null);
         });
         
+    }else{
+        location.href="guardado.html";
     }
 
  

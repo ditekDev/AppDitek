@@ -52,7 +52,7 @@ function obtFuente(){
         myApp.alert('Dato incorrecto, por favor ingrese un valor válido', 'ERROR!!');
         return 0;
     }else{
-        crearTablaaforo();
+        
         insertarAforo();
         insertarNube();
 
@@ -90,6 +90,8 @@ function insertarNube(){
         }, null);
         });
         
+    }else{
+        location.href="cronometro.html";
     }
 
  
@@ -100,7 +102,7 @@ function insertarNube(){
 function llenarlista() {
  
     
-    
+    crearTablaaforo();
     $select = $('#people');
     var db = openDatabase('diteklocal', '1.0', 'DB', 2 * 1024 * 1024);
   db.transaction(function (tx) {

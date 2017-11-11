@@ -79,7 +79,7 @@ function crearTablas() {
     crearTablaAbonados();
     crearTablaMedidores();
     crearTablaTanques();
-    crearTablaTiempos();
+    
     crearRegistroLectura()
     console.log("crear");
 }
@@ -98,6 +98,7 @@ function sincro(){
         ejecutarEnOrden(borrarTablas,crearTablas,llenarTablas);
 
     }
+    crearTablaTiempos();
  
 };
 

@@ -117,6 +117,8 @@ function insertarNube(){
         }, null);
         });
         
+    }else{
+        location.href="guardado.html";
     }
 
  

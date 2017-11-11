@@ -13,15 +13,15 @@
     "cordova-android": "^6.2.3",
     "cordova-browser": "^5.0.1",
     "cordova-plugin-dialogs": "^1.3.3",
-    "cordova-plugin-network-information": "^1.3.3",
+    "cordova-plugin-network-information": "^1.3.4",
     "cordova-plugin-whitelist": "^1.3.2"
   },
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
       "cordova-plugin-dialogs": {},
-      "cordova-plugin-network-information": {},
-      "NetworkStatus": {}
+      "NetworkStatus": {},
+      "cordova-plugin-network-information": {}
     },
     "platforms": [
       "android",
