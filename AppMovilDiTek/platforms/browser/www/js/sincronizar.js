@@ -98,8 +98,6 @@ function sincro(){
         ejecutarEnOrden(borrarTablas,crearTablas,llenarTablas);
 
     }
-    //NUMERO DE VECES DE MEDICIONES
-    localStorage.setItem("mediciones", 3);
  
 };
 

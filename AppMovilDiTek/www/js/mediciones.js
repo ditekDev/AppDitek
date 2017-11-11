@@ -489,6 +489,7 @@ function cargarTabla() {
 
 //GUARDAR MEDICIONES FUENTE - TANQUE - RED
 function guardarMediciones() {
+  
     if (localStorage.getItem("fuenteCalidad")!=="") {
 
         if (localStorage.getItem("cloro")=="0") {
@@ -508,6 +509,7 @@ function guardarMediciones() {
         }
     
         insertarNubeCalidadFuente();
+       
         
     }
     
@@ -530,6 +532,7 @@ function guardarMediciones() {
         }
     
         insertarNubeCalidadTanque();
+       
     }
 
     if (localStorage.getItem("pajaID")!=="") {
@@ -552,10 +555,21 @@ function guardarMediciones() {
     
         insertarNubeCalidadRed();
     }
-   
+
 }
 
 
+
+  // if(document.cloroform.txtCloro.value == "") {
+    //     myApp.alert('No registro el dato Cloro Residual', 'ERROR!!');
+    //     return 0;
+    // }else if(document.phform.txtph1.value == "" || (document.phform.txtph2.value == "") || (document.phform.txtph3.value == "")){
+    //     myApp.alert('No registro el dato PH', 'ERROR!!');
+    //     return 0;
+    // }else if(document.tempform.txttemp1.value == "" || (document.tempform.txttemp2.value == "") || (document.tempform.txttemp3.value == "")){
+    //     myApp.alert('No registro el dato Temperatura', 'ERROR!!');
+    //     return 0;
+    // }else{
 
 //FUENTE
 function insertarNubeCalidadFuente() {
@@ -582,7 +596,7 @@ function insertarNubeCalidadFuente() {
                             if(respuestaServer.validacion == "ok"){
                                  /// si la validacion es correcta
                                  borrarTablaCalidadFuente();
-                                location.href="menu.html";
+                                 location.href="guardado.html";
                                 localStorage.setItem("fuenteCalidad","");
                               
                             }else{
@@ -627,7 +641,7 @@ function insertarNubeCalidadTanque() {
                             if(respuestaServer.validacion == "ok"){
                                  /// si la validacion es correcta
                                  borrarTablaCalidadTanque();
-                                location.href="menu.html";
+                                 location.href="guardado.html";
                               
                             }else{
                               /// ejecutar una conducta cuando la validacion falla
@@ -670,8 +684,8 @@ function insertarNubeCalidadRed() {
                             
                             if(respuestaServer.validacion == "ok"){
                                  /// si la validacion es correcta
-                                 //borrarTablaCalidadRed();
-                                location.href="menu.html";
+                                 borrarTablaCalidadRed();
+                                 location.href="guardado.html";
                               
                             }else{
                               /// ejecutar una conducta cuando la validacion falla
@@ -690,3 +704,43 @@ function insertarNubeCalidadRed() {
 	
 };
 
+//Decimales para el cloro
+function decimales(dig){
+temp=dig.value.split(".");
+valor=temp.join("");
+cuantos=valor.length;
+if (cuantos>1){
+dig.value=valor.slice(0,3)+"."+valor.slice(3);
+}else{
+dig.value=valor.slice(0,cuantos);
+}
+}
+function enviar(pagina){
+myApp.confirm('¿Está seguro que quiere abandonar esta página?','¡ALERTA!', function () {
+  location.href=pagina;
+});
+}
+
+//Decimales para el ph
+function decimalesph(dig){
+    temp=dig.value.split(".");
+    valor=temp.join("");
+    cuantos=valor.length;
+    if (cuantos>5){
+    dig.value=valor.slice(0,1)+"."+valor.slice(1);
+    }else{
+    dig.value=valor.slice(0,cuantos);
+    }
+    }
+    
+//Decimales para el ph
+function decimalesturb(dig){
+    temp=dig.value.split(".");
+    valor=temp.join("");
+    cuantos=valor.length;
+    if (cuantos>5){
+    dig.value=valor.slice(0,4)+"."+valor.slice(4);
+    }else{
+    dig.value=valor.slice(0,cuantos);
+    }
+    }

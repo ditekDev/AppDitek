@@ -77,7 +77,7 @@ function insertarRegistroLectura(){
         function(tx) {
            
             var sql ="INSERT OR REPLACE INTO RegistroLectura (lectura,medidor) VALUES (?, ?)";
-            var numL=document.getElementsByName("lecNum")[0].value;	
+            var numL=localStorage.getItem("numLectura");
             var med=localStorage.getItem("medidor")
             var params = [numL,med];
             tx.executeSql(sql, params);
@@ -105,7 +105,7 @@ function insertarNube(){
                         if(respuestaServer.validacion == "ok"){
                              /// si la validacion es correcta
                             borrarRegistroLectura();
-                            location.href="menu.html";
+                            location.href="guardado.html";
                           
                         }else{
                           /// ejecutar una conducta cuando la validacion falla
@@ -123,18 +123,24 @@ function insertarNube(){
 };
 
 function registrarLectura(){
- 
-   
-    if(document.datoslecturaform.lecNum.value == "") {
-      myApp.alert('Inserte medición', 'ERROR!!');
-      return 0;
-    }else{
-        insertarRegistroLectura();
-        insertarNube();
-    }
+    insertarRegistroLectura();
+    insertarNube();
+    
     
 }
 
+function comprobarLectura(){
+    
+      
+       if(document.datoslecturaform.lecNum.value == "") {
+         myApp.alert('Inserte medición', 'ERROR!!');
+         return 0;
+       }else{
+           localStorage.setItem("numLectura",document.getElementsByName("lecNum")[0].value)
+           location.href="guardarNumeroLectura.html";
+       }
+       
+   }
 function borrarRegistroLectura(){
     this.db.transaction(
         function(tx) {
